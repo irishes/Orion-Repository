@@ -20,7 +20,7 @@ int main(int argc, char** argsv)
     
         cout<< "\n"<< arg1<< " + "<< arg2<< " = "<< (arg1 + arg2)<< endl;
 
-        return 0;
+        return (arg1 + arg2);
  
        } 
    }
