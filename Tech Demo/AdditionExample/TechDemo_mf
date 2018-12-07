@@ -1,0 +1,14 @@
+CC=g++
+
+CFLAGS= -c -Wall
+
+all: TechDemo 
+
+TechDemo: TechDemo.o
+	$(CC) TechDemo.o -o TechDemo
+
+TechDemo.o: TechDemo.cpp
+	$(CC) $(CFLAGS) TechDemo.cpp
+
+clean: 
+	rm -rf *o TechDemo
