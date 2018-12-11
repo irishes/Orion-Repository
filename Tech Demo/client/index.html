@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html>
     <head>
         <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
@@ -13,7 +13,7 @@
         <title>Team Orion Tech Demo</title>
     </head>
     <body>
-        <h2>My Map</h2>
+        <h2>Edit Your Map</h2>
         <div id="map" class="map"></div>
         <script type="text/javascript">
             var map = new ol.Map({
@@ -29,5 +29,26 @@
                 })
             });
         </script>
+        <script>
+            var socket = io();
+
+            var addition = function(){
+                socket.emit('add', {
+                    number1: 1,
+                    number2: 2
+                });
+            }
+
+            socket.on('serverMsg', function(data){
+                console.log(data);
+            })
+        </script>
+        <button onclick="addition()">Add</button>
+        
+        <form method="post" enctype="multipart/form-data" action="/upload">
+            <input type="file" name="file">
+            <input type="submit" value="Submit">
+        </form>
     </body>
 </html>
+
