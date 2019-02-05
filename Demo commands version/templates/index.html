@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1>Welcome To Team Orion Demo</h1>
+    <p class="lead">It will shows the basic flask communication with commands line</p>
+    <!-- <button type="button" onclick="showCMD()">Display</button> -->
+    <form action="/ls/" method="post">
+        <button name="lsBtn" type="submit">ls commands show</button>
+    </form>
+    <br>
+    <br>
+    <form action="/pwd/" method="post">
+        <button name="pwdBtn" type="submit">pwd commands show</button>
+    </form>
+</div>
+
+{% endblock %}
