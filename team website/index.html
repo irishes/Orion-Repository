@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>TEAM ORION</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+
+    .column {
+      float: left;
+      width: 25.0%;
+      margin-bottom: 16px;
+      padding: 0 9px;
+    }
+
+    @media screen and (max-width: 650px) {
+      .column {
+        width: 50%;
+        display: block;
+      }
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      padding: 0 16px;
+    }
+
+    .container::after,
+    .row::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    .title {
+      color: grey;
+    }
+
+    .navbar{
+      margin-bottom:0;
+      border-radius:0;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-default bg-primary">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Team Orion</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="introduction.html">Introduction</a></li>
+          <li><a href="#TEAM">Team Members</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Documentation <span class="caret"></span></a>
+            <ul class="dropdown-menu">                
+              <li><a href="documentation/Kestay-ImageWriter2.pdf">Project Description</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="documentation/RequirementsDoc.pdf">RequirementsDoc</a></li>
+              <li><a href="documentation/SoftwareDesignDoc.pdf">Software Design Doc</a></li>
+              <li><a href="documentation/TechnicalFeasibility.pdf">Technical Feasibility</a></li>
+              
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://github.com/irishes/Orion-Repository">Tech Demo</a></li>
+          <li><a href="documentation/Image_Caption_Writer.pdf">Schedule</a></li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div><!--/.container-fluid -->
+  </nav>
+
+  
+
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1 class="page-header">Planetary Image Caption Writer
+      <br><small style="font-style: italic">Team: Orion</small></h1>
+      <h3><p style="font-style: oblique; font-weight: bold">CS486C – Senior Capstone Design in Computer Science</p></h3>
+      <br>
+      <a href="introduction.html" class="btn btn-primary"><h4>Learn More About Our Product</h4></a>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+
+  <hr style="border-top: 3px double #8c8b8b;">
+  <p><h2 class="text-center" style="font-weight: bold; padding-bottom: 10px;">Sponser and Client</h2></p>  
+  <div class="container-fluid" style="padding-bottom: 20px; background-color:whitesmoke;">
+    <div class="row">
+      
+      <div class="col-md-8 text-center">
+        <h3 class="text-center text-muted" >Our Sponsor: United States Geological Survey<br><small style="font-style: italic">A scientific agency of the United States government.</small></h3>
+        <hr><img src="USGS.png" class="img-rounded" height="200" weight="200" alt="USGS LOGO">
+      </div>
+      
+      <div class="col-md-4 text-center"style="style="margin-bottom:10;">
+          <h3 class="text-center text-muted" >Our Client: Dr. Laszlo Kestay<br><small style="font-style: italic">A research geologist at the USGS</small></h3>
+          <hr><img src="client.jpg" class="img-thumbnail" height="200" weight="200" alt="USGS LOGO">
+        </div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <hr style="border-top: 3px double #8c8b8b;">
+  <p  id="TEAM"><h2 class="text-center" style="font-weight: bold; padding-bottom: 10px;">Team Members</h2></p>  
+  <hr>
+  <div class="row">
+    
+    <div class="column">
+      <div class="card">
+        <img src="Isaac.jpg" class="thumbnail" alt="Issac" height="200" weight="200" style="display: block; margin-left: auto; margin-right: auto;">
+        <div class="container">
+          <h3>Isaac Shaffer</h3>
+          <p class="title">Team Mentor</p>
+          <p>Northern Arizona University.</p>
+          <p><a href="mailto:ins2@nau.edu" target="_top">Send Email</a></p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="card">
+        <img src="Brandon.jpg" class="thumbnail" alt="Brandon" height="200" weight="200" style="display: block; margin-left: auto; margin-right: auto;">
+        <div class="container">
+          <h3>Brandon Kindrick</h3>
+          <p class="title">Team Lead</p>
+          <p>Northern Arizona University.</p>
+          <p><a href="mailto:bk423@nau.edu" target="_top">Send Email</a></p>
+
+        </div>
+      </div>
+    </div>
+    
+    <div class="column">
+      <div class="card">
+        <img src="Chadd.jpg" class="thumbnail" alt="Chadd" height="200" weight="200" style="display: block; margin-left: auto; margin-right: auto;">
+        <div class="container">
+          <h3>Chadd Frasier</h3>
+          <p class="title">Version controller</p>
+          <p>Northern Arizona University.</p>
+          <p><a href="mailto:cmf339@nau.edu" target="_top">Send Email</a></p>
+
+        </div>
+      </div>
+    </div>
+    
+    <div class="column">
+      <div class="card">
+        <img src="Yuxuan.jpg" class="thumbnail" alt="Yuxuan" height="200" weight="200" style="display: block; margin-left: auto; margin-right: auto;">
+        <div class="container">
+          <h3>Yuxuan Zhu</h3>
+          <p class="title">Code designer</p>
+          <p>Northern Arizona University.</p>
+          <p><a href="mailto:yz298@nau.edu" target="_top">Send Email</a></p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr class="featurette-divider">
+  <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+      <p>© 2018 Northern Arizona University, Team Orion  · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+
+  </footer>
+</body>
+
+</html>
