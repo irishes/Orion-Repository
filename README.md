@@ -1,5 +1,4 @@
-# Orion-Repository
-Official Team Orion Repository
+# Official Team Orion Repository
 -------------------------------
 **Package Installation**
 --------------------------
