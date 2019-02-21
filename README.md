@@ -3,7 +3,7 @@ Official Team Orion Repository
 -------------------------------
 **Package Installation**
 --------------------------
-*First Step*
+*First Step*<br>
 Download Miniconda 3 isis3 Enviornment
 Miniconda 3 installation found <a href= https://github.com/USGS-Astrogeology/ISIS3/blob/dev/README.md>here</a>
 
@@ -13,7 +13,7 @@ $USER_HOME/mininconda3/envs/isis3
 This can be achieved by follow the github install
 
 
-*Step Two*
+*Step Two*<br>
 Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
 
 *command line execution is currently untested*
