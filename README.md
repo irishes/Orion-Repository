@@ -19,7 +19,55 @@ Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
 
 ***=====================================================***
 
-**Basic 'Alpha' Caption Writer**
+**Running Package**
+--------------------------
+*First Step*<br>
+Start the ISIS3 conda environment
+
+<br>'conda activate isis3' 
+
+
+*Step Two*<br>
+Start your IDE from the command line that is using ISIS3
+<br> 'pycharm-community'
+
+
+*Step Three*<br>
+
+Test ISIS3 basic command
+'lowpass -h' 
+-> 
+
+'''
+FROM        = Null
+TO          = Null
+SAMPLES     = Null
+LINES       = Null
+LOW         = Null
+HIGH        = Null
+MINOPT      = (*COUNT, PERCENTAGE)
+MINIMUM     = 1
+REPLACEMENT = (*CENTER, NULL)
+FILTER      = (*ALL, INSIDE, OUTSIDE)
+NULL        = TRUE
+HRS         = TRUE
+HIS         = TRUE
+LRS         = TRUE
+LIS         = TRUE
+'''
+
+
+*Step Five*<br>
+Run the startup script and feed it a .cub file
+Currently the webpage runs the isis3 command:
+
+'campt from= *your cube*'
+
+***=====================================================***
+
+
+
+##Basic 'Alpha' Caption Writer
 ----------------------------------
 
 1. Receive and save a cube file (.cub) from the user
