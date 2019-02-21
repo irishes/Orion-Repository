@@ -36,7 +36,8 @@ Start your IDE from the command line that is using ISIS3
 
 Test ISIS3 basic command
 
-`lowpass -h
+```
+lowpass -h
 
 -> 
 
@@ -56,7 +57,7 @@ HRS         = TRUE <br>
 HIS         = TRUE <br>
 LRS         = TRUE <br>
 LIS         = TRUE <br>
-`
+```
 
 *Step Five*<br>
 Run the startup script and feed it a .cub file
