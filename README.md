@@ -1,12 +1,11 @@
 # Orion-Repository
 Official Team Orion Repository
-++++++++++++++++++++++++++++++++++++++++++++
-***=====================================================***
+*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*
 **Package Installation**
 --------------------------
 *First Step*
 Download Miniconda 3 isis3 Enviornment
-{Miniconda 3 installation found here -> https://github.com/USGS-Astrogeology/ISIS3/blob/dev/README.md}
+{Miniconda 3 installation found <a href= https://github.com/USGS-Astrogeology/ISIS3/blob/dev/README.md>here</a>
 
 'miniconda3 isis3' must be installed in the host pc directory (miniconda3 = python 3.6)
 $USER_HOME/mininconda3/envs/isis3
