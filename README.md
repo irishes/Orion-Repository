@@ -24,49 +24,47 @@ Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
 *First Step*<br>
 Start the ISIS3 conda environment
 
-'conda activate isis3' 
+`conda activate isis3` 
 
 
 *Step Two*<br>
 Start your IDE from the command line that is using ISIS3
-<br> 'pycharm-community'
+<br> `pycharm-community`
 
 
 *Step Three*<br>
 
 Test ISIS3 basic command
 
-'lowpass -h' 
+`lowpass -h
 
 -> 
 
-'''
-FROM        = Null
-TO          = Null
-SAMPLES     = Null
-LINES       = Null
-LOW         = Null
-HIGH        = Null
-MINOPT      = (*COUNT, PERCENTAGE)
-MINIMUM     = 1
-REPLACEMENT = (*CENTER, NULL)
-FILTER      = (*ALL, INSIDE, OUTSIDE)
-NULL        = TRUE
-HRS         = TRUE
-HIS         = TRUE
-LRS         = TRUE
-LIS         = TRUE
-'''
 
+FROM        = Null <br>
+TO          = Null <br>
+SAMPLES     = Null <br>
+LINES       = Null <br>
+LOW         = Null <br>
+HIGH        = Null <br>
+MINOPT      = (*COUNT, PERCENTAGE) <br>
+MINIMUM     = 1 <br>
+REPLACEMENT = (*CENTER, NULL) <br>
+FILTER      = (*ALL, INSIDE, OUTSIDE) <br>
+NULL        = TRUE <br>
+HRS         = TRUE <br>
+HIS         = TRUE <br>
+LRS         = TRUE <br>
+LIS         = TRUE <br>
+`
 
 *Step Five*<br>
 Run the startup script and feed it a .cub file
 Currently the webpage runs the isis3 command:
 
-'''campt from= *your cube*'''
+`campt from= <your cube file>`
 
 ***=====================================================***
-
 
 
 ##Basic 'Alpha' Caption Writer
