@@ -1,8 +1,9 @@
 # Orion-Repository
 Official Team Orion Repository
-
-
+++++++++++++++++++++++++++++++++++++++++++++
+***=====================================================***
 **Package Installation**
+--------------------------
 *First Step*
 Download Miniconda 3 isis3 Enviornment
 {Miniconda 3 installation found here -> https://github.com/USGS-Astrogeology/ISIS3/blob/dev/README.md}
@@ -18,10 +19,10 @@ Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
 
 *command line execution is currently untested*
 
-
-
+***=====================================================***
 
 **Basic 'Alpha' Caption Writer**
+----------------------------------
 
 1. Receive and save a cube file (.cub) from the user
 2. Display the first object block of the data *(ISIS CONNECTION HAS BEEN MADE)*
