@@ -24,7 +24,7 @@ Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
 *First Step*<br>
 Start the ISIS3 conda environment
 
-<br>'conda activate isis3' 
+'conda activate isis3' 
 
 
 *Step Two*<br>
@@ -35,7 +35,9 @@ Start your IDE from the command line that is using ISIS3
 *Step Three*<br>
 
 Test ISIS3 basic command
+
 'lowpass -h' 
+
 -> 
 
 '''
@@ -61,7 +63,7 @@ LIS         = TRUE
 Run the startup script and feed it a .cub file
 Currently the webpage runs the isis3 command:
 
-'campt from= *your cube*'
+'''campt from= *your cube*'''
 
 ***=====================================================***
 
