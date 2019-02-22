@@ -4,7 +4,7 @@ Official Team Orion Repository
 Package Installation
 --------------------------
 
-*First Step*<br>
+**First Step**<br>
 Download Miniconda 3 ISIS3 Environment
 
 You must have Miniconda ISIS3 installed in the path 
@@ -22,7 +22,7 @@ commands**
 This can be achieved by follow the github install
 
 
-*Step Two*
+**Step Two**<br>
 Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
 
 **command line execution is currently untested**
@@ -30,14 +30,14 @@ Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
 Running Package
 =======================
 
-*First Step*<br>
+**First Step**<br>
 Start the ISIS3 conda environment
 
 `conda activate isis3` 
 
 
 
-*Step Two*<br>
+**Step Two**<br>
 Start your IDE from the command line that is using ISIS3
 
 `pycharm-community` or `sudo pycharm-community` 
@@ -45,8 +45,7 @@ Start your IDE from the command line that is using ISIS3
 (depending on your installation)
 
 
-
-*Step Three*<br>
+**Step Three**<br>
 Test ISIS3 basic command
 ```
 lowpass -h' 
@@ -70,7 +69,7 @@ LIS         = TRUE
 ```
 
 
-*Step Five*
+**Step Five**
 Run the startup script and feed it a .cub file
 Currently the webpage runs the isis3 command:
 
@@ -98,7 +97,6 @@ if they desire.
 
 4. When the template looks correct the user can move onto a page where they can view the caption
 and the image of the cube that they uploaded.
-
 
 
 Beta Caption Writer
