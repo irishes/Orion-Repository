@@ -4,7 +4,7 @@ Official Team Orion Repository
 Package Installation
 --------------------------
 
-###First Step<br>
+*First Step*<br>
 Download Miniconda 3 ISIS3 Environment
 
 You must have Miniconda ISIS3 installed in the path 
@@ -22,7 +22,7 @@ commands**
 This can be achieved by follow the github install
 
 
-###Step Two
+*Step Two*
 Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
 
 **command line execution is currently untested**
@@ -30,14 +30,14 @@ Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
 Running Package
 =======================
 
-###First Step<br>
+*First Step*<br>
 Start the ISIS3 conda environment
 
 `conda activate isis3` 
 
 
 
-###Step Two<br>
+*Step Two*<br>
 Start your IDE from the command line that is using ISIS3
 
 `pycharm-community` or `sudo pycharm-community` 
@@ -46,7 +46,7 @@ Start your IDE from the command line that is using ISIS3
 
 
 
-###Step Three<br>
+*Step Three*<br>
 Test ISIS3 basic command
 ```
 lowpass -h' 
@@ -70,7 +70,7 @@ LIS         = TRUE
 ```
 
 
-###Step Five
+*Step Five*
 Run the startup script and feed it a .cub file
 Currently the webpage runs the isis3 command:
 
