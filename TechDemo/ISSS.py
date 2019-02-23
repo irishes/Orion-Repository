@@ -41,18 +41,24 @@ def campt():
             # this try except allows us to run a console command and catch any errors to stop from program crash
             try:
                 # this line is calling a string shell command by creating the command string on a single line
-                os.system("campt from=" + os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE) + " to= return.pvl ")
+                os.system("isis2std from=" + os.path.join(app.config['UPLOAD_FOLDER'], "lor_0034821014_0x630_sci_1.cub") + " to= static/export.png format= png"                                                                                                "")
+                os.system("campt from=" + os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE) + " to= camptreturn.pvl ")
+                os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE) + " to= catlabreturn.pvl")
+                os.system("catoriglab from=" + os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE) + " to= catORGlabreturn.pvl")
             except CalledProcessError:
                 print("The command returned CalledProccessError")
 
             try:
                 # try and open the output file
 
-                returnFile = open("return.pvl", "r")
+                returnFile = open("camptreturn.pvl", "r")
                 returnString = returnFile.read()
                 returnFile.close()
                 file.close()
-                return render_template("pwd.html", OT=returnString)
+
+
+
+                return render_template("pwd.html", OT=returnString, IMG= "export.png")
             # catch file not found
             except FileNotFoundError:
                 print("ISIS3 command failed to create a pvl")
