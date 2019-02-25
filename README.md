@@ -76,10 +76,10 @@ Currently the webpage runs the isis3 command:
 `campt from= <your cube>`
 
 
-Basic 'Alpha' Caption Writer
+Alpha Caption Writer
 =====================================================
-1. Receive and save a cube file (.cub) from the user
-2. Display the first object block of the data *(ISIS CONNECTION HAS BEEN MADE)*
+1. Receive and save a cube file (.cub) and a template file (.tpl)
+2. Move user to page where they can view and customize the image 
 3. Export an image(png or tiff) of the cube in any resolution or size
 
 
@@ -92,11 +92,11 @@ a template cube.
 all the needed metadata and the tags that will correspond to the data in the template
 file when it is converted.
 
-3. The user will have the option to export the metadata and caption in various forms 
+3. The user will have the option to export the metadata, template and caption in various forms 
 if they desire.
 
 4. When the template looks correct the user can move onto a page where they can view the caption
-and the image of the cube that they uploaded.
+and the image together from the cube that they uploaded.
 
 
 Beta Caption Writer
