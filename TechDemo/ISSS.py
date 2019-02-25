@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
+from mdUtility import extractIsisData, extractImage, cleanDirs, trimData
 import os
 from werkzeug.utils import secure_filename
 from subprocess import CalledProcessError
@@ -7,68 +8,24 @@ from subprocess import CalledProcessError
 # global variable
 # CURRENT_FILE will be removed later
 CURRENT_FILE = ''
-APP_ROOT = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
-SAMPLE_LINES = 63
+SAMPLE_LINES = 200
 
 # Flask App Environment
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
+IMAGE_FOLDER = os.path.join(APP_ROOT, 'static/images')
+PVL_FOLDER = os.path.join(APP_ROOT, 'static/pvl')
+
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['IMAGE_FOLDER'] = IMAGE_FOLDER
+app.config['PVL_FOLDER'] = PVL_FOLDER
 
 
 # index.html
 @app.route("/", methods=["GET"])
 def index():
     return render_template('index.html')
-
-
-# campt function and return render html with the string variable data
-@app.route("/upload/campt", methods=['GET', 'POST'])
-def campt():
-    # check if current method is post request
-    if request.method == 'POST':
-        # try to open the uploaded file for read
-        try:
-            file = open(os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE), "r")
-        except FileNotFoundError:
-            # let the user try again
-            print("Flask could not find the cube file")
-            return render_template("index.html")
-        # check if the file is empty or not a cube
-        if CURRENT_FILE.split('.')[-1] == 'cub' and CURRENT_FILE != '':
-            # print("RUNS CORRECTLY")
-
-            # this try except allows us to run a console command and catch any errors to stop from program crash
-            try:
-                # this line is calling a string shell command by creating the command string on a single line
-                os.system("isis2std from=" + os.path.join(app.config['UPLOAD_FOLDER'], "lor_0034821014_0x630_sci_1.cub") + " to= static/export.png format= png"                                                                                                "")
-                os.system("campt from=" + os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE) + " to= camptreturn.pvl ")
-                os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE) + " to= catlabreturn.pvl")
-                os.system("catoriglab from=" + os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE) + " to= catORGlabreturn.pvl")
-            except CalledProcessError:
-                print("The command returned CalledProccessError")
-
-            try:
-                # try and open the output file
-
-                returnFile = open("camptreturn.pvl", "r")
-                returnString = returnFile.read()
-                returnFile.close()
-                file.close()
-
-
-
-                return render_template("pwd.html", OT=returnString, IMG= "export.png")
-            # catch file not found
-            except FileNotFoundError:
-                print("ISIS3 command failed to create a pvl")
-                return render_template("error.html")
-
-        else:
-            print("AHHHHHHH!")
-            if not file.closed:
-                file.close()
-            return render_template("index.html")
 
 
 # upload and save process
@@ -84,7 +41,8 @@ def upload():
             print("Null File Error: please enter a .cub file ")
             return render_template("index.html")
 
-        # slip the filename on every '.' and grab the last slot to verify it is a .cub file also check for an empty filename
+        # slip the filename on every '.' and grab the last slot to verify it is a .cub file a
+        # lso check for an empty filename
         if file.filename.split('.')[-1] == 'cub' and file.filename != '':
 
             # save the file to the upload directory
@@ -106,37 +64,66 @@ def upload():
 
             # close the output file
             testFile.close()
-
-            # render the html page with the variable filled in
-            return render_template('ls.html', filecontent=pagecontent)
         else:
             # wrong file type try again
             return render_template('index.html')
 
+            # try to open the uploaded file for read
 
-#  parse the isiscube data line by line for nlines writes lines to text and returns the name of the return file
-def extractIsisData(file, nLines):
-    # use a default middle man file
-    returnFile = "return.txt"
+        try:
+            file = open(os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE), "r")
+        except FileNotFoundError:
+            # let the user try again
+            print("Flask could not find the cube file")
+            return render_template("index.html")
 
-    try:  # open/ create the file for writing
-        returnFile = open(file=returnFile, mode="w+")
-        # save the name of the file to return
-        return_str = returnFile.name
-    except FileNotFoundError:
-        # catch the error for no file to avoid errors
-        print("No file found creating file")
+        # check if the file is empty or not a cube
+        if CURRENT_FILE.split('.')[-1] == 'cub' and CURRENT_FILE != '':
 
-    # for each line in the input file
-    for line in file:
-        # write the line and decrement the line counter
-        returnFile.writelines(str(line))
-        nLines -= 1
-        # if nLines = -1 we are done
-        if nLines < 0:
-            # close the file and return the filename
-            returnFile.close()
-            return return_str
+            # this try except allows us to run a console command and catch any errors to stop from program crash
+            try:
+                # this line is calling a string shell command by creating the command string on a single line
+                imagename = extractImage(CURRENT_FILE)
+                command_return_file = "return.pvl"
+                cleanDirs(app.config['PVL_FOLDER'], "ers", command_return_file)
+
+                os.system("campt from=" + os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE)
+                          + " to=" + os.path.join(app.config['PVL_FOLDER'], command_return_file))
+                os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE)
+                          + " to=" + os.path.join(app.config['PVL_FOLDER'], command_return_file))
+                os.system("catoriglab from=" + os.path.join(app.config['UPLOAD_FOLDER'], CURRENT_FILE)
+                          + " to=" + os.path.join(app.config['PVL_FOLDER'], command_return_file))
+            except CalledProcessError:
+                  print("The command returned CalledProcessError")
+
+            try:
+                # try and open the output file
+                returnFile = open(os.path.join(app.config['PVL_FOLDER'], command_return_file), "r")
+                returnString = returnFile.read()
+                returnFile.close()
+                file.close()
+                full_filename = url_for('static', filename='images/' + imagename)
+
+                # parse file and fill dict
+                cubeDictionary = trimData(os.path.join(app.config['PVL_FOLDER'], command_return_file))
+                cubeDictionary['image'] = imagename
+                for i in cubeDictionary:
+                    print(str(i + " : " + cubeDictionary[i]))
+
+
+
+                # return filled in text file to user
+                return render_template("pwd.html", OT=returnString, IMG=full_filename)
+            # catch file not found
+            except FileNotFoundError:
+                print("ISIS3 command failed to create a pvl")
+                return render_template("error.html")
+
+        else:
+            print("Input File Error")
+            if not file.closed:
+                file.close()
+            return render_template("index.html")
 
 
 # needed to run on command line
