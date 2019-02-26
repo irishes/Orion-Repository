@@ -11,7 +11,9 @@ You must have Miniconda ISIS3 installed in the path
 `$USER_HOME/mininconda3/envs/isis3`
 And this can be done by following the install instructions found 
 <a href= https://github.com/USGS-Astrogeology/ISIS3/blob/dev/README.md>
-here for both the conda base environment isis3</a><br>'miniconda3 isis3'
+here for both the conda base environment & isis3</a><br>
+
+'miniconda3 isis3'
  must be installed in the host pc directory (miniconda3 = python 3.6 or higher)
  The default install location for both programs should be sufficient. 
 
@@ -25,7 +27,7 @@ This can be achieved by follow the github install
 **Step Two**<br>
 Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
 
-**command line execution is currently untested**
+or download and run it on command line in the Project Directory
 
 Running Package
 =======================
