@@ -1,0 +1,785 @@
+Group = GroundPoint
+  Filename                   = /home/chadd/PycharmProjects/Orion-Repository/T-
+                               echDemo/static/uploads/3083_med_raw.cub
+  Sample                     = 50.0
+  Line                       = 50.0
+  PixelValue                 = Null
+  RightAscension             = 106.58019324361 <DEGREE>
+  Declination                = 11.381878271628 <DEGREE>
+  PlanetocentricLatitude     = -2.4233348357301 <DEGREE>
+  PlanetographicLatitude     = -2.4233348357301 <DEGREE>
+  PositiveEast360Longitude   = 13.564002148481 <DEGREE>
+  PositiveEast180Longitude   = 13.564002148481 <DEGREE>
+  PositiveWest360Longitude   = 346.43599785152 <DEGREE>
+  PositiveWest180Longitude   = -13.564002148481 <DEGREE>
+  BodyFixedCoordinate        = (1687.5935482005, 407.14967829872,
+                                -73.468803046651) <km>
+  LocalRadius                = 1737567.4114945 <meters>
+  SampleResolution           = 4.504334604216 <meters/pixel>
+  LineResolution             = 4.504334604216 <meters/pixel>
+  ObliqueDetectorResolution  = 5.0915934000768 <meters>
+  ObliquePixelResolution     = 5.0915934000768 <meters/pix>
+  ObliqueLineResolution      = 5.0915934000768 <meters>
+  ObliqueSampleResolution    = 5.0915934000768 <meters>
+
+  # Spacecraft Information
+  SpacecraftPosition         = (1727.4465226561, 439.03648467492,
+                                -64.733361474457) <km>
+  SpacecraftAzimuth          = 43.032665084115 <DEGREE>
+  SlantDistance              = 51.78161771603 <km>
+  TargetCenterDistance       = 1783.54 <km>
+  SubSpacecraftLatitude      = -2.08 <DEGREE>
+  SubSpacecraftLongitude     = 14.26 <DEGREE>
+  SpacecraftAltitude         = 46.208848594263 <km>
+  OffNadirAngle              = 27.014563590341 <DEGREE>
+  SubSpacecraftGroundAzimuth = 63.739360197202 <DEGREE>
+
+  # Sun Information
+  SunPosition                = (23606523.233968, 145913395.7894,
+                                -3851390.246353) <km>
+  SubSolarAzimuth            = 70.501716383177 <DEGREE>
+  SolarDistance              = 0.98838399140543 <AU>
+  SubSolarLatitude           = -1.4925750862763 <DEGREE>
+  SubSolarLongitude          = 80.810059701999 <DEGREE>
+  SubSolarGroundAzimuth      = 90.601353554137 <DEGREE>
+
+  # Illumination and Other
+  Phase                      = 43.434778343199 <DEGREE>
+  Incidence                  = 67.20788154699 <DEGREE>
+  Emission                   = 27.790155369092 <DEGREE>
+  NorthAzimuth               = 339.30604221963 <DEGREE>
+
+  # Time
+  EphemerisTime              = -1037285391.2048 <seconds>
+  UTC                        = 1967-02-17T21:09:27.61
+  LocalSolarTime             = 7.5169294964321 <hour>
+  SolarLongitude             = 281.22973345048 <DEGREE>
+
+  # Look Direction Unit Vectors in Body Fixed, J2000, and Camera Coordinate Systems.
+  LookDirectionBodyFixed     = (-0.76963556206564, -0.61579393967703,
+                                -0.16869773401247)
+  LookDirectionJ2000         = (-0.27974513046373, 0.93957262117481,
+                                0.19734728658005)
+  LookDirectionCamera        = (0.39906037129239, -0.33710957478524,
+                                -0.85270625343789)
+End_Group
+Object = IsisCube
+  Object = Core
+    StartByte   = 65537
+    Format      = Tile
+    TileSamples = 128
+    TileLines   = 128
+
+    Group = Dimensions
+      Samples = 100
+      Lines   = 100
+      Bands   = 1
+    End_Group
+
+    Group = Pixels
+      Type       = UnsignedByte
+      ByteOrder  = Lsb
+      Base       = 0.0
+      Multiplier = 1.0
+    End_Group
+  End_Object
+
+  Group = Instrument
+    TargetName               = Moon
+    SpacecraftName           = "Lunar Orbiter 3"
+    StartTime                = 1967-02-17T21:09:27.610
+    InstrumentId             = "Medium Resolution Camera"
+    FrameNumber              = 3083
+    FiducialID               = (6b, 40b, 80b, 5b, 43b, 81b)
+    FiducialSamples          = (1358.000, 5082.000, 9472.000, 1332.000,
+                                5507.000, 9671.000) <pixels>
+    FiducialLines            = (567.000, 566.000, 573.000, 8497.000, 8491.000,
+                                8503.000) <pixels>
+    FiducialXCoordinates     = (-27.947, -2.090, 28.437, -28.019, 0.939,
+                                29.898) <mm>
+    FiducialYCoordinates     = (-27.717, -27.718, -27.699, 27.327, 27.330,
+                                27.323) <mm>
+    FiducialCoordinateMicron = 50 <um>
+    SubFrame                 = 0
+  End_Group
+
+  Group = BandBin
+    FilterName   = none
+    Center       = 1.000
+    OriginalBand = 1
+  End_Group
+
+  Group = Kernels
+    NaifFrameCode             = -533002
+    LeapSecond                = $base/kernels/lsk/naif0009.tls
+    TargetAttitudeShape       = ($base/kernels/pck/pck00009.tpc,
+                                 $base/kernels/pck/lunar_de403_1950-2199_pa.bp-
+                                 c, $base/kernels/fk/lunarMeanEarth001.tf)
+    TargetPosition            = (Table, $base/kernels/spk/de405.bsp)
+    InstrumentPointing        = (Table,
+                                 $lo/kernels/ck/lo3_photo_support_ME.bc)
+    Instrument                = $lo/kernels/ik/lo02.ti
+    SpacecraftClock           = $lo/kernels/sclk/lo_fict.tsc
+    InstrumentPosition        = (Table,
+                                 $lo/kernels/spk/lo3_photo_support_ME.bsp)
+    InstrumentAddendum        = $lo/kernels/iak/lunarOrbiterAddendum002.ti
+    ShapeModel                = $base/dems/ldem_128ppd_Mar2011_clon180_radius-
+                                _pad.cub
+    InstrumentPositionQuality = Reconstructed
+    InstrumentPointingQuality = Reconstructed
+    CameraVersion             = 1
+  End_Group
+
+  Group = AlphaCube
+    AlphaSamples        = 11800
+    AlphaLines          = 8750
+    AlphaStartingSample = 0.5
+    AlphaStartingLine   = 0.5
+    AlphaEndingSample   = 100.5
+    AlphaEndingLine     = 100.5
+    BetaSamples         = 100
+    BetaLines           = 100
+  End_Group
+End_Object
+
+Object = Label
+  Bytes = 65536
+End_Object
+
+Object = Table
+  Name                = InstrumentPointing
+  StartByte           = 95467
+  Bytes               = 64
+  Records             = 1
+  ByteOrder           = Lsb
+  TimeDependentFrames = (-533000, 1)
+  ConstantFrames      = (-533002, -533000)
+  ConstantRotation    = (1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0)
+  CkTableStartTime    = -1037285391.2048
+  CkTableEndTime      = -1037285391.2048
+  CkTableOriginalSize = 1
+  Description         = "Created by spiceinit"
+  Kernels             = $lo/kernels/ck/lo3_photo_support_ME.bc
+
+  Group = Field
+    Name = J2000Q0
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q1
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q2
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q3
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV1
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV2
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV3
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = Table
+  Name                 = InstrumentPosition
+  StartByte            = 95531
+  Bytes                = 56
+  Records              = 1
+  ByteOrder            = Lsb
+  CacheType            = Linear
+  SpkTableStartTime    = -1037285391.2048
+  SpkTableEndTime      = -1037285391.2048
+  SpkTableOriginalSize = 1.0
+  Description          = "Created by spiceinit"
+  Kernels              = $lo/kernels/spk/lo3_photo_support_ME.bsp
+
+  Group = Field
+    Name = J2000X
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Y
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Z
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000XV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000YV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000ZV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = Table
+  Name                = BodyRotation
+  StartByte           = 95587
+  Bytes               = 64
+  Records             = 1
+  ByteOrder           = Lsb
+  TimeDependentFrames = (310002, 1)
+  ConstantFrames      = (310001, 310003, 310000, 310002)
+  ConstantRotation    = (0.99999987852709, -3.09789127116553e-04,
+                         3.83375135592436e-04, 3.09789421617701e-04,
+                         0.999999952015, -7.08797549693787e-07,
+                         -3.83374897618408e-04, 8.27563025111877e-07,
+                         0.9999999265115)
+  CkTableStartTime    = -1037285391.2048
+  CkTableEndTime      = -1037285391.2048
+  CkTableOriginalSize = 1
+  Description         = "Created by spiceinit"
+  Kernels             = ($base/kernels/spk/de405.bsp,
+                         $base/kernels/pck/pck00009.tpc,
+                         $base/kernels/pck/lunar_de403_1950-2199_pa.bpc,
+                         $base/kernels/fk/lunarMeanEarth001.tf)
+  SolarLongitude      = 281.22973345048
+
+  Group = Field
+    Name = J2000Q0
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q1
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q2
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q3
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV1
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV2
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV3
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = Table
+  Name                 = SunPosition
+  StartByte            = 95651
+  Bytes                = 56
+  Records              = 1
+  ByteOrder            = Lsb
+  CacheType            = Linear
+  SpkTableStartTime    = -1037285391.2048
+  SpkTableEndTime      = -1037285391.2048
+  SpkTableOriginalSize = 1.0
+  Description          = "Created by spiceinit"
+  Kernels              = $base/kernels/spk/de405.bsp
+
+  Group = Field
+    Name = J2000X
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Y
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Z
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000XV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000YV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000ZV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = History
+  Name      = IsisCube
+  StartByte = 95707
+  Bytes     = 9471
+End_Object
+
+Object = OriginalLabel
+  Name      = IsisCube
+  StartByte = 82065
+  Bytes     = 6235
+End_Object
+
+Object = NaifKeywords
+  BODY301_RADII                = (1737.4, 1737.4, 1737.4)
+  BODY_FRAME_CODE              = 310001
+  INS-533002_FOCAL_LENGTH      = 79.833
+  INS-533002_PIXEL_PITCH       = 0.006944444
+  INS-533002_TRANSX            = (37.387372786308, -0.0069471574937595,
+                                  -1.10856511813064e-05)
+  INS-533002_TRANSY            = (-31.63632326079, -4.27954502421851e-06,
+                                  0.0069420410697325)
+  INS-533002_ITRANSS           = (5374.401901236, -143.94362258163,
+                                  -0.22986161745223)
+  INS-533002_ITRANSL           = (4560.5208810596, -0.088736613281228,
+                                  144.0497119293)
+  INS-533002_POINT_OF_SYMMETRY = (4.608, -4.608)
+  INS-533002_OD_K              = (23.3145, 0.9998, -17.4798)
+End_Object
+End
+Object = IsisCube
+  Object = Core
+    StartByte   = 65537
+    Format      = Tile
+    TileSamples = 128
+    TileLines   = 128
+
+    Group = Dimensions
+      Samples = 100
+      Lines   = 100
+      Bands   = 1
+    End_Group
+
+    Group = Pixels
+      Type       = UnsignedByte
+      ByteOrder  = Lsb
+      Base       = 0.0
+      Multiplier = 1.0
+    End_Group
+  End_Object
+
+  Group = Instrument
+    TargetName               = Moon
+    SpacecraftName           = "Lunar Orbiter 3"
+    StartTime                = 1967-02-17T21:09:27.610
+    InstrumentId             = "Medium Resolution Camera"
+    FrameNumber              = 3083
+    FiducialID               = (6b, 40b, 80b, 5b, 43b, 81b)
+    FiducialSamples          = (1358.000, 5082.000, 9472.000, 1332.000,
+                                5507.000, 9671.000) <pixels>
+    FiducialLines            = (567.000, 566.000, 573.000, 8497.000, 8491.000,
+                                8503.000) <pixels>
+    FiducialXCoordinates     = (-27.947, -2.090, 28.437, -28.019, 0.939,
+                                29.898) <mm>
+    FiducialYCoordinates     = (-27.717, -27.718, -27.699, 27.327, 27.330,
+                                27.323) <mm>
+    FiducialCoordinateMicron = 50 <um>
+    SubFrame                 = 0
+  End_Group
+
+  Group = BandBin
+    FilterName   = none
+    Center       = 1.000
+    OriginalBand = 1
+  End_Group
+
+  Group = Kernels
+    NaifFrameCode             = -533002
+    LeapSecond                = $base/kernels/lsk/naif0009.tls
+    TargetAttitudeShape       = ($base/kernels/pck/pck00009.tpc,
+                                 $base/kernels/pck/lunar_de403_1950-2199_pa.bp-
+                                 c, $base/kernels/fk/lunarMeanEarth001.tf)
+    TargetPosition            = (Table, $base/kernels/spk/de405.bsp)
+    InstrumentPointing        = (Table,
+                                 $lo/kernels/ck/lo3_photo_support_ME.bc)
+    Instrument                = $lo/kernels/ik/lo02.ti
+    SpacecraftClock           = $lo/kernels/sclk/lo_fict.tsc
+    InstrumentPosition        = (Table,
+                                 $lo/kernels/spk/lo3_photo_support_ME.bsp)
+    InstrumentAddendum        = $lo/kernels/iak/lunarOrbiterAddendum002.ti
+    ShapeModel                = $base/dems/ldem_128ppd_Mar2011_clon180_radius-
+                                _pad.cub
+    InstrumentPositionQuality = Reconstructed
+    InstrumentPointingQuality = Reconstructed
+    CameraVersion             = 1
+  End_Group
+
+  Group = AlphaCube
+    AlphaSamples        = 11800
+    AlphaLines          = 8750
+    AlphaStartingSample = 0.5
+    AlphaStartingLine   = 0.5
+    AlphaEndingSample   = 100.5
+    AlphaEndingLine     = 100.5
+    BetaSamples         = 100
+    BetaLines           = 100
+  End_Group
+End_Object
+
+Object = Label
+  Bytes = 65536
+End_Object
+
+Object = Table
+  Name                = InstrumentPointing
+  StartByte           = 95467
+  Bytes               = 64
+  Records             = 1
+  ByteOrder           = Lsb
+  TimeDependentFrames = (-533000, 1)
+  ConstantFrames      = (-533002, -533000)
+  ConstantRotation    = (1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0)
+  CkTableStartTime    = -1037285391.2048
+  CkTableEndTime      = -1037285391.2048
+  CkTableOriginalSize = 1
+  Description         = "Created by spiceinit"
+  Kernels             = $lo/kernels/ck/lo3_photo_support_ME.bc
+
+  Group = Field
+    Name = J2000Q0
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q1
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q2
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q3
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV1
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV2
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV3
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = Table
+  Name                 = InstrumentPosition
+  StartByte            = 95531
+  Bytes                = 56
+  Records              = 1
+  ByteOrder            = Lsb
+  CacheType            = Linear
+  SpkTableStartTime    = -1037285391.2048
+  SpkTableEndTime      = -1037285391.2048
+  SpkTableOriginalSize = 1.0
+  Description          = "Created by spiceinit"
+  Kernels              = $lo/kernels/spk/lo3_photo_support_ME.bsp
+
+  Group = Field
+    Name = J2000X
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Y
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Z
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000XV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000YV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000ZV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = Table
+  Name                = BodyRotation
+  StartByte           = 95587
+  Bytes               = 64
+  Records             = 1
+  ByteOrder           = Lsb
+  TimeDependentFrames = (310002, 1)
+  ConstantFrames      = (310001, 310003, 310000, 310002)
+  ConstantRotation    = (0.99999987852709, -3.09789127116553e-04,
+                         3.83375135592436e-04, 3.09789421617701e-04,
+                         0.999999952015, -7.08797549693787e-07,
+                         -3.83374897618408e-04, 8.27563025111877e-07,
+                         0.9999999265115)
+  CkTableStartTime    = -1037285391.2048
+  CkTableEndTime      = -1037285391.2048
+  CkTableOriginalSize = 1
+  Description         = "Created by spiceinit"
+  Kernels             = ($base/kernels/spk/de405.bsp,
+                         $base/kernels/pck/pck00009.tpc,
+                         $base/kernels/pck/lunar_de403_1950-2199_pa.bpc,
+                         $base/kernels/fk/lunarMeanEarth001.tf)
+  SolarLongitude      = 281.22973345048
+
+  Group = Field
+    Name = J2000Q0
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q1
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q2
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q3
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV1
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV2
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = AV3
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = Table
+  Name                 = SunPosition
+  StartByte            = 95651
+  Bytes                = 56
+  Records              = 1
+  ByteOrder            = Lsb
+  CacheType            = Linear
+  SpkTableStartTime    = -1037285391.2048
+  SpkTableEndTime      = -1037285391.2048
+  SpkTableOriginalSize = 1.0
+  Description          = "Created by spiceinit"
+  Kernels              = $base/kernels/spk/de405.bsp
+
+  Group = Field
+    Name = J2000X
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Y
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Z
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000XV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000YV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000ZV
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = History
+  Name      = IsisCube
+  StartByte = 95707
+  Bytes     = 9471
+End_Object
+
+Object = OriginalLabel
+  Name      = IsisCube
+  StartByte = 82065
+  Bytes     = 6235
+End_Object
+
+Object = NaifKeywords
+  BODY301_RADII                = (1737.4, 1737.4, 1737.4)
+  BODY_FRAME_CODE              = 310001
+  INS-533002_FOCAL_LENGTH      = 79.833
+  INS-533002_PIXEL_PITCH       = 0.006944444
+  INS-533002_TRANSX            = (37.387372786308, -0.0069471574937595,
+                                  -1.10856511813064e-05)
+  INS-533002_TRANSY            = (-31.63632326079, -4.27954502421851e-06,
+                                  0.0069420410697325)
+  INS-533002_ITRANSS           = (5374.401901236, -143.94362258163,
+                                  -0.22986161745223)
+  INS-533002_ITRANSL           = (4560.5208810596, -0.088736613281228,
+                                  144.0497119293)
+  INS-533002_POINT_OF_SYMMETRY = (4.608, -4.608)
+  INS-533002_OD_K              = (23.3145, 0.9998, -17.4798)
+End_Object
+End
