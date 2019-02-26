@@ -19,34 +19,33 @@ import os
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 IMAGE_FOLDER = os.path.join(APP_ROOT, 'static/images')
+PVL_FOLDER = os.path.join(APP_ROOT, 'static/pvl')
+TPL_FOLDER = os.path.join(APP_ROOT, 'static/tpl')
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['IMAGE_FOLDER'] = IMAGE_FOLDER
-
-isis3md_dict = {
-    'TargetName': '',
-    'SpacecraftName': '',
-    'InstrumentId': '',
-    'SCAN_CREATION_DATE': '',
-    'SlantDistance': '',
-    'SampleResolution': '',
-    'NorthAzimuth': '',
-    'Incidence': '',
-    'Emission': '',
-    'Phase': '',
-    'SubSpacecraftGroundAzimuth': '',
-    'SubSolarAzimuth': '',
-    'SCAN_DENSITY_RANGE': '',
-    'image': ''
-    }
+app.config['PVL_FOLDER'] = PVL_FOLDER
+app.config['TPL_FOLDER'] = TPL_FOLDER
 
 
+isis3md_dict = dict(TargetName='', SpacecraftName='', InstrumentId='', PlanetocentricLatitude='', SCAN_CREATION_DATE='',
+                    SlantDistance='', SampleResolution='', NorthAzimuth='', Incidence='', Emission='', Phase='',
+                    SubSpacecraftGroundAzimuth='', SubSolarAzimuth='', SCAN_DENSITY_RANGE='', image='')
 
 
 # run isis3 command campt on a given file and save data into a large combined text file
-def camptInterface():
-    return 0
+def camptInterface(cube, returnFile):
+    os.system("campt from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
+              + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile))
+
+def catlabInterface(cube, returnFile):
+    os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
+              + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile))
+
+def catoriglabInterface(cube, returnFile):
+    os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
+              + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile))
 
 
 # extract the image from a cube file to a specified format using isis2std() from the isis3 environment

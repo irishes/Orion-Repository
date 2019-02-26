@@ -71,16 +71,23 @@ LIS         = TRUE
 
 **Step Five**
 Run the startup script and feed it a .cub file
-Currently the webpage runs the isis3 command:
 
-`campt from= <your cube>`
+
+Currently the webpage runs the isis3 command(s):
+
+`campt from= <your cube>`<br>
+`catlab from= <your cube>`<br>
+`catoriglab from= <your cube>`<br>
+`isis2std from= <your cube>`<br>
+
+The App then extracts the dictionary data and prints the data structure to the console
 
 
 Basic 'Alpha' Caption Writer
 =====================================================
 1. Receive and save a cube file (.cub) from the user
 2. Display the first object block of the data *(ISIS CONNECTION HAS BEEN MADE)*
-3. Export an image(png or tiff) of the cube in any resolution or size
+3. Export an image(png or tiff) of the cube
 
 
 Alpha Caption Writer
