@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Metadata Output</title> 
+    </head>
+
+    <body>
+        <div id="header">
+            <h1>Metadata Output</h1>
+        </div>
+
+        <div id="data-output">
+            <div id="template">
+                <textarea id="template-text">{{TEMPAREA}}</textarea>
+            </div>
+
+            <div id="metadata">
+                <textarea readonly id="metadata-text">{{DICTSTRING}}</textarea>
+            </div>
+
+            <div id="template-output">
+                <textarea readonly id="template-text-output"></textarea>
+            </div>
+        </div>
+
+        <script>
+            function setOutput(){
+                var getTemplate = document.getElementById("template-text").value;
+                document.getElementById("template-text-output").innerHTML = getTemplate;
+
+                var metaDataString = document.getElementById("metadata-text").value;
+                console.log(metaDataString);
+            }                
+           setOutput();
+           setInterval(output, 1000);
+        </script>
+    </body>
+</html>
+~               
