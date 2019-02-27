@@ -4,7 +4,7 @@
         <title>Metadata Output</title> 
     </head>
 
-    <body>
+    <body background="static/images/webAppBackground.jpg">
         <div id="header">
             <h1>Metadata Output</h1>
         </div>
@@ -21,6 +21,18 @@
             <div id="template-output">
                 <textarea readonly id="template-text-output"></textarea>
             </div>
+            <form method="POST" action="/getCSV">
+                <div class=" form-group" >
+                    <input type="hidden" value="{{DICTSTRING}}" name="passedTXT">
+                    <input type="submit" value="Download CSV"/>
+                </div>
+            </form>
+             <form method="POST" action="/getImage">
+                <div class=" form-group" >
+                    <input type="hidden" value="{{IMG}}" name="passedIMG">
+                    <input type="submit" value="Download Image"/>
+                </div>
+            </form>
         </div>
 
         <script>
@@ -32,8 +44,9 @@
                 console.log(metaDataString);
             }                
            setOutput();
-           setInterval(output, 1000);
+           setInterval(setOutput, 1000);
         </script>
+    <img src="{{IMG}}" format="png"/>
     </body>
 </html>
 ~               

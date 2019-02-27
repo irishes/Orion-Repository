@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, url_for
-from mdUtility import extractIsisData, extractImage, cleanDirs, trimData, \
-    camptInterface, catoriglabInterface, catlabInterface
+from flask import Flask, render_template, request, url_for, Response, send_file
+from mdUtility import extractImage, cleanDirs, trimData, camptInterface, catoriglabInterface, catlabInterface, removeNulls
 import os
+import ast
 from werkzeug.utils import secure_filename
 from subprocess import CalledProcessError
 
@@ -29,6 +29,8 @@ app.config['TPL_FOLDER'] = TPL_FOLDER
 # index.html
 @app.route("/", methods=["GET"])
 def index():
+    global CURRENT_FILE, CURRENT_TPL_FILE
+    CURRENT_FILE, CURRENT_TPL_FILE = "", ""
     return render_template('index.html')
 
 
@@ -37,7 +39,7 @@ def index():
 def upload():
     # if request is post
     if request.method == 'POST':
-        # try to extract the file in teh uploadFile form
+        # try to extract the file in the uploadFile form
         try:
             # get cube file
             cubeFile = request.files['uploadFile']
@@ -48,7 +50,8 @@ def upload():
             print("Null File Error: please enter a .cub file ")
             return render_template("index.html")
 
-        if (templateFile.filename.split('.')[-1] == 'tpl' and templateFile.filename != '') and (cubeFile.filename.split('.')[-1] == 'cub' and cubeFile.filename != ''):
+        if (templateFile.filename.split('.')[-1] == 'tpl' and templateFile.filename != '') \
+                and (cubeFile.filename.split('.')[-1] == 'cub' and cubeFile.filename != ''):
 
             # save the file to the upload directory
             cubeFile.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(cubeFile.filename)))
@@ -73,10 +76,11 @@ def upload():
                 command_return_file = "return.pvl"
                 cleanDirs(app.config['PVL_FOLDER'], "ers", command_return_file)
 
+                # campt os call to terminal and saves in return file
                 camptInterface(CURRENT_FILE, command_return_file)
-
+                # catlab os call to terminal and saves in return file
                 catlabInterface(CURRENT_FILE, command_return_file)
-
+                # catoriglab os call to terminal and saves in return file
                 catoriglabInterface(CURRENT_FILE, command_return_file)
 
             except CalledProcessError:
@@ -92,10 +96,9 @@ def upload():
                 cubeDictionary = trimData(os.path.join(app.config['PVL_FOLDER'], command_return_file))
                 cubeDictionary['image'] = full_filename
 
-                # print('\n\n\n'+str(cubeDictionary))
-
+                cubeDictionary = removeNulls(cubeDictionary)
                 # return filled in text file to user
-                return render_template("output.html", DICTSTRING=str(cubeDictionary), TEMPAREA=templateString)
+                return render_template("output.html", DICTSTRING=cubeDictionary, TEMPAREA=templateString, IMG=cubeDictionary['image'])
             # catch file not found
             except FileNotFoundError:
                 print("ISIS3 command failed to create a pvl")
@@ -104,6 +107,40 @@ def upload():
         else:
             print("Input File Error")
             return render_template("index.html")
+
+
+@app.route('/getCSV', methods=['GET', 'POST'])
+def getCSV():
+    if request.method == 'POST':
+
+        csvString = request.form.get('passedTXT')
+        new_str = ""
+        csvString = ast.literal_eval(csvString)
+
+        for key, value in csvString.items():
+            new_str = new_str + key + ", " + value + "\n"
+
+        return Response(
+            new_str,
+            mimetype="text/csv",
+            headers={"Content-disposition":
+                         "attachment; filename=exportISIS.csv"})
+
+
+@app.route('/getImage', methods=['GET', 'POST'])
+def getImage():
+    if request.method == 'POST':
+        imagepath = os.path.join(app.config['IMAGE_FOLDER'], str(request.form.get('passedIMG')).split("/")[-1])
+
+        try:
+            return send_file(imagepath,
+                             mimetype='application/octet-stream',
+                             as_attachment=True,
+                             attachment_filename=imagepath.split("/")[-1])
+
+        except Exception as e:
+            return(str(e))
+
 
 
 # needed to run on command line

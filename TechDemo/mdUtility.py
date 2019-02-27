@@ -31,7 +31,7 @@ app.config['TPL_FOLDER'] = TPL_FOLDER
 
 isis3md_dict = dict(TargetName='', SpacecraftName='', InstrumentId='', PlanetocentricLatitude='', SCAN_CREATION_DATE='',
                     SlantDistance='', SampleResolution='', NorthAzimuth='', Incidence='', Emission='', Phase='',
-                    SubSpacecraftGroundAzimuth='', SubSolarAzimuth='', SCAN_DENSITY_RANGE='', image='')
+                    SubSpacecraftGroundAzimuth='', SubSolarAzimuth='', image='')
 
 
 # run isis3 command campt on a given file and save data into a large combined text file
@@ -39,9 +39,11 @@ def camptInterface(cube, returnFile):
     os.system("campt from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
               + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile))
 
+
 def catlabInterface(cube, returnFile):
     os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
               + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile))
+
 
 def catoriglabInterface(cube, returnFile):
     os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
@@ -83,9 +85,9 @@ def trimData(file):
 # throws KeyError otherwise
 #
 # (FUNCTION MUST BE CAUGHT)
-def extractIsisKeyword():
-    print("run stub function extractIsisKeyword")
-    return 0
+def extractIsisKeyword(cube, keyword):
+    return os.system("getkey from= " + os.path.join(app.config['UPLOAD_FOLDER'], str(cube))
+                     + " keyword=" + str(keyword) + " recursive= True")
 
 
 # will be called after the user hits restart or when some files are no longer needed
@@ -107,27 +109,11 @@ def cleanDirs(directory, code, file=''):
     return 1
 
 
-# must use unique names for middle man files to stop form corruption with multiple clients
-#  parse the isiscube data line by line for nlines writes lines to text and returns the name of the return file
-def extractIsisData(file, nLines):
-    # use a default middle man file
-    returnFile = "return.txt"
+def removeNulls(dict):
+    returnDict = {}
+    for key in dict:
+        if dict.get(key) != "":
+            returnDict[key] = dict[key]
 
-    try:  # open/ create the file for writing
-        returnFile = open(file=returnFile, mode="w+")
-        # save the name of the file to return
-        return_str = returnFile.name
-    except FileNotFoundError:
-        # catch the error for no file to avoid errors
-        print("No file found creating file")
 
-    # for each line in the input file
-    for line in file:
-        # write the line and decrement the line counter
-        returnFile.writelines(str(line))
-        nLines -= 1
-        # if nLines = -1 we are done
-        if nLines < 0:
-            # close the file and return the filename
-            returnFile.close()
-            return return_str
+    return returnDict
