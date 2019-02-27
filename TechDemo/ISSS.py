@@ -68,7 +68,6 @@ def upload():
 
         # check if the file is empty or not a cube
         if CURRENT_FILE.split('.')[-1] == 'cub' and CURRENT_FILE != '':
-
             # this try except allows us to run a console command and catch any errors to stop from program crash
             try:
                 # this line is calling a string shell command by creating the command string on a single line
@@ -83,8 +82,8 @@ def upload():
                 # catoriglab os call to terminal and saves in return file
                 catoriglabInterface(CURRENT_FILE, command_return_file)
 
-            except CalledProcessError:
-                  print("The command returned CalledProcessError")
+            except Exception as e:
+                  print(str(e))
 
             try:
                 templateFile = open(os.path.join(app.config['TPL_FOLDER'], CURRENT_TPL_FILE), "r")

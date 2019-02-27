@@ -1,52 +1,85 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Metadata Output</title> 
+        <title>Metadata Output</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     </head>
-
     <body background="static/images/webAppBackground.jpg">
-        <div id="header">
-            <h1>Metadata Output</h1>
-        </div>
-
         <div id="data-output">
-            <div id="template">
-                <textarea id="template-text">{{TEMPAREA}}</textarea>
-            </div>
+                <div class="container">
+                        <div class="jumbotron text-center">
+                            <h1 class="display-4">Upload Successfully! Output ISIS3 Metadata</h1>
+                            <p class="lead">Go ahead and feel free to edit it, FINALLY EXPORT IT!</p>
+                            <a class="btn btn-primary btn-lg" href="{{url_for('index')}}" role="button">Upload Another File</a>
+                        </div>
+                    </div>
 
-            <div id="metadata">
-                <textarea readonly id="metadata-text">{{DICTSTRING}}</textarea>
-            </div>
+            <div class="container">
+                    <div id="template" class="text-center">
+                        <label for="template-text">
+                            <h2>Template Text</h2>
+                        </label>
+                        <textarea id="template-text" rows="4" class="form-control bg-white text-dark" style="resize: vertical;
 
-            <div id="template-output">
-                <textarea readonly id="template-text-output"></textarea>
-            </div>
-            <form method="POST" action="/getCSV">
+                                                    font-size: 22px; ">{{TEMPAREA}}</textarea>
+                    </div>
+                    <br>
+                    <div id="metadata" class="text-center green-border-focus">
+                        <label for="metadata-text">
+                            <h2>Metadata Output</h2>
+                        </label>
+                        <textarea readonly id="metadata-text" class="form-control bg-white text-dark" rows="4" style="resize: vertical;
+
+                                                    font-size: 22px;">{{DICTSTRING}}</textarea>
+                    </div>
+                    <br>
+                    <div id="template-output" class="text-center green-border-focus">
+                        <label for="template-text-output">
+                            <h2>Template Text Output</h2>
+                        </label>
+                        <textarea readonly id="template-text-output" class="form-control bg-white text-dark" rows="4" style="resize: vertical;
+                                                    font-size: 22px;"></textarea>
+                    </div>
+                </div>
+		<br><br>
+            <form method="POST" action="/getCSV" class="lg-form text-center">
                 <div class=" form-group" >
                     <input type="hidden" value="{{DICTSTRING}}" name="passedTXT">
-                    <input type="submit" value="Download CSV"/>
+                    <input type="submit" value="Download CSV" class="btn btn-secondary btn-lg"/>
                 </div>
             </form>
-             <form method="POST" action="/getImage">
+			<br>
+			<br>
+            <form method="POST" action="/getImage" class="lg-form text-center">
                 <div class=" form-group" >
                     <input type="hidden" value="{{IMG}}" name="passedIMG">
-                    <input type="submit" value="Download Image"/>
+                    <input type="submit" value="Download Image" class="btn btn-secondary btn-lg"/>
                 </div>
             </form>
         </div>
 
         <script>
+
             function setOutput(){
+
                 var getTemplate = document.getElementById("template-text").value;
+
                 document.getElementById("template-text-output").innerHTML = getTemplate;
 
                 var metaDataString = document.getElementById("metadata-text").value;
+
                 console.log(metaDataString);
-            }                
+            }
+
            setOutput();
+
            setInterval(setOutput, 1000);
         </script>
-    <img src="{{IMG}}" format="png"/>
+        <br>
+        <br>
+        <div class="text-center">
+          <img src="{{IMG}}" format="png" class="img-thumbnail text-center"/>
+        </div>
     </body>
 </html>
-~               

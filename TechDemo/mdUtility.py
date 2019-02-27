@@ -10,7 +10,7 @@ Description:
 
     This file is for the Caption Writing Project at USGS
 """
-from flask import Flask, url_for
+from flask import Flask, render_template
 from subprocess import CalledProcessError
 import os
 
@@ -29,25 +29,34 @@ app.config['PVL_FOLDER'] = PVL_FOLDER
 app.config['TPL_FOLDER'] = TPL_FOLDER
 
 
-isis3md_dict = dict(TargetName='', SpacecraftName='', InstrumentId='', PlanetocentricLatitude='', SCAN_CREATION_DATE='',
-                    SlantDistance='', SampleResolution='', NorthAzimuth='', Incidence='', Emission='', Phase='',
-                    SubSpacecraftGroundAzimuth='', SubSolarAzimuth='', image='')
+isis3md_dict = dict(TargetName='', SpacecraftName='', InstrumentId='', PlanetocentricLatitude='', ProjectionName='',
+                    StartTime='', SlantDistance='', SampleResolution='', NorthAzimuth='', Incidence='', Emission='',
+                    Phase='', SubSpacecraftGroundAzimuth='', SubSolarAzimuth='', MinimumLatitude='', MaximumLatitude='',
+                    MinimumLongitude='', MaximumLongitude='', image='')
 
 
 # run isis3 command campt on a given file and save data into a large combined text file
 def camptInterface(cube, returnFile):
-    os.system("campt from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
+    try:
+        os.system("campt from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
               + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile))
+    except IOError:
+        print("campt function failed")
 
 
 def catlabInterface(cube, returnFile):
-    os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
+    try:
+        os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
               + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile))
-
+    except IOError:
+        print("catlab function failed")
 
 def catoriglabInterface(cube, returnFile):
-    os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
-              + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile))
+    try:
+        os.system("catoriglab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
+                  + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile))
+    except IOError:
+        print("catoriglab function failed")
 
 
 # extract the image from a cube file to a specified format using isis2std() from the isis3 environment
@@ -86,9 +95,12 @@ def trimData(file):
 #
 # (FUNCTION MUST BE CAUGHT)
 def extractIsisKeyword(cube, keyword):
-    return os.system("getkey from= " + os.path.join(app.config['UPLOAD_FOLDER'], str(cube))
-                     + " keyword=" + str(keyword) + " recursive= True")
+    try:
 
+        return os.system("getkey from= " + os.path.join(app.config['UPLOAD_FOLDER'], str(cube))
+                     + " keyword=" + str(keyword) + " recursive= True")
+    except Exception as e:
+        print(str(e))
 
 # will be called after the user hits restart or when some files are no longer needed
 # flush working directories of unnecessary files for performance reasons
@@ -102,11 +114,13 @@ def extractIsisKeyword(cube, keyword):
 #
 def cleanDirs(directory, code, file=''):
     # erase contents of any file given a directory and the filename
-    if code == 'ers' and file != '':
-        if file != '':
-            open(os.path.join(directory, file), "w").close()
-        return 0
-    return 1
+    try:
+        if code == 'ers' and file != '':
+            if file != '':
+                open(os.path.join(directory, file), "w").close()
+            return 0
+    except FileNotFoundError:
+        return render_template("error.html")
 
 
 def removeNulls(dict):
@@ -114,6 +128,5 @@ def removeNulls(dict):
     for key in dict:
         if dict.get(key) != "":
             returnDict[key] = dict[key]
-
 
     return returnDict
