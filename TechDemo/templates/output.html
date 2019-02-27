@@ -1,85 +1,253 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Metadata Output</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <title>Metadata Output</title> 
     </head>
-    <body background="static/images/webAppBackground.jpg">
+
+    <body>
+        <div id="header">
+            <h1>Metadata Output</h1>
+        </div>
+
         <div id="data-output">
-                <div class="container">
-                        <div class="jumbotron text-center">
-                            <h1 class="display-4">Upload Successfully! Output ISIS3 Metadata</h1>
-                            <p class="lead">Go ahead and feel free to edit it, FINALLY EXPORT IT!</p>
-                            <a class="btn btn-primary btn-lg" href="{{url_for('index')}}" role="button">Upload Another File</a>
-                        </div>
-                    </div>
+            <div id="template">
+                <textarea id="template-text">{{TEMPAREA}}</textarea>
+                <button id="export-template">Export Template(.tpl)</button>
+            </div>
 
-            <div class="container">
-                    <div id="template" class="text-center">
-                        <label for="template-text">
-                            <h2>Template Text</h2>
-                        </label>
-                        <textarea id="template-text" rows="4" class="form-control bg-white text-dark" style="resize: vertical;
+            <div id="metadata">
+                <textarea readonly id="metadata-text">{{DICTSTRING}}</textarea>
+                <textarea readonly id="test"></textarea>
+                <button id="export-metadata">Export Metadata(.csv)</button>
+            </div>
 
-                                                    font-size: 22px; ">{{TEMPAREA}}</textarea>
-                    </div>
-                    <br>
-                    <div id="metadata" class="text-center green-border-focus">
-                        <label for="metadata-text">
-                            <h2>Metadata Output</h2>
-                        </label>
-                        <textarea readonly id="metadata-text" class="form-control bg-white text-dark" rows="4" style="resize: vertical;
-
-                                                    font-size: 22px;">{{DICTSTRING}}</textarea>
-                    </div>
-                    <br>
-                    <div id="template-output" class="text-center green-border-focus">
-                        <label for="template-text-output">
-                            <h2>Template Text Output</h2>
-                        </label>
-                        <textarea readonly id="template-text-output" class="form-control bg-white text-dark" rows="4" style="resize: vertical;
-                                                    font-size: 22px;"></textarea>
-                    </div>
-                </div>
-		<br><br>
-            <form method="POST" action="/getCSV" class="lg-form text-center">
-                <div class=" form-group" >
-                    <input type="hidden" value="{{DICTSTRING}}" name="passedTXT">
-                    <input type="submit" value="Download CSV" class="btn btn-secondary btn-lg"/>
-                </div>
-            </form>
-			<br>
-			<br>
-            <form method="POST" action="/getImage" class="lg-form text-center">
-                <div class=" form-group" >
-                    <input type="hidden" value="{{IMG}}" name="passedIMG">
-                    <input type="submit" value="Download Image" class="btn btn-secondary btn-lg"/>
-                </div>
-            </form>
+            <div id="template-output">
+                <textarea readonly id="template-text-output"></textarea>
+                <button id="export-output">Export Output(.txt)</button>
+            </div>
         </div>
 
         <script>
+            var keys = [];
+            var vals = [];
 
+            
             function setOutput(){
-
                 var getTemplate = document.getElementById("template-text").value;
-
-                document.getElementById("template-text-output").innerHTML = getTemplate;
-
-                var metaDataString = document.getElementById("metadata-text").value;
-
-                console.log(metaDataString);
+                var setText = document.getElementById("template-text-output").innerHTML = getTemplate;
             }
 
-           setOutput();
+            function getMetadata(){
+                var metaDataString = document.getElementById("metadata-text").value;
+                var metaDataArea = document.getElementById("test");
+                metaDataString = metaDataString.split("{")[1];
+                metaDataString = metaDataString.split("}")[0];
+                
+                var dataPairString = metaDataString.split(",");
+                
+                for(var i=0; i<dataPairString.length; i++){
+                    var dataToText = dataPairString[i].toString();
+                    var table = document.getElementById("metadata-table");
+                    var key = dataToText.split(":")[0];
+                    var val = dataToText.split(":")[1];
 
-           setInterval(setOutput, 1000);
+                    keys.push(key);
+                    vals.push(val);
+                }
+
+                for(var j=0; j<keys.length; j++){
+                    keys[j] = keys[j].trim();
+                }
+                
+                for(var k=0; k<keys.length; k++){
+                    var key = "[[" + keys[k] + "]]";
+                    var val = vals[k];
+                    var str = key + ": " + val + "\n";
+                    metaDataArea.value += str;
+                }
+            } 
+
+            template = document.getElementById("template-text");
+            templateText = template.value;
+            text = templateText;
+
+            function getTarget(){
+                if(text.includes("[[TargetName]]")){
+                    if(keys.includes("'TargetName'")){
+                        var index = keys.indexOf("'TargetName'");
+                        var val = vals[index];
+                        var results = text.replace(/TargetName/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getSpacecraft(){
+                if(text.includes("[[SpacecraftName]]")){
+                    if(keys.includes("'SpacecraftName'")){
+                        var index = keys.indexOf("'SpacecraftName'");
+                        var val = vals[index];
+                        var results = text.replace(/SpacecraftName/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getInstrument(){
+                if(text.includes("[[InstrumentId]]")){
+                    if(keys.includes("'InstrumentId'")){
+                        var index = keys.indexOf("'InstrumentID'");
+                        var val = vals[index];
+                        var results = text.replace(/InstrumentId/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getPlanetocentricLat(){
+                if(text.includes("[[PlanetocentricLatitude]]")){
+                    if(keys.includes("'PlanetocentricLatitude'")){
+                        var index = keys.indexOf("'PlanetocentricLatitude'");
+                        var val = vals[index];
+                        var results = text.replace(/PlanetocentricLatitude/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getScanCreationDate(){
+                if(text.includes("[[SCAN_CREATION_DATE]]")){
+                    if(keys.includes("'SCAN_CREATION_DATE'")){
+                        var index = keys.indexOf("'SCAN_CREATION_DATE'");
+                        var val = vals[index];
+                        var results = text.replace(/SCAN_CREATION_DATE/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getSlantDistance(){
+                if(text.includes("[[SlantDistance]]")){
+                    if(keys.includes("'SlantDistance'")){
+                        var index = keys.indexOf("'SlantDistance'");
+                        var val = vals[index];
+                        var results = text.replace(/SlantDistance/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getSampleResolution(){
+                if(text.includes("[[SampleResolution]]")){
+                    if(keys.includes("'SampleResolution'")){
+                        var index = keys.indexOf("'SampleResolution'");
+                        var val = vals[index];
+                        var results = text.replace(/SampleResolution/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getNorthAzimuth(){
+                if(text.includes("[[NorthAzimuth]]")){
+                    if(keys.includes("'NorthAzimuth'")){
+                        var index = keys.indexOf("'NorthAzimuth'");
+                        var val = vals[index];
+                        var results = text.replace(/NorthAzimuth/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getIncidence(){
+                if(text.includes("[[Incidence]]")){
+                    if(keys.includes("'Incidence'")){
+                        var index = keys.indexOf("'Incidence'");
+                        var val = vals[index];
+                        var results = text.replace(/Incidence/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getEmission(){
+                if(text.includes("[[Emission]]")){
+                    if(keys.includes("'Emission'")){
+                        var index = keys.indexOf("'Emission'");
+                        var val = vals[index];
+                        var results = text.replace(/Emission/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getPhase(){
+                if(text.includes("[[Phase]]")){
+                    if(keys.includes("'Phase'")){
+                        var index = keys.indexOf("'Phase'");
+                        var val = vals[index];
+                        var results = text.replace(/Phase/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getSubSpacecraftGroundAzimuth(){
+                if(text.includes("[[SubSpacecraftGroundAzimuth]]")){
+                    if(keys.includes("'SubSpacecraftGroundAzimuth'")){
+                        var index = keys.indexOf("'SubSpacecraftGroundAzimuth'");
+                        var val = vals[index];
+                        var results = text.replace(/SubSpacecraftGroundAzimuth/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getSubSolarAzimuth(){
+                if(text.includes("[[SubSolarAzimuth]]")){
+                    if(keys.includes("'SubSolarAzimuth'")){
+                        var index = keys.indexOf("'SubSolarAzimuth'");
+                        var val = vals[index];
+                        var results = text.replace(/SubSolarAzimuth/gi, val);
+                    }
+                }
+                return val;
+            }
+
+            function getScanDensityRange(){
+                if(text.includes("[[SCAN_DENSITY_RANGE]]")){
+                    if(keys.includes("'SCAN_DENSITY_RANGE'")){
+                        var index = keys.indexOf("'SCAN_DENSITY_RANGE'");
+                        var val = vals[index];
+                        var results = text.replace(/SCAN_DENSITY_RANGE/gi, val);
+                    }
+                }
+                return val;
+            }
+            
+            function output(){
+                var temp = text;
+                text = text.replace("[[TargetName]]", getTarget());
+                text = text.replace("[[SpacecraftName]]", getSpacecraft());
+                text = text.replace("[[InstrumentId]]", getInstrument());
+                text = text.replace("[[PlanetocentricLatitude]]", getPlanetocentricLat());
+                text = text.replace("[[SCAN_CREATION_DATE]]", getScanCreationDate());
+                text = text.replace("[[SlantDistance]]", getSlantDistance());
+                text = text.replace("[[SampleResolution]]", getSampleResolution());
+                text = text.replace("[[NorthAzimuth]]", getNorthAzimuth());
+                text = text.replace("[[Incidence]]", getIncidence());
+                text = text.replace("[[Emission]]", getEmission());
+                text = text.replace("[[Phase]]", getPhase());
+                text = text.replace("[[SubSpacecraftGroundAzimuth]]", getSubSpacecraftGroundAzimuth());
+                text = text.replace("[[SCAN_DENSITY_RANGE]]", getScanDensityRange()); 
+                var output = document.getElementById("template-text-output").innerHTML = temp;
+            }
+
+            setOutput();
+            getMetadata();
+            setInterval(output, 1000);
+            //setInterval(setOutput, 1000);
+            //setInterval(outputWithVariables, 3000);
         </script>
-        <br>
-        <br>
-        <div class="text-center">
-          <img src="{{IMG}}" format="png" class="img-thumbnail text-center"/>
-        </div>
     </body>
 </html>
