@@ -62,12 +62,9 @@ def upload():
         except KeyError:
             current_instance = DataObject(cubeFile.filename)
 
-
-
-            # init div dict
-            current_instance.divDict = DataObject.initDict(current_instance)
-            # print(current_instance.divDict)
-
+        # init div dict
+        current_instance.divDict = DataObject.initDict(current_instance)
+        # print(current_instance.divDict)
 
         if (current_instance.tplFile.split('.')[-1] == 'tpl' and current_instance.tplFile != '') \
                 and (current_instance.filename.split('.')[-1] == 'cub' and current_instance.filename != ''):
@@ -129,7 +126,7 @@ def upload():
                 current_instance.divDict = DataObject.removeNulls(current_instance, current_instance.divDict)
                 # return filled in text file to user
                 return render_template("output.html", DICTSTRING=current_instance.divDict, TEMPAREA=templateString,
-                                       IMG=current_instance.divDict['image'])
+                                       IMG=current_instance.divDict['image'], CSVSTRING=current_instance.rawFileData)
             # catch file not found
             except FileNotFoundError:
                 print("ISIS3 command failed to create a pvl")
@@ -149,13 +146,12 @@ def getCSV():
         csvString = ast.literal_eval(csvString)
 
         for key, value in csvString.items():
-            new_str = new_str + key + ", " + value + "\n"
+            new_str = new_str + str(key) + ", " + str(value) + "\n"
 
         return Response(
             new_str,
             mimetype="text/csv",
-            headers={"Content-disposition":
-                        "attachment; filename=exportISIS.csv"})
+            headers={"Content-disposition": "attachment; filename=exportISIS.csv"})
 
 
 @app.route('/getImage', methods=['GET', 'POST'])
