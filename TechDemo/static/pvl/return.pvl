@@ -1,0 +1,61 @@
+Object = IsisCube
+  Object = Core
+    StartByte = 65537
+    Format    = BandSequential
+
+    Group = Dimensions
+      Samples = 321
+      Lines   = 446
+      Bands   = 1
+    End_Group
+
+    Group = Pixels
+      Type       = Real
+      ByteOrder  = Lsb
+      Base       = 0.0
+      Multiplier = 1.0
+    End_Group
+  End_Object
+
+  Group = Mapping
+    ProjectionName     = Equirectangular
+    CenterLongitude    = 180.0
+    TargetName         = Mars
+    EquatorialRadius   = 3396190.0 <meters>
+    PolarRadius        = 3376200.0 <meters>
+    LatitudeType       = Planetocentric
+    LongitudeDirection = PositiveEast
+    LongitudeDomain    = 360
+    MinimumLatitude    = 9.2432352501922
+    MaximumLatitude    = 10.002541232556
+    MinimumLongitude   = 157.06653978
+    MaximumLongitude   = 157.61411105
+    UpperLeftCornerX   = -1359386.1605684 <meters>
+    UpperLeftCornerY   = 592967.8639545 <meters>
+    PixelResolution    = 101.13727851859 <meters/pixel>
+    Scale              = 586.08159515 <pixels/degree>
+    CenterLatitude     = 0.0
+  End_Group
+
+  Group = AlphaCube
+    AlphaSamples        = 320
+    AlphaLines          = 450
+    AlphaStartingSample = 0.5
+    AlphaStartingLine   = 0.5
+    AlphaEndingSample   = 320.5
+    AlphaEndingLine     = 450.5
+    BetaSamples         = 317
+    BetaLines           = 450
+  End_Group
+End_Object
+
+Object = Label
+  Bytes = 65536
+End_Object
+
+Object = History
+  Name      = IsisCube
+  StartByte = 638201
+  Bytes     = 3810
+End_Object
+End
