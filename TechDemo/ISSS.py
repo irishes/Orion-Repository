@@ -80,8 +80,8 @@ def upload():
             #   *--temp variable counter --*
             users += 1
 
-            print(current_instance.filename)
-            print("total upload requests = " + str(users))
+            #print(current_instance.filename)
+            #print("total upload requests = " + str(users))
 
             # this try except allows us to run a console command and catch any errors to stop from program crash
             try:
@@ -114,7 +114,7 @@ def upload():
 
             try:
                 current_instance.rawFileData = DataObject.extractRawData(current_instance, os.path.join(app.config['PVL_FOLDER'], command_return_file))
-                print(current_instance.rawFileData)
+                #print(current_instance.rawFileData)
 
                 templateFile = open(os.path.join(app.config['TPL_FOLDER'], current_instance.tplFile), "r")
                 templateString = templateFile.read()

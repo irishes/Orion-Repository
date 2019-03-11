@@ -14,15 +14,13 @@ from flask import Flask, render_template
 from subprocess import CalledProcessError
 import os
 
-
-# Flask App Environment
+# Flask App Environment Configuration
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 IMAGE_FOLDER = os.path.join(APP_ROOT, 'static/images')
 PVL_FOLDER = os.path.join(APP_ROOT, 'static/pvl')
 CONFIG_FOLDER = os.path.join(APP_ROOT, 'static/config')
 TPL_FOLDER = os.path.join(APP_ROOT, 'static/tpl')
-
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['CONFIG_FOLDER'] = CONFIG_FOLDER
@@ -32,17 +30,97 @@ app.config['TPL_FOLDER'] = TPL_FOLDER
 
 
 class DataObject:
+    """
+    This is a class that houses all of the metadata objects and ISIS function interfaces. This is needed
+    to allow for multiple users to log on and keep python dictionaries in order
+
+    ...
+
+    Attributes
+    ----------
+    isis3md_dict : dict
+        This is the skeleton dictionary for the important isis3 metadata that will appear in the UI Tag Box
+
+    filename : str
+        The name of the cube file that will be used in this instance of the class
+
+    tplFile : str
+        This is the file name of the template file of the current instance of the class
+
+    rawFileData: dict
+        This is the dictionary that will be used to store all of the retrieved metadata from the cube file
+
+    divDict: dict
+        This is the dictionary that is passed back to the user interface and this dictionary is configured
+        by the configuration file
+
+    Methods:
+    --------
+        initDict: str
+            initializes the tags in divDict in any instance its called
+
+        camptInterface: str, str
+            runs the console isis3 command campt and stored the return in the pvl file
+
+        catlabInterface: str, str
+            runs the console isis3 command catlab and stored the return in the pvl file
+
+        catoriglabInterface
+            runs the console isis3 command catoriglab and stored the return in the pvl file
+
+        extractImage: str, str
+                runs the console isis3 command isis2std and stored the return image as the specified format
+
+        trimData: str
+            popuates the divDict
+
+        extractIsisKeyword: str, str
+            runs the console isis3 command getkey and returns the result
+
+        cleanDirs: str, str, str
+            either erase/delete single or multiple files in a given directory
+
+        removeNulls: dict
+            replace empty data spots with a human readable value
+
+        extractRawData: str
+            extract all the data from a return file(pvl) and save into instance
+    ----------
+    """
+
     # configuration dictionary
     isis3md_dict = dict()
 
     # construct using a filename
-    def __init__(self, filename, tplFile='Default.tpl', rawFileData=dict(), divDict=dict()):
+    def __init__(self, filename, tplFile='Default.tpl', rawFileData=dict(), divDict=dict(image='')):
+        """
+        Parameters:
+        -----------
+                :param filename: str
+                        this is the current cube file
+                :param tplFile: str
+                        this is the current template file (defaults to 'Default.tpl')
+                :param rawFileData: dict
+                        this is the raw file extraction dictionary that houses all the extracted metadata
+                :param divDict: dict
+                        this is the trimmed dictionary that is passed to the webpage
+                        (defaults to dict('image') and reads 'config1.cnf')
+                """
         self.filename = filename
         self.rawFileData = rawFileData
         self.divDict = divDict
         self.tplFile = tplFile
 
     def initDict(self, configFile='config1.cnf'):
+        """
+        initializes the divDict to the tags in the config file. (xml format)
+        Parameters:
+        -----------
+            :param configFile: str
+                file that contians the tags that are more important to have in the webpage
+            :return:
+            the new empty dictionary
+        """
         file = open(os.path.join(app.config['CONFIG_FOLDER'],configFile), "r")
         for line in file:
             if '<tag>' in line:
@@ -51,9 +129,17 @@ class DataObject:
         file.close()
         return self.divDict
 
-
     # run isis3 command campt on a given file and save data into a large combined text file
     def camptInterface(self, cube, returnFile):
+        """
+        runs the command line campt isis3 program
+        Parameters:
+        -----------
+            :param cube: str
+                the cube that will be passed to the function
+            :param returnFile: str
+                the file that the function returns to
+        """
         try:
             os.system("campt from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
                       + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile) + " append=True")
@@ -61,6 +147,15 @@ class DataObject:
             print("campt function failed")
 
     def catlabInterface(self, cube, returnFile):
+        """
+       runs the command line catlab isis3 program
+       Parameters:
+        -----------
+            :param cube: str
+                the cube that will be passed to the function
+            :param returnFile: str
+                the file that the function returns to
+        """
         try:
             os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
                       + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile) + " append=True")
@@ -68,16 +163,33 @@ class DataObject:
             print("catlab function failed")
 
     def catoriglabInterface(self, cube, returnFile):
+        """
+        runs the command line catoriglab isis3 command
+        Parameters:
+        -----------
+            :param cube: str
+                the cube that will be passed to the function
+            :param returnFile: str
+                the file that the function returns to
+        """
         try:
             os.system("catoriglab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
                       + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile) + " append=True")
         except IOError:
             print("catoriglab function failed")
 
-    # extract the image from a cube file to a specified format using isis2std() from the isis3 environment
-    # input -> cube file, format= png
-    # output -> name of image file that can be found in the static/images folder
     def extractImage(self, cube, format='png'):
+        """
+        extracts the cube image into the specified format
+        Parameters:
+        -----------
+            :param cube: str
+                the cube that will be passed to the function
+            :param format: str
+                the file that the function returns to
+            :return image: str
+                the link to the image file that was created
+        """
         image = str(cube).split("cub")[0] + format
         try:
             os.system("isis2std from=" + os.path.join(app.config['UPLOAD_FOLDER'], str(cube)) + " to="
@@ -86,14 +198,16 @@ class DataObject:
             return CalledProcessError
         return image
 
-    # takes a large string of data and cuts the
-    # string down to only the needed metadata strings
-    # this is to help save data into a structure later
-    # input -> string data
-    # output -> less string data
     def trimData(self, file):
-        # right here use the dictionary that is created from the config file
-
+        """
+        populates the divDict for the instance
+        Parameters:
+        -----------
+            :param file: str
+                the file that contains the metadata
+            :return: dict
+                the new dictionary instance
+        """
         mdfile = open(file, "r")
         for line in mdfile:
             if str(line).split('=')[0].strip(' ') in self.divDict.keys():
@@ -101,13 +215,18 @@ class DataObject:
         mdfile.close()
         return self.divDict
 
-    # extract a specific isis3 keyword from the data
-    # input -> keyword string, file to search in
-    # returns value of the keyword if found
-    # throws KeyError otherwise
-    #
-    # (FUNCTION MUST BE CAUGHT)
     def extractIsisKeyword(self, cube, keyword):
+        """
+        calls the command line isis3 program getkey
+        Parameters:
+        -----------
+            :param cube: str
+                the cube to perform the search on
+            :param keyword: str
+                the keyword to search for
+            :return: str
+                the return from the call
+        """
         try:
 
             return os.system("getkey from= " + os.path.join(app.config['UPLOAD_FOLDER'], str(cube))
@@ -126,6 +245,18 @@ class DataObject:
     #     ERASE contents of a file; code= ers file != NULL
     #
     def cleanDirs(self, directory, code, file=''):
+        """
+        cleans up the directory depending on the code
+        Parameters:
+        -----------
+            :param directory: str
+                the directory to clean
+            :param code: str
+                the code of the action the function should preform
+            :param file: str (optional)
+                the file to search for if needed
+            :return: 0 if success; render_template otherwise
+        """
         # erase contents of any file given a directory and the filename
         try:
             if code == 'ers' and file != '':
@@ -136,6 +267,15 @@ class DataObject:
             return render_template("error.html")
 
     def removeNulls(self, dict):
+        """
+        replace nulls with none to allow for human readability
+        Parameters:
+        -----------
+            :param dict: dict
+                the dict to clean
+            :return: dict
+                the new divDict
+        """
         for key in dict:
             if dict.get(key) != "":
                 self.divDict[key] = dict[key]
@@ -146,6 +286,15 @@ class DataObject:
 
     # extract all raw data from cube file
     def extractRawData(self, pvlFile):
+        """
+        populate the rawFileData dict
+        Parameters:
+        -----------
+            :param pvlFile: str
+                the pvl file with the raw data from the isis functions
+            :return: dict
+                the raw dictonary
+        """
         file = open(pvlFile, "r", encoding="utf-8")
 
         for line in file:
