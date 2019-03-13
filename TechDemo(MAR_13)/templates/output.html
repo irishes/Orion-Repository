@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Metadata Output</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body background="static/images/webAppBackground.jpg">
+    <div id="data-output">
+        <div class="container">
+            <div class="jumbotron text-center">
+                <h1 class="display-4">Upload Successfully! Output ISIS3 Metadata</h1>
+                <p class="lead">Go ahead and feel free to edit it, FINALLY EXPORT IT!</p>
+                <a class="btn btn-primary btn-lg" href="{{url_for('index')}}" role="button">Upload Another File</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="template" class="text-center">
+                <label for="template-text">
+                    <h2>Template Text</h2>
+                </label>
+                <textarea id="template-text" class="form-control bg-white text-dark"
+                    style="resize: vertical; font-size: 22px; ">{{TEMPAREA}}</textarea>
+            </div>
+
+            <div id="metadata" style="display:none;" class="text-center green-border-focus">
+                <label for="metadata-text">
+                    <h2>Metadata Output</h2>
+                </label>
+                <textarea readonly id="metadata-text" class="form-control bg-white text-dark"
+                    style="resize: vertical; font-size: 22px;">{{DICTSTRING}}</textarea>
+            </div>
+            <br>
+            <div id="tags" style="display:none;" class="text-center green-border-focus">
+                <label for="config-tag-text">
+                    <h2>All Tag Info</h2>
+                </label>
+                <textarea readonly id="tag-text" class="form-control bg-white text-dark"
+                    style="resize: vertical; font-size: 22px;">{{CSVSTRING}}</textarea>
+            </div>
+
+            <div id="metadata-tags" style="display:none;" class="text-center green-border-focus">
+                <label for="metadata-text">
+                    <h2>Metadata Tags</h2>
+                </label>
+                <textarea readonly id="metadataTagArea" class="form-control bg-white text-dark"
+                    style="resize: vertical; font-size: 22px;"></textarea>
+            </div>
+
+            <div id="important-tags" class="text-center green-border-focus">
+                <label for="metadata-text">
+                    <h2>Important Test</h2>
+                </label>
+                <textarea readonly id="importantTagArea" class="form-control bg-white text-dark"
+                    style="resize: vertical; font-size: 22px;"></textarea>
+            </div>
+            <br>
+            <div id="test-metadata" class="text-center green-border-focus">
+                <label for="metadata-text">
+                    <h2>Current Tags</h2>
+                </label>
+                <textarea readonly id="test" class="form-control bg-white text-dark"
+                    style="resize: vertical; font-size: 22px;"></textarea>
+                <button id="button-more-tags" onclick="showMoreTags()">Show more tags</button>
+            </div>
+            <br>
+            <div id="template-output" class="text-center green-border-focus">
+                <label for="template-text-output">
+                    <h2>Template Text Output</h2>
+                </label>
+                <textarea readonly id="template-text-output" class="form-control bg-white text-dark"
+                    style="resize: vertical; font-size: 22px;"></textarea>
+            </div>
+        </div>
+        <br><br>
+        <form method="POST" action="/getCSV" class="lg-form text-center">
+            <div class=" form-group">
+                <input type="hidden" value="{{CSVSTRING}}" name="passedTXT">
+                <input type="submit" value="Download CSV" class="btn btn-secondary btn-lg" />
+            </div>
+        </form>
+        <br>
+        <br>
+        <form class="lg-form text-center">
+            <div class="form-group">
+                <a class="btn btn-secondary text-white btn-lg" role="button" href="{{url_for('showImage')}}">Show Image
+                    On anothor page</a>
+            </div>
+        </form>
+
+        <br><br>
+
+        <form method="POST" action="/getImage" class="lg-form text-center">
+            <div class=" form-group">
+                <input type="hidden" value="{{IMG}}" name="passedIMG">
+                <input type="submit" value="Download Image" class="btn btn-secondary btn-lg" />
+            </div>
+        </form>
+
+        <br><br>
+
+
+
+        <form class="lg-form text-center">
+            <div class="form-group">
+                <a class="btn btn-secondary text-white btn-lg" role="button" id="link" download="template.txt">Download
+                    template</a>
+            </div>
+        </form>
+
+    </div>
+
+    <br>
+    <br>
+    <!-- <div class="text-center">
+        <img src="{{IMG}}" format="png" class="img-thumbnail text-center" />
+    </div> -->
+
+    <br>
+    <br>
+    <script>
+        var keys = [];
+        var vals = [];
+        var imptTags = [];
+        var imptVals = [];
+
+        template = document.getElementById("template-text");
+        templateText = template.value;
+        text = templateText;
+
+        function setOutput() {
+            var getTemplate = document.getElementById("template-text").value;
+            var setText = document.getElementById("template-text-output").innerHTML = getTemplate;
+        }
+
+        // Gets All Metadata from the "metadata-text" div, and formats into two arrays. Keys and Vals.
+        function getMetadata() {
+            var metaDataString = document.getElementById("metadata-text").value;
+            var metaDataArea = document.getElementById("metadataTagArea");
+
+            metaDataString = metaDataString.split("{")[1];
+            metaDataString = metaDataString.split("}")[0];
+
+            var dataPairString = metaDataString.split(",");
+
+            for (var i = 0; i < dataPairString.length; i++) {
+                var dataToText = dataPairString[i].toString();
+                var key = dataToText.split(":")[0];
+                key = key.replace(/['"]+/g, '');
+                var val = dataToText.split(":")[1];
+                val = val.replace(/['"]+/g, '');
+                keys.push(key);
+                vals.push(val);
+            }
+
+
+            for (var j = 0; j < keys.length; j++) {
+                keys[j] = keys[j].trim();
+            }
+
+            for (var k = 0; k < keys.length; k++) {
+                var key = "[[" + keys[k] + "]]";
+                var val = vals[k];
+                var str = key + ": " + val + "\n";
+                metaDataArea.value += str;
+            }
+        }
+
+        // Gets All Important Tags
+        function getImportantTags() {
+            var tags = document.getElementById("tag-text").value;
+            var metaDataArea = document.getElementById("importantTagArea");
+
+            tags = tags.split("{")[1];
+            tags = tags.split("}")[0];
+
+            var dataPairString = tags.split(",");
+
+            for (var i = 0; i < dataPairString.length; i++) {
+                var dataToText = dataPairString[i].toString();
+                var key = dataToText.split(":")[0];
+                key = key.replace(/['"]+/g, '');
+                var val = dataToText.split(":")[1];             
+                val = val.replace(/['"]+/g, '');
+                imptTags.push(key);
+                imptVals.push(val);
+            }
+
+            for (var j = 0; j < imptTags.length; j++) {
+                imptTags[j] = imptTags[j].trim();
+            }
+
+            for (var k = 0; k < imptTags.length; k++) {
+                var key = "[[" + imptTags[k] + "]]";
+                var val = imptVals[k];
+                var str = key + ": " + val + "\n";
+                metaDataArea.value += str;
+            }
+
+            console.log("IMPORT TAGS = "+imptTags);
+            console.log(imptVals);
+        }
+
+        // Converts Key to Tag
+        function keyToTag(key) {
+            var tag = "[[" + key + "]]";
+            return tag;
+        }
+
+        // Return Metadata Val from Key
+        function getMetadataVal(key) {
+            text = document.getElementById("template-text").value;
+            if (text.includes(keyToTag(key))) {
+                if (keys.includes(key)) {
+                    var index = keys.indexOf(key);
+                    var val = vals[index];
+                    var results = text.replace(/key/gi, val);
+                }
+                else if(imptTags.includes(key)){
+                    var index = imptTags.indexOf(key);
+                    var val = imptVals[index];
+                    var results = text.replace(/key/gi, val);
+                }
+                else
+                {
+                    val = "NONE";
+                }
+            }
+            return val;
+        }
+
+        String.prototype.replaceAll = function (find, replace) {
+            var str = this;
+            return str.replace(new RegExp(find.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), replace);
+        };
+
+        function output() {
+            var tempTemplate = document.getElementById("template-text");
+            var tempTemplateText = tempTemplate.value;
+            var temp = tempTemplateText;
+
+            for (i = 0; i <= imptTags.length; i++) {
+                if (temp.includes(keyToTag(imptTags[i]))) {
+                    temp = temp.replaceAll(keyToTag(imptTags[i]), getMetadataVal(imptTags[i]));
+                }
+            }
+
+            var output = document.getElementById("template-text-output").innerHTML = temp;
+            var finalResult = output;
+            var tpl = document.getElementById("link");
+            tpl.href = 'data:attachment/text,' + encodeURI(finalResult);
+            tpl.target = '_blank';
+            tpl.download = 'exportTPL.txt';
+        }
+
+        function showMoreTags() {
+            var val = document.getElementById("button-more-tags").innerHTML;
+            var textArea = document.getElementById("test");
+            var metaTags = document.getElementById("metadataTagArea");
+            var importantTags = document.getElementById("importantTagArea");
+            val = val.toString();
+
+            if (val === "Show more tags") {
+                val = "Show less tags";
+                document.getElementById("button-more-tags").innerHTML = val;
+                textArea.value = metaTags.value;
+            } else {
+                val = "Show more tags";
+                document.getElementById("button-more-tags").innerHTML = val;
+                textArea.value = importantTags.value;
+            }
+        }
+
+        setOutput();
+        getMetadata();
+        getImportantTags();
+        showMoreTags();
+        setInterval(output, 500);
+            //setInterval(setOutput, 1000);
+            //setInterval(outputWithVariables, 3000);
+    </script>
+</body>
+
+</html>

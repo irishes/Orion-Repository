@@ -1,0 +1,5381 @@
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:00:04
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:00:04
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:00:04
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:00:04
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:04:35
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:04:35
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:04:35
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:04:35
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:07:32
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.3
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:07:32
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:07:33
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:07:33
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:10:17
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:10:18
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:10:18
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:10:18
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:11:13
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:11:13
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:11:13
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:11:13
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:11:34
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:11:34
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:11:34
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:11:34
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:16:28
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/mc0_0034942918_-
+                 0x536_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/mc0_0034942918_0-
+                 x536_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/mc0_00349429-
+                     18_0x536_sci_1.png
+    InputMinimum   = -1.0034715081003
+    InputMaximum   = 77.329457989599
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.4
+    CpuTime     = 00:00:00.2
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:16:29
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/mc0_003494291-
+                   8_0x536_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Requested position does not project in camera model; no surface
+               intersection"
+    File    = CameraPointInfo.cpp
+    Line    = 361
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:16:29
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/mc0_0034942918_0x53-
+             6_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:16:29
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/mc0_0034942918_0x53-
+             6_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:19:38
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:19:38
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:19:38
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:19:38
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:23:28
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:23:28
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:23:28
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:23:28
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:26:49
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:26:50
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:26:50
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:26:50
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:29:58
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:29:59
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:29:59
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:29:59
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:32:09
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/mpf_0035126517_-
+                 0x539_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/mpf_0035126517_0-
+                 x539_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Error
+    Program = isis2std
+    Class   = "USER ERROR"
+    Code    = 2
+    Message = "Input cube
+               [/home/yuxuan/Desktop/TechDemo/static/uploads/mpf_0035126517_0x-
+               539_sci_1.cub] must have one band"
+    File    = Process.cpp
+    Line    = 171
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:32:09
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/mpf_003512651-
+                   7_0x539_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Requested position does not project in camera model; no surface
+               intersection"
+    File    = CameraPointInfo.cpp
+    Line    = 361
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:32:09
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/mpf_0035126517_0x53-
+             9_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:32:09
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/mpf_0035126517_0x53-
+             9_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:33:09
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1_v2.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1_v2.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1_v2.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:33:09
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1_v2.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Requested position does not project in camera model; no surface
+               intersection"
+    File    = CameraPointInfo.cpp
+    Line    = 361
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:33:09
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1_v2.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:33:09
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1_v2.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:33:58
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lsb_0034933739_-
+                 0x53c_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lsb_0034933739_0-
+                 x53c_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Error
+    Program = isis2std
+    Class   = "USER ERROR"
+    Code    = 2
+    Message = "Input cube
+               [/home/yuxuan/Desktop/TechDemo/static/uploads/lsb_0034933739_0x-
+               53c_sci_1.cub] must have one band"
+    File    = Process.cpp
+    Line    = 171
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:33:58
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lsb_003493373-
+                   9_0x53c_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = GroundPoint
+    Filename                   = /home/yuxuan/Desktop/TechDemo/static/uploads-
+                                 /lsb_0034933739_0x53c_sci_1.cub
+    Sample                     = 128.0
+    Line                       = 677.0
+    PixelValue                 = 2.1394223e+12
+    RightAscension             = 323.64167861895 <DEGREE>
+    Declination                = -6.6073563152175 <DEGREE>
+    PlanetocentricLatitude     = 12.578223244754 <DEGREE>
+    PlanetographicLatitude     = 14.314175220502 <DEGREE>
+    PositiveEast360Longitude   = 23.533759347026 <DEGREE>
+    PositiveEast180Longitude   = 23.533759347026 <DEGREE>
+    PositiveWest360Longitude   = 336.46624065297 <DEGREE>
+    PositiveWest180Longitude   = -23.533759347026 <DEGREE>
+    BodyFixedCoordinate        = (63755.858001724, 27766.515427661,
+                                  15516.246346217) <km>
+    LocalRadius                = 71249861.117107 <meters>
+    SampleResolution           = 137515.89791113 <meters/pixel>
+    LineResolution             = 137515.89791113 <meters/pixel>
+    ObliqueDetectorResolution  = 167800.70372704 <meters>
+    ObliquePixelResolution     = 167800.70372704 <meters/pix>
+    ObliqueLineResolution      = 167800.70372704 <meters>
+    ObliqueSampleResolution    = 167800.70372704 <meters>
+
+    # Spacecraft Information
+    SpacecraftPosition         = (1480902.2582048, 1760986.6862331,
+                                  -296143.05372768) <km>
+    SpacecraftAzimuth          = 318.02307698248 <DEGREE>
+    SlantDistance              = 2260417.5719141 <km>
+    TargetCenterDistance       = 2319880.6684219 <km>
+    SubSpacecraftLatitude      = -7.3340719688467 <DEGREE>
+    SubSpacecraftLongitude     = 49.937832938113 <DEGREE>
+    SpacecraftAltitude         = 2248472.1480728 <km>
+    OffNadirAngle              = 2.0224078680142 <DEGREE>
+    SubSpacecraftGroundAzimuth = 125.7954053341 <DEGREE>
+
+    # Sun Information
+    SunPosition                = (716735437.19166, -353581983.03141,
+                                  -40958206.226388) <km>
+    SubSolarAzimuth            = 194.74963048991 <DEGREE>
+    SolarDistance              = 5.3490774528924 <AU>
+    SubSolarLatitude           = -2.9337638571606 <DEGREE>
+    SubSolarLongitude          = 333.74182259738 <DEGREE>
+    SubSolarGroundAzimuth      = 255.98645539563 <DEGREE>
+
+    # Illumination and Other
+    Phase                      = 76.719570974697 <DEGREE>
+    Incidence                  = 52.266166890932 <DEGREE>
+    Emission                   = 34.963307584712 <DEGREE>
+    NorthAzimuth               = 72.550507464384 <DEGREE>
+
+    # Time
+    EphemerisTime              = 225900122.67215 <seconds>
+    UTC                        = 2007-02-28T02:00:57.4867861
+    LocalSolarTime             = 15.319462449977 <hour>
+    SolarLongitude             = 289.8540190271 <DEGREE>
+
+    # Look Direction Unit Vectors in Body Fixed, J2000, and Camera Coordinate Systems.
+    LookDirectionBodyFixed     = (-0.62694009187119, -0.76676990673798,
+                                  0.13787687016164)
+    LookDirectionJ2000         = (0.79997628453574, -0.58889562841083,
+                                  -0.11506469058318)
+    LookDirectionCamera        = (-3.04173215012055e-05, -0.0078172516258638,
+                                  0.99996944435908)
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:33:58
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lsb_0034933739_0x53-
+             c_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:33:59
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lsb_0034933739_0x53-
+             c_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:36:20
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:36:21
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:36:21
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:36:21
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:39:34
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:39:34
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:39:34
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:39:34
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:48:14
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:48:14
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:48:14
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:48:15
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:49:51
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:49:51
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:49:51
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T08:49:51
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:13:17
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.3
+    CpuTime     = 00:00:00.2
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:13:17
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:13:18
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:13:18
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:18:39
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.3
+    CpuTime     = 00:00:00.2
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:18:39
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:18:39
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:18:39
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:20:22
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/mpf_0035126517_-
+                 0x539_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/mpf_0035126517_0-
+                 x539_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Error
+    Program = isis2std
+    Class   = "USER ERROR"
+    Code    = 2
+    Message = "Input cube
+               [/home/yuxuan/Desktop/TechDemo/static/uploads/mpf_0035126517_0x-
+               539_sci_1.cub] must have one band"
+    File    = Process.cpp
+    Line    = 171
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:20:23
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/mpf_003512651-
+                   7_0x539_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Requested position does not project in camera model; no surface
+               intersection"
+    File    = CameraPointInfo.cpp
+    Line    = 361
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:20:23
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/mpf_0035126517_0x53-
+             9_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:20:23
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/mpf_0035126517_0x53-
+             9_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:22:07
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:22:07
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:22:08
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:22:08
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:23:51
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:23:52
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:23:52
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:23:52
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:39:21
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:39:22
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:39:22
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T09:39:22
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:31:35
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:31:35
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:31:35
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:31:35
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:33:36
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:33:36
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:33:36
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:33:37
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:37:03
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:37:03
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:37:03
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:37:03
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:38:55
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:38:55
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:38:55
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:38:56
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:40:22
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:40:22
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:40:23
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:40:23
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:47:14
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:47:14
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:47:14
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:47:14
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:51:28
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:51:28
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:51:28
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T10:51:28
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T11:06:51
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T11:06:51
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T11:06:51
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T11:06:51
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T11:10:15
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T11:10:16
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T11:10:16
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T11:10:16
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:11:23
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.3
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:11:24
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:11:25
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:11:25
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:24:57
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:24:58
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:24:58
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:24:58
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:27:31
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:27:32
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:27:32
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:27:32
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:28:19
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:28:20
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:28:20
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:28:20
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:34:09
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.4
+    CpuTime     = 00:00:00.2
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:34:09
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:34:10
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:34:10
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:34:44
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.3
+    CpuTime     = 00:00:00.2
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:34:45
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:34:45
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:34:45
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:43:06
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:43:06
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:43:07
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:43:07
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:53:55
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/mc0_0034942918_-
+                 0x536_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/mc0_0034942918_0-
+                 x536_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/mc0_00349429-
+                     18_0x536_sci_1.png
+    InputMinimum   = -1.0034715081003
+    InputMaximum   = 77.329457989599
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:01.0
+    CpuTime     = 00:00:00.6
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:53:56
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/mc0_003494291-
+                   8_0x536_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Requested position does not project in camera model; no surface
+               intersection"
+    File    = CameraPointInfo.cpp
+    Line    = 361
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:53:57
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/mc0_0034942918_0x53-
+             6_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:53:57
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/mc0_0034942918_0x53-
+             6_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.1
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:55:13
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.4
+    CpuTime     = 00:00:00.2
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:55:14
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:55:14
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:55:15
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:56:53
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_-
+                 0x630_sci_1.cub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/lor_0034821014_0-
+                 x630_sci_1.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/lor_00348210-
+                     14_0x630_sci_1.png
+    InputMinimum   = -8.0059873417221
+    InputMaximum   = 1183.5701245904
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.7
+    CpuTime     = 00:00:00.2
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:56:54
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_003482101-
+                   4_0x630_sci_1.cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "The camera model used to create a camera for this cube is out
+               of date, please re-run spiceinit on the file or process with an
+               old Isis version that has the correct camera model"
+    File    = CameraFactory.cpp
+    Line    = 75
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:56:54
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T12:56:54
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/lor_0034821014_0x63-
+             0_sci_1.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = isis2std
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-08
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T13:03:23
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Exports a cube to PNG, BMP, TIFF, JPEG, or JPEG 2000"
+
+  Group = UserParameters
+    FROM       = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.c-
+                 ub
+    TO         = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_ideal.png
+    MODE       = GRAYSCALE
+    FORMAT     = png
+    QUALITY    = 100
+    STRETCH    = LINEAR
+    MINPERCENT = 0.5
+    MAXPERCENT = 99.5
+  End_Group
+
+  Group = Results
+    OutputFileName = /home/yuxuan/Desktop/TechDemo/static/images/f319b18_idea-
+                     l.png
+    InputMinimum   = 78.0
+    InputMaximum   = 186.0
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.2
+    CpuTime     = 00:00:00.1
+  End_Group
+End_Object
+
+
+Object = campt
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2018-02-16
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T13:03:23
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Computes geometric and photometric information at a
+                       given pixel location"
+
+  Group = UserParameters
+    FROM         = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal-
+                   .cub
+    USECOORDLIST = FALSE
+    TO           = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    FORMAT       = PVL
+    APPEND       = True
+    ALLOWOUTSIDE = TRUE
+    TYPE         = IMAGE
+  End_Group
+
+  Group = Error
+    Program = campt
+    Code    = 1
+    Message = "Unable to initialize camera model from group [Instrument]"
+    File    = CameraFactory.cpp
+    Line    = 99
+  End_Group
+
+  Group = Error
+    Program = campt
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Spice file does not exist
+               [/home/yuxuan/miniconda3/envs/isis3/data/viking2/kernels/iak/vi-
+               kingAddendum003.ti]"
+    File    = Spice.cpp
+    Line    = 417
+  End_Group
+End_Object
+
+
+Object = catlab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2010-07-26
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T13:03:24
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the label from a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
+Object = catoriglab
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2017-01-31
+  ProgramPath       = /home/yuxuan/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-03-13T13:03:24
+  HostName          = Unknown
+  UserName          = yuxuan
+  Description       = "Outputs the original labels of a cube"
+
+  Group = UserParameters
+    FROM   = /home/yuxuan/Desktop/TechDemo/static/uploads/f319b18_ideal.cub
+    TO     = /home/yuxuan/Desktop/TechDemo/static/pvl/return.pvl
+    APPEND = True
+  End_Group
+
+  Group = Accounting
+    ConnectTime = 00:00:00.0
+    CpuTime     = 00:00:00.0
+  End_Group
+End_Object
+
+
