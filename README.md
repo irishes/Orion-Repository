@@ -13,12 +13,11 @@ And this can be done by following the install instructions found
 <a href= https://github.com/USGS-Astrogeology/ISIS3/blob/dev/README.md>
 here for both the conda base environment & isis3</a><br>
 
-**DO NOT INSTALL THE COMPLETE ISIS3 DATA DISTRIBUTION**: It is far too big to be useful for this application
+**DO NOT INSTALL THE COMPLETE ISIS3 DATA DISTRIBUTION**: 
 
-'miniconda3 isis3'
- must be installed in the host pc directory (miniconda3 must be python 3.6 or higher python 2.7 has not been tested extensivly)
+It is far too big to be useful for this application
  
- The default install location for both programs should be sufficient. 
+The default install location for both programs should be sufficient. 
 
 **Important: When the conda enviornament install asks you if you would like to add the conda 
 path to your .bashrc file, you must put yes to give the main command line access to your conda 
@@ -37,6 +36,7 @@ Running Package
 
 **First Step**<br>
 Run the condaStartup.py to create the enviornment script with the run server command appended
+
 *This lets us start isis3 at the same time as the server which will be needed for distrubution*
 
 `python3 condaStartup.py` 
