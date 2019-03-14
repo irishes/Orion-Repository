@@ -13,19 +13,21 @@ And this can be done by following the install instructions found
 <a href= https://github.com/USGS-Astrogeology/ISIS3/blob/dev/README.md>
 here for both the conda base environment & isis3</a><br>
 
+**DO NOT INSTALL THE COMPLETE ISIS3 DATA DISTRIBUTION**: It is far too big to be useful for this application
+
 'miniconda3 isis3'
- must be installed in the host pc directory (miniconda3 = python 3.6 or higher)
+ must be installed in the host pc directory (miniconda3 must be python 3.6 or higher python 2.7 has not been tested extensivly)
  The default install location for both programs should be sufficient. 
 
 **Important: When the conda enviornament install asks you if you would like to add the conda 
-path to your .bash file, you must put yes to give the main command line access to your conda 
-commands**
+path to your .bashrc file, you must put yes to give the main command line access to your conda 
+commands. If you fail to do so you will not be able to use the activate.sh script because `conda activate ENV_NAME` will not be found by the .bash**
 
-This can be achieved by follow the github install
+All the above can be achieved by follow the github install 
 
 
 **Step Two**<br>
-Clone the Repository into prefered IDE w/ .iml file support (Pycharm Prefered)
+Clone the Repository into prefered IDE w/ .iml file support (Pycharm prefered for this)
 
 or download and run it on command line in the Project Directory
 
@@ -33,21 +35,13 @@ Running Package
 =======================
 
 **First Step**<br>
-Start the ISIS3 conda environment
+Run the condaStartup.py to create the enviornment script with the run server command appended
+*This lets us start isis3 at the same time as the server which will be needed for distrubution*
 
-`conda activate isis3` 
-
+`python3 condaStartup.py` 
 
 
 **Step Two**<br>
-Start your IDE from the command line that is using ISIS3
-
-`pycharm-community` or `sudo pycharm-community` 
-
-(depending on your installation)
-
-
-**Step Three**<br>
 Test ISIS3 basic command
 ```
 lowpass -h' 
@@ -71,18 +65,19 @@ LIS         = TRUE
 ```
 
 
-**Step Five**
+**Step Three**
 Run the startup script and feed it a .cub file
 Currently the webpage runs the isis3 command:
 
+`isis2std from= <your cube>`
 `campt from= <your cube>`
+`catlab from= <your cube>`
+`catoriglab from= <your cube>`
 
 
-Alpha Caption Writer
-=====================================================
-1. Receive and save a cube file (.cub) and a template file (.tpl)
-2. Move user to page where they can view and customize the image 
-3. Export an image(png or tiff) of the cube in any resolution or size
+**Step Four**
+Shutdown The Server with 
+`ctrl + c`
 
 
 Alpha Caption Writer
@@ -98,10 +93,10 @@ file when it is converted.
 if they desire.
 
 4. When the template looks correct the user can move onto a page where they can view the caption
-and the image together from the cube that they uploaded.
+and the image seperatly from the caption.
 
 
-Beta Caption Writer
+Beta Caption Writer (S.T.C.)
 =====================================================
 1. Receive and save a cube file (.cub) from the user as well as optionally taking in
 a template cube.
