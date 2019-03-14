@@ -1,116 +1,61 @@
-CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL
+Object = IsisCube
+  Object = Core
+    StartByte = 65537
+    Format    = BandSequential
 
-/* File Structure */
-RECORD_TYPE                              = FIXED_LENGTH
-RECORD_BYTES                             = 512
-FILE_RECORDS                             = 309036
-LABEL_RECORDS                            = 24
-FILE_STATE                               = CLEAN
-^HISTORY                                 = 25
-^QUBE                                    = 60
+    Group = Dimensions
+      Samples = 725
+      Lines   = 1764
+      Bands   = 1
+    End_Group
 
-Object = HISTORY
+    Group = Pixels
+      Type       = UnsignedByte
+      ByteOrder  = Lsb
+      Base       = 0.0
+      Multiplier = 1.0
+    End_Group
+  End_Object
+
+  Group = Mapping
+    ProjectionName     = Equirectangular
+    CenterLongitude    = 180.0
+    TargetName         = Mars
+    EquatorialRadius   = 3396190.0 <meters>
+    PolarRadius        = 3376200.0 <meters>
+    LatitudeType       = Planetocentric
+    LongitudeDirection = PositiveEast
+    LongitudeDomain    = 360
+    MinimumLatitude    = 7.7266757997961
+    MaximumLatitude    = 10.735126377677
+    MinimumLongitude   = 155.54009674
+    MaximumLongitude   = 156.77660442
+    UpperLeftCornerX   = -1449930.8734527 <meters>
+    UpperLeftCornerY   = 636367.54016216 <meters>
+    PixelResolution    = 101.13915132901 <meters/pixel>
+    Scale              = 586.07074258 <pixels/degree>
+    CenterLatitude     = 0.0
+  End_Group
+
+  Group = AlphaCube
+    AlphaSamples        = 723
+    AlphaLines          = 1783
+    AlphaStartingSample = 0.5
+    AlphaStartingLine   = 0.5
+    AlphaEndingSample   = 723.5
+    AlphaEndingLine     = 1783.5
+    BetaSamples         = 715
+    BetaLines           = 1783
+  End_Group
 End_Object
 
-Object = QUBE
-  /* Qube object description */
-  /* Qube structure          */
-  AXES                       = 3
-  AXIS_NAME                  = (SAMPLE, LINE, BAND)
+Object = Label
+  Bytes = 65536
+End_Object
 
-  /* Core description */
-  CORE_ITEMS                 = (12000, 13183, 1)
-  CORE_ITEM_BYTES            = 1
-  CORE_ITEM_TYPE             = PC_UNSIGNED_INTEGER
-  CORE_BASE                  = 0.0
-  CORE_MULTIPLIER            = 1.0
-
-  /* "true_value" = base + (multiplier * stored_value) */
-  CORE_VALID_MINIMUM         = 1
-  CORE_NULL                  = 0
-  CORE_LOW_REPR_SATURATION   = 0
-  CORE_LOW_INSTR_SATURATION  = 0
-  CORE_HIGH_INSTR_SATURATION = 255
-  CORE_HIGH_REPR_SATURATION  = 255
-
-  /* Suffix description */
-  SUFFIX_BYTES               = 4
-  SUFFIX_ITEMS               = (0, 0, 0)
-  CORE_NAME                  = RAW_DATA_NUMBER
-  CORE_UNIT                  = NONE
-  DATA_SET_ID                = VO1/VO2-M-VIS-2-EDR-V2.0
-  IMAGE_NUMBER               = 38319505
-  PRODUCT_ID                 = 646A66
-  MISSION_PHASE_NAME         = CONTINUATION_MISSION
-  RAW_IMAGE_NULL_COUNT       = 395851
-  TARGET_NAME                = MARS
-
-  Group = BAND_BIN
-    BAND_BIN_ORIGINAL_BAND = 1
-    BAND_BIN_UNIT          = NONE
-    BAND_BIN_CENTER        = 0.000000
-  End_Group
-
-  Group = ISIS_INGESTION
-    PDS2ISIS_VERSION           = 2002-09-04
-    PDS2ISIS_TRANSLATION_TABLE = /usgs/isisd/vikdata/vik2isis_translation.def-
-                                 .1
-  End_Group
-
-  Group = ISIS_MOSAIC
-    SPACECRAFT_NAME = (VIKING_ORBITER_1, VIKING_ORBITER_1, VIKING_ORBITER_1,
-                       VIKING_ORBITER_1, VIKING_ORBITER_1, VIKING_ORBITER_1,
-                       VIKING_ORBITER_1, VIKING_ORBITER_1, VIKING_ORBITER_1,
-                       VIKING_ORBITER_1, VIKING_ORBITER_1, VIKING_ORBITER_1,
-                       VIKING_ORBITER_1, VIKING_ORBITER_1, VIKING_ORBITER_1,
-                       VIKING_ORBITER_1, VIKING_ORBITER_1, VIKING_ORBITER_1,
-                       VIKING_ORBITER_1)
-    INSTRUMENT_ID   = (VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_B,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_B,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_B,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_B,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_B,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_B,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_B,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A,
-                       VISUAL_IMAGING_SUBSYSTEM_CAMERA_A)
-    PRODUCT_ID      = (580A25, 580A27, 580A29, 580A31, 580A33, 580A35, 545A06,
-                       545A08, 545A26, 545A28, 545A30, 545A48, 545A50, 545A05,
-                       545A07, 545A27, 545A29, 545A49, 545A51)
-    IMAGE_NUMBER    = (37039986, 37039988, 37039990, 37039992, 37039994,
-                       37039996, 36365663, 36365665, 36365707, 36365709,
-                       36365711, 36365751, 36365753, 36365662, 36365664,
-                       36365708, 36365710, 36365752, 36365754)
-  End_Group
-
-  Group = IMAGE_MAP_PROJECTION
-    A_AXIS_RADIUS                = 3396.19
-    B_AXIS_RADIUS                = 3396.19
-    C_AXIS_RADIUS                = 3376.2
-    POSITIVE_LONGITUDE_DIRECTION = EAST
-    KEYWORD_LATITUDE_TYPE        = PLANETOGRAPHIC
-    LONGITUDE_SYSTEM             = 180
-    MINIMUM_LATITUDE             = 2.0
-    MAXIMUM_LATITUDE             = 13.0
-    WESTERNMOST_LONGITUDE        = 150.0
-    EASTERNMOST_LONGITUDE        = 160.0
-    MAP_RESOLUTION               = 1200.0
-    MAP_SCALE                    = 4.939558126942185E-02
-    MAP_PROJECTION_TYPE          = MERCATOR
-    CENTER_LONGITUDE             = 155.0
-    CENTER_LATITUDE              = 0.0
-    LINE_PROJECTION_OFFSET       = -15554.5
-    SAMPLE_PROJECTION_OFFSET     = -5999.49999999999
-  End_Group
+Object = History
+  Name      = IsisCube
+  StartByte = 1344437
+  Bytes     = 4096
 End_Object
 End

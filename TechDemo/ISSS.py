@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, Response, send_file
 from mdUtility import DataObject
+import threading
 import os
 import ast
 from werkzeug.utils import secure_filename
@@ -35,7 +36,8 @@ app.config['TPL_FOLDER'] = TPL_FOLDER
 # index.html
 @app.route("/", methods=["GET"])
 def index():
-    return render_template('index.html')
+    loadingGif = url_for('static', filename='images/loading.gif')
+    return render_template('index.html', LOADINGGIF=loadingGif)
 
 
 # upload and save process
@@ -77,50 +79,45 @@ def upload():
             #   *--temp variable counter --*
             users += 1
 
-            #print(current_instance.filename)
-            #print("total upload requests = " + str(users))
+            # print(current_instance.filename)
+            # print("total upload requests = " + str(users))
 
             # this try except allows us to run a console command and catch any errors to stop from program crash
             try:
                 # this line is calling a string shell command by creating the command string on a single line
-                imagename = DataObject.extractImage(current_instance, current_instance.filename)
+                imageExtractThread = threading.Thread(target=DataObject.extractImage,
+                                                      args=(current_instance, current_instance.filename,),
+                                                      name='imageExtractThread'
+                                                      )
+                isisCommandThread = threading.Thread(target=DataObject.run_isis,
+                                                      args=(current_instance,),
+                                                      name='imageExtractThread'
+                                                      )
+
+                imageExtractThread.start()
+                isisCommandThread.start()
+
+                command_file_output = isisCommandThread.join()
+                imageExtractThread.join()
 
             except Exception as e:
-                print(str(e))
-
-            command_return_file = "return.pvl"
-            DataObject.cleanDirs(current_instance, app.config['PVL_FOLDER'], "ers", command_return_file)
-
-            try:
-                # campt os call to terminal and saves in return file
-                DataObject.camptInterface(current_instance, current_instance.filename, command_return_file)
-            except Exception as e:
-                print(str(e))
+                print('Threading Section Critical Failure:' + str(e))
+                if current_instance:
+                    del current_instance
+                return render_template("index.html")
 
             try:
-                # catlab os call to terminal and saves in return file
-                DataObject.catlabInterface(current_instance, current_instance.filename, command_return_file)
-            except Exception as e:
-                print(str(e))
-
-            try:
-                # catoriglab os call to terminal and saves in return file
-                DataObject.catoriglabInterface(current_instance, current_instance.filename, command_return_file)
-            except Exception as e:
-                print(str(e))
-
-            try:
-                current_instance.rawFileData = DataObject.extractRawData(current_instance, os.path.join(app.config['PVL_FOLDER'], command_return_file))
+                current_instance.rawFileData = DataObject.extractRawData(current_instance, os.path.join(app.config['PVL_FOLDER'], 'return.pvl'))
                 #print(current_instance.rawFileData)
 
                 templateFile = open(os.path.join(app.config['TPL_FOLDER'], current_instance.tplFile), "r")
                 templateString = templateFile.read()
                 templateFile.close()
 
-                full_filename = url_for('static', filename='images/' + imagename)
+                full_filename = url_for('static', filename='images/' + current_instance.divDict['image'])
 
                 # parse file and fill dict
-                current_instance.divDict = DataObject.trimData(current_instance, os.path.join(app.config['PVL_FOLDER'], command_return_file))
+                current_instance.divDict = DataObject.trimData(current_instance, os.path.join(app.config['PVL_FOLDER'], 'return.pvl'))
                 current_instance.divDict['image'] = full_filename
 
                 current_instance.divDict = DataObject.removeNulls(current_instance, current_instance.divDict)
@@ -131,10 +128,16 @@ def upload():
             except FileNotFoundError:
                 print("ISIS3 command failed to create a pvl")
                 return render_template("error.html")
-
         else:
             print("Input File Error")
             return render_template("index.html")
+
+
+@app.route('/showImage', methods=['POST'])
+def showImage():
+    if request.method == 'POST':
+        image = request.form.get('image_present')
+        return render_template("imageDisplay.html", IMG=image)
 
 
 @app.route('/getCSV', methods=['GET', 'POST'])

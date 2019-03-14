@@ -12,6 +12,7 @@ Description:
 """
 from flask import Flask, render_template
 from subprocess import CalledProcessError
+import threading
 import os
 
 # Flask App Environment Configuration
@@ -29,7 +30,7 @@ app.config['PVL_FOLDER'] = PVL_FOLDER
 app.config['TPL_FOLDER'] = TPL_FOLDER
 
 
-class DataObject:
+class DataObject(threading.Thread):
     """
     This is a class that houses all of the metadata objects and ISIS function interfaces. This is needed
     to allow for multiple users to log on and keep python dictionaries in order
@@ -87,7 +88,6 @@ class DataObject:
             extract all the data from a return file(pvl) and save into instance
     ----------
     """
-
     # configuration dictionary
     isis3md_dict = dict()
 
@@ -121,7 +121,7 @@ class DataObject:
             :return:
             the new empty dictionary
         """
-        file = open(os.path.join(app.config['CONFIG_FOLDER'],configFile), "r")
+        file = open(os.path.join(app.config['CONFIG_FOLDER'], configFile), "r")
         for line in file:
             if '<tag>' in line:
                 self.divDict[line.split('<tag>')[1].split("</tag>")[0]] = ''
@@ -143,8 +143,8 @@ class DataObject:
         try:
             os.system("campt from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
                       + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile) + " append=True")
-        except IOError:
-            print("campt function failed")
+        except Exception as e:
+            return "CAMPT FAILED: " + str(e)
 
     def catlabInterface(self, cube, returnFile):
         """
@@ -159,8 +159,8 @@ class DataObject:
         try:
             os.system("catlab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
                       + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile) + " append=True")
-        except IOError:
-            print("catlab function failed")
+        except Exception as e:
+            return "CATLAB FAILED: " + str(e)
 
     def catoriglabInterface(self, cube, returnFile):
         """
@@ -175,8 +175,8 @@ class DataObject:
         try:
             os.system("catoriglab from=" + os.path.join(app.config['UPLOAD_FOLDER'], cube)
                       + " to=" + os.path.join(app.config['PVL_FOLDER'], returnFile) + " append=True")
-        except IOError:
-            print("catoriglab function failed")
+        except Exception as e:
+            return "CATORIGLAB FAILED: " + str(e)
 
     def extractImage(self, cube, format='png'):
         """
@@ -194,9 +194,11 @@ class DataObject:
         try:
             os.system("isis2std from=" + os.path.join(app.config['UPLOAD_FOLDER'], str(cube)) + " to="
                       + os.path.join(app.config['IMAGE_FOLDER'], image) + " format= " + format)
-        except CalledProcessError:
-            return CalledProcessError
-        return image
+
+            self.divDict['image'] = image
+        except Exception as e:
+            print("IMAGE EXTRACTION FAILED: " + str(e))
+        return
 
     def trimData(self, file):
         """
@@ -232,7 +234,7 @@ class DataObject:
             return os.system("getkey from= " + os.path.join(app.config['UPLOAD_FOLDER'], str(cube))
                              + " keyword=" + str(keyword) + " recursive= True")
         except Exception as e:
-            print(str(e))
+            return 'GETKEY FAILED: ' + str(e)
 
     # will be called after the user hits restart or when some files are no longer needed
     # flush working directories of unnecessary files for performance reasons
@@ -280,7 +282,7 @@ class DataObject:
             if dict.get(key) != "":
                 self.divDict[key] = dict[key]
             else:
-                self.divDict[key] = None
+                self.divDict[key] = str(None)
 
         return self.divDict
 
@@ -307,11 +309,25 @@ class DataObject:
         file.close()
         return self.rawFileData
 
+    def run_isis(self):
+        command_return_file = "return.pvl"
+        DataObject.cleanDirs(self, app.config['PVL_FOLDER'], "ers", command_return_file)
 
+        try:
+            # catlab os call to terminal and saves in return file
+            DataObject.catlabInterface(self, self.filename, command_return_file)
+        except Exception as e:
+            print(str(e))
 
+        try:
+            # catoriglab os call to terminal and saves in return file
+            DataObject.catoriglabInterface(self, self.filename, command_return_file)
+        except Exception as e:
+            print(str(e))
 
-
-
-
-
-
+        try:
+            # campt os call to terminal and saves in return file
+            DataObject.camptInterface(self, self.filename, command_return_file)
+        except Exception as e:
+            print(str(e))
+        return command_return_file
