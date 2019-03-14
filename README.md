@@ -17,18 +17,19 @@ here for both the conda base environment & isis3</a><br>
 
 'miniconda3 isis3'
  must be installed in the host pc directory (miniconda3 must be python 3.6 or higher python 2.7 has not been tested extensivly)
+ 
  The default install location for both programs should be sufficient. 
 
 **Important: When the conda enviornament install asks you if you would like to add the conda 
 path to your .bashrc file, you must put yes to give the main command line access to your conda 
-commands. If you fail to do so you will not be able to use the activate.sh script because `conda activate ENV_NAME` will not be found by the .bash**
+commands. 
+If you fail to do so you will not be able to use the activate.sh script because `conda activate ENV_NAME` will not be found by the .bash and the server will not start**
 
 All the above can be achieved by follow the github install 
 
 
 **Step Two**<br>
 Clone the Repository into prefered IDE w/ .iml file support (Pycharm prefered for this)
-
 or download and run it on command line in the Project Directory
 
 Running Package
@@ -44,9 +45,8 @@ Run the condaStartup.py to create the enviornment script with the run server com
 **Step Two**<br>
 Test ISIS3 basic command
 ```
-lowpass -h' 
+$ lowpass -h 
 -> 
-
 FROM        = Null
 TO          = Null
 SAMPLES     = Null
