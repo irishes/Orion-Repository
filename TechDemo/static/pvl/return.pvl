@@ -1,0 +1,339 @@
+Object = IsisCube
+  Object = Core
+    StartByte   = 65537
+    Format      = Tile
+    TileSamples = 128
+    TileLines   = 128
+
+    Group = Dimensions
+      Samples = 312
+      Lines   = 1150
+      Bands   = 1
+    End_Group
+
+    Group = Pixels
+      Type       = UnsignedByte
+      ByteOrder  = Lsb
+      Base       = 0.0
+      Multiplier = 1.0
+    End_Group
+  End_Object
+
+  Group = Instrument
+    SpacecraftName        = IdealSpacecraft
+    InstrumentId          = IdealCamera
+    TargetName            = MARS
+    SampleDetectors       = 312
+    LineDetectors         = 1150
+    InstrumentType        = FRAMING
+    FocalLength           = 474.101 <millimeters>
+    PixelPitch            = 0.047058823529412 <millimeters>
+    EphemerisTime         = -709604786.75308 <seconds>
+    StartTime             = 1977-07-07T11:32:45
+    FocalPlaneXDependency = 1
+    TransX                = 1.0
+    TransY                = 1.0
+    MatchedCube           = /home/slambright/isis/src/base/objs/IdealCamera/f-
+                            319b18.cub
+  End_Group
+
+  Group = Archive
+    DataSetId       = VO1/VO2-M-VIS-2-EDR-V2.0
+    ProductId       = 319B18
+    MissonPhaseName = EXTENDED_MISSION
+    ImageNumber     = 52923839
+    OrbitNumber     = 319
+  End_Group
+
+  Group = BandBin
+    FilterName = CLEAR
+    FilterId   = 4
+  End_Group
+
+  Group = Kernels
+    NaifFrameCode       = -30002
+    LeapSecond          = $base/kernels/lsk/naif0008.tls
+    TargetAttitudeShape = $base/kernels/pck/pck00008.tpc
+    TargetPosition      = Table
+    InstrumentPointing  = Table
+    Instrument          = Null
+    SpacecraftClock     = ($viking2/kernels/sclk/vo2_fict.tsc,
+                           $viking2/kernels/sclk/vo2_fsc.tsc)
+    InstrumentPosition  = Table
+    InstrumentAddendum  = $viking2/kernels/iak/vikingAddendum003.ti
+    ShapeModel          = Null
+  End_Group
+
+  Group = Reseaus
+    Line     = (5, 7, 9, 10, 11, 12, 14, 15, 17, 19, 20, 135, 136, 137, 138,
+                139, 140, 142, 143, 144, 146, 148, 149, 265, 266, 267, 268,
+                269, 270, 271, 272, 274, 276, 278, 395, 395, 397, 398, 398,
+                399, 400, 401, 402, 404, 406, 407, 525, 526, 526, 527, 528,
+                528, 529, 530, 531, 533, 535, 654, 655, 655, 656, 657, 657,
+                658, 659, 660, 661, 663, 664, 784, 784, 785, 785, 786, 786,
+                787, 788, 789, 790, 793, 914, 914, 914, 914, 915, 915, 916,
+                916, 917, 918, 920, 922, 1043, 1043, 1043, 1043, 1044, 1044,
+                1045, 1045, 1046, 1048, 1051)
+    Sample   = (23, 141, 257, 373, 489, 605, 720, 836, 952, 1068, 1185, 23,
+                82, 199, 315, 431, 546, 662, 778, 894, 1010, 1126, 1184, 24,
+                141, 257, 373, 489, 605, 720, 836, 952, 1068, 1184, 24, 82,
+                199, 315, 432, 547, 663, 779, 895, 1011, 1127, 1184, 24, 141,
+                258, 374, 490, 605, 721, 837, 953, 1070, 1185, 24, 83, 200,
+                316, 432, 548, 664, 780, 896, 1012, 1128, 1185, 24, 142, 258,
+                374, 490, 606, 722, 838, 954, 1070, 1186, 23, 82, 199, 316,
+                432, 548, 664, 780, 896, 1013, 1129, 1186, 22, 140, 257, 374,
+                489, 606, 722, 838, 954, 1071, 1187)
+    Type     = (1, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+                5, 6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 4, 5, 5, 5, 5, 5, 5, 5,
+                5, 5, 5, 6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 4, 5, 5, 5, 5, 5,
+                5, 5, 5, 5, 5, 6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 4, 5, 5, 5,
+                5, 5, 5, 5, 5, 5, 5, 6, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6)
+    Valid    = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+    Template = $viking2/reseaus/vo2.visb.template.cub
+    Status   = Nominal
+  End_Group
+
+  Group = OriginalInstrument
+    SpacecraftName       = VIKING_ORBITER_2
+    InstrumentId         = VISUAL_IMAGING_SUBSYSTEM_CAMERA_B
+    TargetName           = MARS
+    StartTime            = 1977-07-07T11:32:45
+    ExposureDuration     = 0.033940 <seconds>
+    SpacecraftClockCount = 52923839
+    FloodModeId          = ON
+    GainModeId           = LOW
+    OffsetModeId         = ON
+  End_Group
+End_Object
+
+Object = Label
+  Bytes = 65536
+End_Object
+
+Object = Table
+  Name        = InstrumentPointing
+  StartByte   = 507905
+  Bytes       = 40
+  Records     = 1
+  ByteOrder   = Lsb
+  Description = "Created by spiceinit"
+  Kernels     = ($viking2/kernels/fk/vo2_v10.tf,
+                 $viking2/kernels/ck/vo2_sedr_ck2.bc)
+
+  Group = Field
+    Name = J2000Q0
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q1
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q2
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q3
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = Table
+  Name        = InstrumentPosition
+  StartByte   = 507945
+  Bytes       = 32
+  Records     = 1
+  ByteOrder   = Lsb
+  Description = "Created by spiceinit"
+  Kernels     = $viking2/kernels/spk/vo2_rcon.bsp
+
+  Group = Field
+    Name = J2000X
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Y
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Z
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = Table
+  Name           = BodyRotation
+  StartByte      = 507977
+  Bytes          = 40
+  Records        = 1
+  ByteOrder      = Lsb
+  Description    = "Created by spiceinit"
+  Kernels        = ($base/kernels/spk/de405.bsp,
+                    $base/kernels/pck/pck00008.tpc)
+  SolarLongitude = 293.30813615623
+
+  Group = Field
+    Name = J2000Q0
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q1
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q2
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Q3
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = Table
+  Name        = SunPosition
+  StartByte   = 508017
+  Bytes       = 32
+  Records     = 1
+  ByteOrder   = Lsb
+  Description = "Created by spiceinit"
+  Kernels     = $base/kernels/spk/de405.bsp
+
+  Group = Field
+    Name = J2000X
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Y
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = J2000Z
+    Type = Double
+    Size = 1
+  End_Group
+
+  Group = Field
+    Name = ET
+    Type = Double
+    Size = 1
+  End_Group
+End_Object
+
+Object = History
+  Name      = IsisCube
+  StartByte = 510134
+  Bytes     = 2297
+End_Object
+
+Object = OriginalLabel
+  Name      = IsisCube
+  StartByte = 508049
+  Bytes     = 2085
+End_Object
+End
+CCSD3ZF0000100000001NJPL3IF0PDS200000001 = SFDU_LABEL
+
+/* FILE FORMAT AND LENGTH */
+RECORD_TYPE                              = FIXED_LENGTH
+RECORD_BYTES                             = 1204
+FILE_RECORDS                             = 1115
+LABEL_RECORDS                            = 2
+
+/* POINTERS TO START RECORDS OF MAJOR OBJECTS IN FILE */
+^IMAGE_HISTOGRAM                         = 3
+^ENGINEERING_TABLE                       = 4
+^LINE_HEADER_TABLE                       = 5
+^IMAGE                                   = 60
+
+/* IMAGE DESCRIPTION */
+DATA_SET_ID                              = VO1/VO2-M-VIS-2-EDR-V2.0
+SPACECRAFT_NAME                          = VIKING_ORBITER_2
+MISSION_PHASE_NAME                       = EXTENDED_MISSION
+TARGET_NAME                              = MARS
+IMAGE_ID                                 = 319B18
+IMAGE_NUMBER                             = 52923839
+IMAGE_TIME                               = 1977-07-07T11:32:45Z
+EARTH_RECEIVED_TIME                      = 1977-07-07T23:17:10Z
+ORBIT_NUMBER                             = 319
+INSTRUMENT_NAME                          = VISUAL_IMAGING_SUBSYSTEM_CAMERA_B
+GAIN_MODE_ID                             = LOW
+FLOOD_MODE_ID                            = ON
+OFFSET_MODE_ID                           = ON
+FILTER_NAME                              = CLEAR
+EXPOSURE_DURATION                        = 0.033940 <SECONDS>
+NOTE                                     = "LOW RESOLUTION COLOR SEQUENCE OF
+                                            SOUTH POLAR CAP"
+
+/* DESCRIPTION OF THE OBJECTS CONTAINED IN FILE */
+Object = IMAGE_HISTOGRAM
+  ITEMS     = 256
+  ITEM_TYPE = VAX_INTEGER
+  ITEM_BITS = 32
+End_Object
+
+Object = ENGINEERING_TABLE
+  ROWS       = 1
+  ROW_BYTES  = 152
+  ^STRUCTURE = ENGSUM.FMT
+End_Object
+
+Object = LINE_HEADER_TABLE
+  ROWS       = 1056
+  ROW_BYTES  = 62
+  ^STRUCTURE = LINHDR.FMT
+End_Object
+
+Object = IMAGE
+  LINES           = 1056
+  LINE_SAMPLES    = 1204
+  SAMPLE_TYPE     = UNSIGNED_INTEGER
+  SAMPLE_BITS     = 8
+  SAMPLE_BIT_MASK = 2#11111110#
+End_Object
+End
