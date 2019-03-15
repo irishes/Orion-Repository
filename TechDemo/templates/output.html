@@ -167,7 +167,7 @@
             var output = document.getElementById("template-text-output").innerHTML = temp;
             var finalResult = output;
             var tpl = document.getElementById("link");
-            tpl.href = 'data:attachment/text,' + encodeURI(finalResult);
+            tpl.href = 'data:attachment/text,' + encodeURIComponent(finalResult);
             tpl.target = '_blank';
             tpl.download = 'template.txt';
         }
