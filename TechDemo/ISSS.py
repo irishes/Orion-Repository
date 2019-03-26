@@ -1,18 +1,16 @@
+"""
+File: ISSS.py
+
+
+
+
+"""
 from flask import Flask, render_template, request, url_for, Response, send_file
 from mdUtility import DataObject
 import threading
 import os
 import ast
 from werkzeug.utils import secure_filename
-
-
-# global variable
-# CURRENT_FILE will be removed later
-
-SAMPLE_LINES = 200
-
-# temp vars
-users = 0
 
 
 # Flask App Environment
@@ -43,30 +41,32 @@ def index():
 # upload and save process
 @app.route("/upload", methods=['GET', 'POST'])
 def upload():
-    global users
+
     # if request is post
     if request.method == 'POST':
-        # make file an instance of a data class and extract all the tags from that data.
-        # in order to do this i need a class called filedata
-        # try to extract the file in the uploadFile form
+        # Make File Post an Instance of a DataObject and extract all the tags from that data
+        # =============================================================================
         try:
+            # grab the file post using request lib
             cubeFile = request.files['uploadFile']
 
         except KeyError:
             # catches NULL error and makes user try again
+            # TODO: better UI for when a user fails to complete this.
+            #  exp: a popup message
             print("Null File Error: please enter a .cub file ")
             return render_template("index.html")
-
         try:
+            # try to capture template and create instance using constructor
             tplFile = request.files['templateFile']
             current_instance = DataObject(cubeFile.filename, tplFile.filename)
 
         except KeyError:
+            # if this fails because of a null value it will use the default construction
             current_instance = DataObject(cubeFile.filename)
 
-        # init div dict
+        # captures the important tags from config
         current_instance.divDict = DataObject.initDict(current_instance)
-        # print(current_instance.divDict)
 
         if (current_instance.tplFile.split('.')[-1] == 'tpl' and current_instance.tplFile != '') \
                 and (current_instance.filename.split('.')[-1] == 'cub' and current_instance.filename != ''):
@@ -76,28 +76,20 @@ def upload():
                 # save the file to the upload directory
                 tplFile.save(os.path.join(app.config['TPL_FOLDER'], secure_filename(current_instance.tplFile)))
 
-            #   *--temp variable counter --*
-            users += 1
-
-            # print(current_instance.filename)
-            # print("total upload requests = " + str(users))
-
-            # this try except allows us to run a console command and catch any errors to stop from program crash
+            # this try except allows us to run a console command and catch and displays errors to prevent crashes
             try:
+
                 # this line is calling a string shell command by creating the command string on a single line
                 imageExtractThread = threading.Thread(target=DataObject.extractImage,
                                                       args=(current_instance, current_instance.filename,),
                                                       name='imageExtractThread'
                                                       )
-                isisCommandThread = threading.Thread(target=DataObject.run_isis,
-                                                      args=(current_instance,),
-                                                      name='imageExtractThread'
-                                                      )
 
+                # start child
                 imageExtractThread.start()
-                isisCommandThread.start()
-
-                command_file_output = isisCommandThread.join()
+                # run the data collection in parent
+                command_file_output = DataObject.run_isis(current_instance)
+                # join child
                 imageExtractThread.join()
 
             except Exception as e:
@@ -107,39 +99,61 @@ def upload():
                 return render_template("index.html")
 
             try:
-                current_instance.rawFileData = DataObject.extractRawData(current_instance, os.path.join(app.config['PVL_FOLDER'], 'return.pvl'))
-                #print(current_instance.rawFileData)
+                # run data collection algorithm on the returned ISIS3 PVL file
+                current_instance.rawFileData = DataObject.extractRawData2(
+                    current_instance, os.path.join(app.config['PVL_FOLDER'], str(command_file_output))
+                )
 
+                # clean the raw dictionary which includes complex structures
+                current_instance.rawFileData = DataObject.cleanRawDict(current_instance, current_instance.rawFileData)
+                print('CLEANED DICTIONARY: ' + str(current_instance.rawFileData))
+
+                # read in the desired template file
                 templateFile = open(os.path.join(app.config['TPL_FOLDER'], current_instance.tplFile), "r")
                 templateString = templateFile.read()
                 templateFile.close()
 
+                # save file location for web page use later
                 full_filename = url_for('static', filename='images/' + current_instance.divDict['image'])
 
-                # parse file and fill dict
-                current_instance.divDict = DataObject.trimData(current_instance, os.path.join(app.config['PVL_FOLDER'], 'return.pvl'))
+                # parse file and fill important tag dict
+                current_instance.divDict = DataObject.trimData(
+                    current_instance, os.path.join(app.config['PVL_FOLDER'], str(command_file_output))
+                )
+                # save the image location in the dict for access
+                # TODO: possible rethink on this idea of keeping the location
                 current_instance.divDict['image'] = full_filename
 
-                current_instance.divDict = DataObject.removeNulls(current_instance, current_instance.divDict)
-                # return filled in text file to user
+                # clean the div dict of all unwanted symbols
+                # Function: cleanData
+                current_instance.divDict = DataObject.cleanData(current_instance, current_instance.divDict)
+
+                print('DivDict: ' + str(current_instance.divDict))
+                # pass all necessary data to the front end
                 return render_template("output.html", DICTSTRING=current_instance.divDict, TEMPAREA=templateString,
                                        IMG=current_instance.divDict['image'], CSVSTRING=current_instance.rawFileData)
-            # catch file not found
+            # catch file not found error when looking for the returned data file
             except FileNotFoundError:
                 print("ISIS3 command failed to create a pvl")
                 return render_template("error.html")
         else:
-            print("Input File Error")
+            # fatal error
+            print("Fatal Error: This is Probably a Coding Problem!!")
             return render_template("index.html")
 
 
+# display the image page
 @app.route('/showImage', methods=['POST'])
 def showImage():
+    # if POST
     if request.method == 'POST':
+        # recieve the image from the web page to keep users from colliding
         image = request.form.get('image_present')
+        # render that image from the server
         return render_template("imageDisplay.html", IMG=image)
 
 
+# download the raw data as a csv
 @app.route('/getCSV', methods=['GET', 'POST'])
 def getCSV():
     if request.method == 'POST':
@@ -148,15 +162,18 @@ def getCSV():
         new_str = ""
         csvString = ast.literal_eval(csvString)
 
+        # create the new string of data as a csv
         for key, value in csvString.items():
-            new_str = new_str + str(key) + ", " + str(value) + "\n"
-
+            new_str = new_str + str(key) + "," + str(value) + "\n"
+        # use Response to send the whole string as a csv file
         return Response(
             new_str,
             mimetype="text/csv",
             headers={"Content-disposition": "attachment; filename=exportISIS.csv"})
 
 
+# download the image file as a png
+# TODO: download different file types using isis3
 @app.route('/getImage', methods=['GET', 'POST'])
 def getImage():
     if request.method == 'POST':
@@ -170,6 +187,7 @@ def getImage():
 
         except Exception as e:
             return str(e)
+
 
 # needed to run on command line
 if __name__ == '__main__':

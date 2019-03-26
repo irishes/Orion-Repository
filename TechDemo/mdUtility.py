@@ -1,7 +1,8 @@
 """
 File: mdUtility.py
 Author: Chadd Frasier <cmf339@nau.edu>
-Date: 2/24/19
+Created Date: 2/24/19
+Most Recent Update: 3/26/2019
 Description:
         This file was writen for the purpose of extracting necessary metadata from isis3 headers and function returns.
     This file also houses the helper functions that the metadata needs in order to be prepared for use later. This file
@@ -84,11 +85,12 @@ class DataObject(threading.Thread):
         removeNulls: dict
             replace empty data spots with a human readable value
 
-        extractRawData: str
+        extractRawData2: str
+        version 2: modeled off the previous method, this more successfully captures the list data in the pvl file
             extract all the data from a return file(pvl) and save into instance
     ----------
     """
-    # configuration dictionary
+    # class configuration dictionary: blank
     isis3md_dict = dict()
 
     # construct using a filename
@@ -212,8 +214,8 @@ class DataObject(threading.Thread):
         """
         mdfile = open(file, "r")
         for line in mdfile:
-            if str(line).split('=')[0].strip(' ') in self.divDict.keys():
-                self.divDict[str(line).split('=')[0].strip(' ')] = str(line).split('=')[1].strip(' ').strip("\n")
+            if str(line).split('=')[0].strip() in self.divDict.keys():
+                self.divDict[str(line).split('=')[0].strip()] = str(line).split('=')[1].strip().strip("\n")
         mdfile.close()
         return self.divDict
 
@@ -268,9 +270,9 @@ class DataObject(threading.Thread):
         except FileNotFoundError:
             return render_template("error.html")
 
-    def removeNulls(self, dict):
+    def cleanData(self, dict):
         """
-        replace nulls with none to allow for human readability
+        creates the div Dict by replace nulls and bad data with, replace nulls with none to allow for human readability
         Parameters:
         -----------
             :param dict: dict
@@ -278,38 +280,26 @@ class DataObject(threading.Thread):
             :return: dict
                 the new divDict
         """
+        undesired = list(['^', '"'])
+        # erases nulls
         for key in dict:
             if dict.get(key) != "":
                 self.divDict[key] = dict[key]
             else:
                 self.divDict[key] = str(None)
 
+            # TODO: must finish cleaning keys and data
+            for char in undesired:
+                    if char in dict.get(key):
+                        dict[key] = dict[key].strip(char)
+            self.divDict[key] = dict[key]
         return self.divDict
 
-    # extract all raw data from cube file
-    def extractRawData(self, pvlFile):
-        """
-        populate the rawFileData dict
-        Parameters:
-        -----------
-            :param pvlFile: str
-                the pvl file with the raw data from the isis functions
-            :return: dict
-                the raw dictonary
-        """
-        file = open(pvlFile, "r", encoding="utf-8")
-
-        for line in file:
-            line = line.strip().split('\n')[0]
-            # print(line.strip().split("="))
-            if len(line.split("=")) > 1 and '(' not in line.split('=')[1] and\
-                    'Group' not in line.split("=")[0].strip() and 'Object' not in line.split("=")[0].strip():
-                self.rawFileData[str(line.split("=")[0].strip())] = line.split("=")[-1].strip()
-
-        file.close()
-        return self.rawFileData
-
     def run_isis(self):
+        """
+        runs the isis command in a desired order
+        :return: return file as str
+        """
         command_return_file = "return.pvl"
         DataObject.cleanDirs(self, app.config['PVL_FOLDER'], "ers", command_return_file)
 
@@ -331,3 +321,221 @@ class DataObject(threading.Thread):
         except Exception as e:
             print(str(e))
         return command_return_file
+
+    def cleanRawDict(self, dict):
+        """
+        clean the dictionary of unwanted symbols
+        :param dict:
+            the raw file dictionary
+        :return: dict
+            the new cleaned dict
+
+        """
+        # create a temp dictionary
+        tempdict = {}
+        for key in dict:
+
+            if '(' == dict[key][0]:
+                valstring = dict[key]
+                valstring = valstring.strip("(").strip(")")
+                listVals = valstring.split(",")
+
+                for index in range(0, len(listVals)):
+                    listVals[index] = listVals[index].strip()
+
+                tempdict[key] = listVals
+
+            else:
+                tempdict[key] = dict[key]
+
+        return tempdict
+
+    def extractRawData2(self, pvlFile):
+        """
+                populate the rawFileData dict
+                Parameters:
+                -----------
+                    :param pvlFile: str
+                        the pvl file with the raw data from the isis functions
+                    :return: dict
+                        the raw dictonary
+                """
+        # tags that will serve as keys in the dict
+        genisis = ''
+        objecttag = ''
+        grouptag = ''
+        nametag = ''
+
+        # open the pvl for reading
+        file = open(pvlFile, "r", encoding="utf-8")
+
+        # flag for mini list and string
+        isList = False
+        isString = False
+
+
+        for line in file:
+            # if object = is i line of the file
+            # TODO: consider cleaning the tags here
+
+            # skip empty lines
+            if line == '\n':
+                # print('--empty line--')
+                continue
+
+            try:
+                # skip any comments
+                if '/*' in line:
+                    continue
+                # The rest of this block Checks and captures all the needed tags before any further parsing
+                # is done, when end tags are seen it also will appropriately erase the tags that are no longer valid
+                elif 'Object = IsisCube' in line:
+                    genisis = line.split("=")[1].strip()
+                    #print(genisis)
+                    continue
+                elif 'Object =' in line:
+                    objecttag = line.split("=")[1].strip()
+                    #print(objecttag)
+                    continue
+                elif 'End_Object' in line:
+                    objecttag = ''
+                    grouptag = ''
+                    nametag = ''
+                    continue
+                elif 'Group =' in line:
+                    grouptag = line.split("=")[1].strip()
+                    #print(grouptag)
+                    continue
+                elif 'End_Group' in line:
+                    grouptag = ''
+                    nametag = ''
+                    continue
+                elif 'Name' in line.strip()[0:7]:
+                    nametag = line.split("=")[1].strip()
+                    #print(nametag)
+            except Exception as e:
+                # catch errors and show
+                print('Error Extracting Key: ' + str(e))
+
+            try:
+                # if the line has = and the loop is not currently in a list or string
+                if '=' in line and not isString and not isList:
+
+                    # get the key of the line
+                    listkey = line.split('=')[0].strip()
+
+                    # create the unique key for the dictionary in a function
+                    unqkey = combineKeys(genisis, objecttag, grouptag, nametag, listkey)
+
+                    # cature the right side of the =
+                    stringValue = line.split('=')[1].strip()
+
+                    # check to see if it is the start of a list or string and mark the appropriate flag
+                    if '"' == stringValue[0] and stringValue[-1] != '"':
+                        isString = True
+                        continue
+                    elif '(' == stringValue[0] and stringValue[-1] != ')':
+                        isList = True
+                        continue
+                    else:
+                        # otherwise just set it equal directly
+                        self.rawFileData[unqkey] = stringValue
+            except Exception as e:
+                # catch error and display
+                print('Error Extracting Key: ' + str(e))
+
+            # if isString True
+            if isString:
+                # if the other close quote is the last element of the list then it is over
+                if '"' == line.strip()[-1]:
+                    # append the last part
+                    stringValue = stringValue + ' ' + line.strip()
+                    # break the condition
+                    isString = False
+                    # set the key data to the final value
+                    self.rawFileData[unqkey] = stringValue
+                    continue
+                elif not isList:
+                    # append the string and continue looping
+                    stringValue = stringValue + ' ' + line.strip()
+                    continue
+            # using same idea as a string but not formatted
+            # Important: Needs to be cleaned later
+            elif isList:
+                if ')' == line.strip()[-1]:
+                    stringValue = stringValue + line.strip()
+                    isList = False
+                    self.rawFileData[unqkey] = stringValue
+                    continue
+                elif not isString:
+                    stringValue = stringValue + line.strip()
+                    continue
+
+        return self.rawFileData
+
+
+# non class related function
+def combineKeys(genisis, objecttag, grouptag, nametag, listkey):
+    # TODO: strip off undesired key characters here b/c its faster than running another function
+    # TODO: default to isiscube for genisis or set and SDFU_LABEL? *ASK DR.KESTAY*
+    """
+           combines and creates the unique tag given a the different tags as input.
+           Note:
+                I know that I am erasing the tags when they are not included so that is why I can check for a '' string
+           Parameters:
+           -----------
+                :param: genisis
+                    the generic isiscube tag
+                :param: objecttag
+                    the object tag from the pvl
+                :param: grouptag
+                    the group tag found in the pvl
+                :param: nametag
+                    the name tag found in the pvl
+                :param: listkey
+                    the key of the dict tag
+
+
+               :return: str
+                   the unique key for anything in a isiscube
+           """
+
+    # sanitize all the input variables
+    genisis = cleanString(genisis)
+    objecttag = cleanString(objecttag)
+    grouptag = cleanString(grouptag)
+    nametag = cleanString(nametag)
+    listkey = cleanString(listkey)
+
+    #everything tag
+    if objecttag != '' and grouptag != '' and nametag != '':
+        return objecttag + '.' + grouptag + '.' + nametag + '.' + listkey
+    # only name tag
+    elif objecttag == '' and grouptag != '' and nametag != '':
+        return grouptag + '.' + nametag + '.' + listkey
+    # only group
+    elif objecttag == '' and grouptag != '' and nametag == '':
+        return grouptag + '.' + listkey
+    # only object tag
+    elif objecttag != '' and grouptag == '' and nametag == '':
+        return objecttag + '.' + listkey
+    # object and name
+    elif objecttag != '' and grouptag == '' and nametag != '':
+        return objecttag + '.' + nametag + '.' + listkey
+    # object and group tags exist
+    elif objecttag != '' and grouptag != '' and nametag == '':
+        return objecttag + '.' + grouptag + '.' + listkey
+    # group and name tags exist
+    elif objecttag == '' and grouptag != '' and nametag != '':
+        return grouptag + '.' + nametag + '.' + listkey
+    else:
+        # no tags
+        return genisis + '.' + listkey
+
+
+def cleanString(str):
+    undesired = list(['^', '"'])
+    for char in undesired:
+        if char in str:
+            str = str.strip(char)
+    return str.strip()
