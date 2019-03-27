@@ -34,6 +34,7 @@ app.config['TPL_FOLDER'] = TPL_FOLDER
 # index.html
 @app.route("/", methods=["GET"])
 def index():
+    # print(os.path.join(os.getcwd(),'print.prt'))
     loadingGif = url_for('static', filename='images/loading.gif')
     return render_template('index.html', LOADINGGIF=loadingGif)
 
@@ -60,7 +61,6 @@ def upload():
             # try to capture template and create instance using constructor
             tplFile = request.files['templateFile']
             current_instance = DataObject(cubeFile.filename, tplFile.filename)
-
         except KeyError:
             # if this fails because of a null value it will use the default construction
             current_instance = DataObject(cubeFile.filename)
@@ -91,6 +91,7 @@ def upload():
                 command_file_output = DataObject.run_isis(current_instance)
                 # join child
                 imageExtractThread.join()
+
 
             except Exception as e:
                 print('Threading Section Critical Failure:' + str(e))
@@ -129,6 +130,12 @@ def upload():
                 current_instance.divDict = DataObject.cleanData(current_instance, current_instance.divDict)
 
                 print('DivDict: ' + str(current_instance.divDict))
+
+                # delete unneeded files
+                try:
+                    DataObject.cleanDirs(current_instance, os.getcwd(), 'del', 'print.prt')
+                except Exception as e:
+                    print('Error Deleteing Files' + str(e))
                 # pass all necessary data to the front end
                 return render_template("output.html", DICTSTRING=current_instance.divDict, TEMPAREA=templateString,
                                        IMG=current_instance.divDict['image'], CSVSTRING=current_instance.rawFileData)
