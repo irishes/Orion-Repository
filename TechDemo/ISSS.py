@@ -199,3 +199,4 @@ def getImage():
 # needed to run on command line
 if __name__ == '__main__':
     app.run(debug=True)
+
