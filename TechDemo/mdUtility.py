@@ -238,37 +238,6 @@ class DataObject(threading.Thread):
         except Exception as e:
             return 'GETKEY FAILED: ' + str(e)
 
-    # will be called after the user hits restart or when some files are no longer needed
-    # flush working directories of unnecessary files for performance reasons
-    # function:
-    #     inputs-> directory string, code to tell the function what to do to the directory, and optional file variable
-    #
-    #     CLEAR all files ; code = clr and file == NULL
-    #     CLEAR all file of type file ; code= clr and file != NULL
-    #     DELETE file when code = del and file != NULL
-    #     ERASE contents of a file; code= ers file != NULL
-    #
-    def cleanDirs(self, directory, code, file=''):
-        """
-        cleans up the directory depending on the code
-        Parameters:
-        -----------
-            :param directory: str
-                the directory to clean
-            :param code: str
-                the code of the action the function should preform
-            :param file: str (optional)
-                the file to search for if needed
-            :return: 0 if success; render_template otherwise
-        """
-        # erase contents of any file given a directory and the filename
-        try:
-            if code == 'ers' and file != '':
-                if file != '':
-                    open(os.path.join(directory, file), "w").close()
-                return 0
-        except FileNotFoundError:
-            return render_template("error.html")
 
     def cleanData(self, dict):
         """
@@ -288,10 +257,6 @@ class DataObject(threading.Thread):
             else:
                 self.divDict[key] = str(None)
 
-            # TODO: must finish cleaning keys and data
-            for char in undesired:
-                    if char in dict.get(key):
-                        dict[key] = dict[key].strip(char)
             self.divDict[key] = dict[key]
         return self.divDict
 
@@ -333,20 +298,26 @@ class DataObject(threading.Thread):
         """
         # create a temp dictionary
         tempdict = {}
+        undesired = list(["'", '^', '"'])
         for key in dict:
-
-            if '(' == dict[key][0]:
+            # if content is a list
+            if '[' == dict[key][0]:
                 valstring = dict[key]
                 valstring = valstring.strip("(").strip(")")
                 listVals = valstring.split(",")
 
                 for index in range(0, len(listVals)):
-                    listVals[index] = listVals[index].strip()
+                    for char in undesired:
+                        listVals[index] = listVals[index].strip(char)
 
                 tempdict[key] = listVals
-
+            # if embedded lists
+            elif '((' in dict[key]:
+                # TODO: parse the string that is being printed and create a list of tuples
+                print('TODO : ' + dict[key])
             else:
-                tempdict[key] = dict[key]
+                for char in undesired:
+                    tempdict[key] = dict[key].strip(char)
 
         return tempdict
 
@@ -373,23 +344,27 @@ class DataObject(threading.Thread):
         isList = False
         isString = False
 
-
+        stringValue = ''
         for line in file:
-            # if object = is i line of the file
-            # TODO: consider cleaning the tags here
 
             # skip empty lines
             if line == '\n':
                 # print('--empty line--')
                 continue
+            # skip any comments
+            elif '/*' in line:
+                continue
+            elif len(line) > 15 and '=' not in line and 'Object' not in line and 'Group' not in line and not isList and not isString:
+                print(unqkey)
+                print(stringValue)
+                self.rawFileData[unqkey] = self.rawFileData[unqkey] + line.strip()
+                continue
 
             try:
-                # skip any comments
-                if '/*' in line:
-                    continue
+
                 # The rest of this block Checks and captures all the needed tags before any further parsing
                 # is done, when end tags are seen it also will appropriately erase the tags that are no longer valid
-                elif 'Object = IsisCube' in line:
+                if 'Object = IsisCube' in line:
                     genisis = line.split("=")[1].strip()
                     #print(genisis)
                     continue
@@ -473,10 +448,49 @@ class DataObject(threading.Thread):
 
         return self.rawFileData
 
+    # will be called after the user hits restart or when some files are no longer needed
+    # flush working directories of unnecessary files for performance reasons
+    # function:
+    #     inputs-> directory string, code to tell the function what to do to the directory, and optional file variable
+    #
+    #     CLEAR all files ; code = clr and file == NULL
+    #     CLEAR all file of type file ; code= clr and file != NULL
+    #     DELETE file when code = del and file != NULL
+    #     ERASE contents of a file; code= ers file != NULL
+    #
+    def cleanDirs(self, directory, code, file=''):
+        """
+        cleans up the directory depending on the code
+        Parameters:
+        -----------
+            :param directory: str
+                the directory to clean
+            :param code: str
+                the code of the action the function should preform
+            :param file: str (optional)
+                the file to search for if needed
+            :return: 0 if success; render_template otherwise
+        """
+        # erase contents of any file given a directory and the filename
+        try:
+            if code == 'ers' and file != '':
+                if file != '':
+                    open(os.path.join(directory, file), "w").close()
+                return 0
+            elif code == 'del' and file != '':
+                # print(os.path.join(directory, file))
+                if file == os.getcwd():
+                    os.system('rm ' + file)
+                    return 0
+                else:
+                    os.system('rm ' + os.path.join(directory, file))
+                    return 0
+        except FileNotFoundError:
+            return render_template("error.html")
+
 
 # non class related function
 def combineKeys(genisis, objecttag, grouptag, nametag, listkey):
-    # TODO: strip off undesired key characters here b/c its faster than running another function
     # TODO: default to isiscube for genisis or set and SDFU_LABEL? *ASK DR.KESTAY*
     """
            combines and creates the unique tag given a the different tags as input.
@@ -534,6 +548,13 @@ def combineKeys(genisis, objecttag, grouptag, nametag, listkey):
 
 
 def cleanString(str):
+    """
+    This function takes a string input and strips off all the characters that we deem unwanted
+    :param: str
+        string that will be striped of all undesired characters
+    :return:
+        the striped string
+    """
     undesired = list(['^', '"'])
     for char in undesired:
         if char in str:
