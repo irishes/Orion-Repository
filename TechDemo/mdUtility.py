@@ -2,7 +2,7 @@
 File: mdUtility.py
 Author: Chadd Frasier <cmf339@nau.edu>
 Created Date: 2/24/19
-Most Recent Update: 3/26/2019
+Most Recent Update: 3/30/2019
 Description:
         This file was writen for the purpose of extracting necessary metadata from isis3 headers and function returns.
     This file also houses the helper functions that the metadata needs in order to be prepared for use later. This file
@@ -31,7 +31,7 @@ app.config['PVL_FOLDER'] = PVL_FOLDER
 app.config['TPL_FOLDER'] = TPL_FOLDER
 
 
-class DataObject(threading.Thread):
+class DataObject():
     """
     This is a class that houses all of the metadata objects and ISIS function interfaces. This is needed
     to allow for multiple users to log on and keep python dictionaries in order
@@ -94,7 +94,7 @@ class DataObject(threading.Thread):
     isis3md_dict = dict()
 
     # construct using a filename
-    def __init__(self, filename, tplFile='Default.tpl', rawFileData=dict(), divDict=dict(image='')):
+    def __init__(self, filename, tplFile='Default.tpl'):
         """
         Parameters:
         -----------
@@ -109,8 +109,8 @@ class DataObject(threading.Thread):
                         (defaults to dict('image') and reads 'config1.cnf')
                 """
         self.filename = filename
-        self.rawFileData = rawFileData
-        self.divDict = divDict
+        self.rawFileData = dict()
+        self.divDict = dict(image='')
         self.tplFile = tplFile
 
     def initDict(self, configFile='config1.cnf'):
@@ -126,7 +126,7 @@ class DataObject(threading.Thread):
         file = open(os.path.join(app.config['CONFIG_FOLDER'], configFile), "r")
         for line in file:
             if '<tag>' in line:
-                self.divDict[line.split('<tag>')[1].split("</tag>")[0]] = ''
+                self.divDict[line.strip().strip('<tag>').strip('</tag>')] = ''
 
         file.close()
         return self.divDict
@@ -238,7 +238,6 @@ class DataObject(threading.Thread):
         except Exception as e:
             return 'GETKEY FAILED: ' + str(e)
 
-
     def cleanData(self, dict):
         """
         creates the div Dict by replace nulls and bad data with, replace nulls with none to allow for human readability
@@ -249,7 +248,6 @@ class DataObject(threading.Thread):
             :return: dict
                 the new divDict
         """
-        undesired = list(['^', '"'])
         # erases nulls
         for key in dict:
             if dict.get(key) != "":
@@ -266,7 +264,7 @@ class DataObject(threading.Thread):
         :return: return file as str
         """
         command_return_file = "return.pvl"
-        DataObject.cleanDirs(self, app.config['PVL_FOLDER'], "ers", command_return_file)
+        cleanDirs(app.config['PVL_FOLDER'], "ers", command_return_file)
 
         try:
             # catlab os call to terminal and saves in return file
@@ -298,7 +296,7 @@ class DataObject(threading.Thread):
         """
         # create a temp dictionary
         tempdict = {}
-        undesired = list(["'", '^', '"'])
+        undesired = list(["'", '^'])
         for key in dict:
             # if content is a list
             if '[' == dict[key][0]:
@@ -313,8 +311,25 @@ class DataObject(threading.Thread):
                 tempdict[key] = listVals
             # if embedded lists
             elif '((' in dict[key]:
-                # TODO: parse the string that is being printed and create a list of tuples
-                print('TODO : ' + dict[key])
+                templist = dict[key].strip("'").split('),')
+
+                for index in range(0, len(templist)):
+                    # last format stage
+                    templist[index] = templist[index].strip().strip('(').strip(')')
+                    # create tuple of integers
+                    templist[index] = (int(templist[index].split(',')[0].strip()),
+                                       int(templist[index].split(',')[1].strip()))
+
+                tempdict[key] = templist
+                # print(templist)
+
+            elif '(' == dict[key][0] and dict[key][-1] == ')':
+                tempdict[key] = dict[key].strip('(').strip(')').strip()
+                fixedlist = tempdict[key].split(",")
+
+                for index in range(0, len(fixedlist)):
+                    fixedlist[index] = fixedlist[index].strip().strip("'")
+                tempdict[key] = list(fixedlist)
             else:
                 for char in undesired:
                     tempdict[key] = dict[key].strip(char)
@@ -354,9 +369,10 @@ class DataObject(threading.Thread):
             # skip any comments
             elif '/*' in line:
                 continue
-            elif len(line) > 15 and '=' not in line and 'Object' not in line and 'Group' not in line and not isList and not isString:
-                print(unqkey)
-                print(stringValue)
+            elif len(line) > 15 and '=' not in line and 'Object' not in line and 'Group' not in line \
+                    and not isList and not isString:
+                # print(unqkey)
+                # print(stringValue)
                 self.rawFileData[unqkey] = self.rawFileData[unqkey] + line.strip()
                 continue
 
@@ -385,7 +401,7 @@ class DataObject(threading.Thread):
                     grouptag = ''
                     nametag = ''
                     continue
-                elif 'Name' in line.strip()[0:7]:
+                elif 'Name' in line.strip()[0:7] or 'NAME' in line.strip()[0:7]:
                     nametag = line.split("=")[1].strip()
                     #print(nametag)
             except Exception as e:
@@ -402,8 +418,11 @@ class DataObject(threading.Thread):
                     # create the unique key for the dictionary in a function
                     unqkey = combineKeys(genisis, objecttag, grouptag, nametag, listkey)
 
-                    # cature the right side of the =
-                    stringValue = line.split('=')[1].strip()
+                    # capture the right side of the =
+                    if len(line.split('=')) > 2:
+                        stringValue = line.split('=')[1].strip() + ' = ' + line.split('=')[2].strip()
+                    else:
+                        stringValue = line.split('=')[1].strip()
 
                     # check to see if it is the start of a list or string and mark the appropriate flag
                     if '"' == stringValue[0] and stringValue[-1] != '"':
@@ -448,17 +467,20 @@ class DataObject(threading.Thread):
 
         return self.rawFileData
 
-    # will be called after the user hits restart or when some files are no longer needed
-    # flush working directories of unnecessary files for performance reasons
-    # function:
-    #     inputs-> directory string, code to tell the function what to do to the directory, and optional file variable
-    #
-    #     CLEAR all files ; code = clr and file == NULL
-    #     CLEAR all file of type file ; code= clr and file != NULL
-    #     DELETE file when code = del and file != NULL
-    #     ERASE contents of a file; code= ers file != NULL
-    #
-    def cleanDirs(self, directory, code, file=''):
+# END OF CLASS
+
+# TODO: Finish this function
+# will be called after the user hits restart or when some files are no longer needed
+# flush working directories of unnecessary files for performance reasons
+# function:
+#     inputs-> directory string, code to tell the function what to do to the directory, and optional file variable
+#
+#     CLEAR all files ; code = clr and file == NULL
+#     CLEAR all file of type file ; code= clr and file != NULL
+#     DELETE file when code = del and file != NULL
+#     ERASE contents of a file; code= ers file != NULL
+#
+def cleanDirs(directory, code, file=''):
         """
         cleans up the directory depending on the code
         Parameters:
@@ -472,22 +494,21 @@ class DataObject(threading.Thread):
             :return: 0 if success; render_template otherwise
         """
         # erase contents of any file given a directory and the filename
-        try:
-            if code == 'ers' and file != '':
-                if file != '':
-                    open(os.path.join(directory, file), "w").close()
+        if'.py' in file:
+            print('CANNOT MANIPULATE SCRIPT FILES')
+            return 1
+        elif code == 'ers' and file != '':
+            if file != '':
+                open(os.path.join(directory, file), "w").close()
+            return 0
+        elif code == 'del' and file != '':
+            # print(os.path.join(directory, file))
+            if file == os.getcwd():
+                os.system('rm ' + file)
                 return 0
-            elif code == 'del' and file != '':
-                # print(os.path.join(directory, file))
-                if file == os.getcwd():
-                    os.system('rm ' + file)
-                    return 0
-                else:
-                    os.system('rm ' + os.path.join(directory, file))
-                    return 0
-        except FileNotFoundError:
-            return render_template("error.html")
-
+            else:
+                os.system('rm ' + os.path.join(directory, file))
+                return 0
 
 # non class related function
 def combineKeys(genisis, objecttag, grouptag, nametag, listkey):
@@ -547,7 +568,7 @@ def combineKeys(genisis, objecttag, grouptag, nametag, listkey):
         return genisis + '.' + listkey
 
 
-def cleanString(str):
+def cleanString(string):
     """
     This function takes a string input and strips off all the characters that we deem unwanted
     :param: str
@@ -555,8 +576,12 @@ def cleanString(str):
     :return:
         the striped string
     """
-    undesired = list(['^', '"'])
+    undesired = list(['^', '"', ' '])
     for char in undesired:
-        if char in str:
-            str = str.strip(char)
-    return str.strip()
+        if char in string:
+            if char == ' ':
+                string = string.replace(char, '_')
+            else:
+                string = string.strip(char)
+    return string.strip()
+
