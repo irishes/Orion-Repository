@@ -6,7 +6,7 @@ File: ISSS.py
 
 """
 from flask import Flask, render_template, request, url_for, Response, send_file
-from mdUtility import DataObject
+from mdUtility import DataObject, cleanDirs
 import threading
 import os
 import ast
@@ -34,6 +34,8 @@ app.config['TPL_FOLDER'] = TPL_FOLDER
 # index.html
 @app.route("/", methods=["GET"])
 def index():
+    status = cleanDirs(app.config['PVL_FOLDER'],'ers', 'return.pvl')
+    print(status)
     # print(os.path.join(os.getcwd(),'print.prt'))
     loadingGif = url_for('static', filename='images/loading.gif')
     return render_template('index.html', LOADINGGIF=loadingGif)
@@ -61,12 +63,18 @@ def upload():
             # try to capture template and create instance using constructor
             tplFile = request.files['templateFile']
             current_instance = DataObject(cubeFile.filename, tplFile.filename)
+            # captures the important tags from config
+            current_instance.divDict = DataObject.initDict(current_instance)
+            print("div dict after init" + str(current_instance.divDict))
+
         except KeyError:
             # if this fails because of a null value it will use the default construction
             current_instance = DataObject(cubeFile.filename)
+            # captures the important tags from config
+            current_instance.divDict = DataObject.initDict(current_instance)
+            print("div dict after init" + str(current_instance.divDict))
 
-        # captures the important tags from config
-        current_instance.divDict = DataObject.initDict(current_instance)
+
 
         if (current_instance.tplFile.split('.')[-1] == 'tpl' and current_instance.tplFile != '') \
                 and (current_instance.filename.split('.')[-1] == 'cub' and current_instance.filename != ''):
@@ -80,19 +88,10 @@ def upload():
             try:
 
                 # this line is calling a string shell command by creating the command string on a single line
-                imageExtractThread = threading.Thread(target=DataObject.extractImage,
-                                                      args=(current_instance, current_instance.filename,),
-                                                      name='imageExtractThread'
-                                                      )
+                DataObject.extractImage(current_instance, current_instance.filename)
 
-                # start child
-                imageExtractThread.start()
                 # run the data collection in parent
                 command_file_output = DataObject.run_isis(current_instance)
-                # join child
-                imageExtractThread.join()
-
-
             except Exception as e:
                 print('Threading Section Critical Failure:' + str(e))
                 if current_instance:
@@ -133,12 +132,19 @@ def upload():
 
                 # delete unneeded files
                 try:
-                    DataObject.cleanDirs(current_instance, os.getcwd(), 'del', 'print.prt')
+                    cleanDirs(os.getcwd(), 'del', 'print.prt')
                 except Exception as e:
                     print('Error Deleteing Files' + str(e))
+
+                dictstring = str(current_instance.divDict)
+                print("Dict string being passed is : "+dictstring)
+                temparea = str(templateString)
+                img = current_instance.divDict['image']
+                csvstring = current_instance.rawFileData
+                del current_instance
                 # pass all necessary data to the front end
-                return render_template("output.html", DICTSTRING=current_instance.divDict, TEMPAREA=templateString,
-                                       IMG=current_instance.divDict['image'], CSVSTRING=current_instance.rawFileData)
+                return render_template("output.html", DICTSTRING=dictstring, TEMPAREA=temparea,
+                                       IMG=img, CSVSTRING=csvstring)
             # catch file not found error when looking for the returned data file
             except FileNotFoundError:
                 print("ISIS3 command failed to create a pvl")
@@ -147,6 +153,7 @@ def upload():
             # fatal error
             print("Fatal Error: This is Probably a Coding Problem!!")
             return render_template("index.html")
+
 
 
 # display the image page
@@ -199,4 +206,3 @@ def getImage():
 # needed to run on command line
 if __name__ == '__main__':
     app.run(debug=True)
-
