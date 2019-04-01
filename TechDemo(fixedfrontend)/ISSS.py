@@ -148,8 +148,8 @@ def upload():
                 tempDictionary = current_instance.rawFileData
                 csvstring = ""
                 for tempKey, tempVal in current_instance.rawFileData.items():
-                    csvstring = csvstring + str(tempKey) + ":" + str(tempVal) + "@"
-                csvstring = csvstring[:-1]
+                    csvstring = csvstring + str(tempKey) + ":" + str(tempVal) + "@@@"
+                csvstring = csvstring[:-3]
 
                 del current_instance
                 # pass all necessary data to the front end
