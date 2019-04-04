@@ -21,4 +21,6 @@ Then Extract the folder"Orion-docker(version_3)" and then open the terminal insi
 	Finally, run "docker container kill (CONTAINER ID)" commands. The (CONTAINER ID) will be replaced by real id.
 (5) If you want to use it again, just run "docker-compose run --rm -p 5000:5000 isis3," the same commands in (2).
 	The thing must give attention is you must run this command in same folder that you extract the zip file
+	
+Special* On Windows platform, to use the web app, the ip address is "localhost:5000." Type it in your browser directly.
 
