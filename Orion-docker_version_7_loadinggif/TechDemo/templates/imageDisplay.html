@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Show Image</title>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="static/dist/jquery.cropit.js"></script>
+
+    <style>
+        .image-editer{
+            border: 1px solid #000000;
+        }
+
+        .image-controls{
+            margin-left: 25%;        
+        }
+
+        .image-symbols{
+            margin-left: 25%;
+            background-color: #d9d9d9;
+            border: 5px solid #000000;
+            height: 200px;
+            width: 600px;
+        }
+
+        .cropit-preview {
+            background-color: #f8f8f8;
+            background-size: cover;
+            border: 20px solid #000000;
+            border-radius: 3px;
+            margin-top: 7px;
+            margin-left: 25%;
+            width: 600px;
+            height: 600px;
+        }
+        
+        .cropit-preview-image-container {
+            cursor: move;
+        }
+        
+        .image-size-label {
+            margin-top: 10px;
+        }
+        .export {
+            display: block;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body background="static/images/webAppBackground.jpg">
+    <div class="container">
+        <div class="jumbotron text-center">
+          <h1>Display Image</h1>      
+          <p class="lead">In this page, you can see the image extracted from cub file, and then download it in png format.</p>
+          <a class="btn btn-primary btn-lg" href="{{url_for('index')}}" role="button">Upload Another Cube File</a>
+        </div>
+    
+    </div>
+
+    <div id="metadata" class="text-center green-border-focus">
+        <label for="metadata-text">
+            <h2>Metadata Output</h2>
+        </label>
+        <textarea readonly id="metadata-text" class="form-control bg-white text-dark" style="resize: vertical; font-size: 22px;">{{DICTSTRING}}</textarea>
+    </div>
+
+    <div id="metadata-tags" style="display:none;" class="text-center green-border-focus">
+        <label for="metadataTagArea">
+            <h2>Metadata Tags</h2>
+        </label>
+        <textarea readonly id="metadataTagArea" class="form-control bg-white text-dark" style="resize: vertical; font-size: 22px;"></textarea>
+    </div>
+                                                                                        
+    <div class="image-editor">
+        <div class="image-controls" id="img-controls">
+            <div class="image-size-label">
+                Resize image
+            </div>
+            <input type="range" class="cropit-image-zoom-input">
+            <button class="export">Export</button>
+        </div>
+        <div class="cropit-preview"></div>
+    </div>
+
+    <br/>
+
+    <div class="image-symbols" id="img-symbols">
+        <table id="vals" style="width:100%">
+            <tr id="north">
+                <th>North:</th>
+                <th><img src="static/images/north.jpg" height=25 width=25></th>
+            </tr>
+         </table> 
+    </div>
+    
+    <br/>
+    
+    <form method="POST" action="/getImage" class="lg-form text-center">
+        <div class=" form-group">
+            <input type="hidden" value="{{IMG}}" name="passedIMG">
+            <input type="submit" value="Download Full Image" class="btn btn-secondary btn-lg" />
+        </div>
+    </form>
+                                                                   
+    <script>
+        $(function() {
+            $('.image-editor').cropit({
+                maxZoom: 10,
+                imageState: {
+                    src: '{{IMG}}',
+                },
+            });
+
+            $('.export').click(function() {
+                var imageData = $('.image-editor').cropit('export');
+                window.open(imageData);
+            });
+        });
+    </script>
+
+<script>
+    var keys = [];
+    var vals = [];
+
+    // Gets All Metadata from the "metadata-text" div, and formats into two arrays. Keys and Vals.
+    function getMetadata() {
+        var metaDataString = document.getElementById("metadata-text").value;
+        var metaDataArea = document.getElementById("metadataTagArea");
+
+        metaDataString = metaDataString.split("{")[1];
+        metaDataString = metaDataString.split("}")[0];
+
+        var dataPairString = metaDataString.split(",");
+
+        for (var i = 0; i < dataPairString.length; i++) {
+            var dataToText = dataPairString[i].toString();
+            var key = dataToText.split(":")[0];
+            key = key.replace(/['"]+/g, '');
+            var val = dataToText.split(":")[1];
+            val = val.replace(/['"]+/g, '');
+            keys.push(key);
+            vals.push(val);
+        }
+
+        for(var j = 0; j < keys.length; j++) {
+            keys[j] = keys[j].trim();
+        }
+
+        for (var k = 0; k < keys.length; k++) {
+            var key = "[[" + keys[k] + "]]";
+            var val = vals[k];
+            var str = key + ": " + val + "\n";
+            metaDataArea.value += str;
+        }
+        console.log(keys);
+        console.log(vals);
+    }
+
+    getMetadata();
+</script>
+</body>
