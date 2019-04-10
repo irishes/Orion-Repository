@@ -23,6 +23,7 @@ Then Extract the folder"Orion-docker(version_4_allOS)" and then open the termina
 	The thing must give attention is you must run this command in same folder that you extract the zip file
 	
 
-volume debug docker-compose run --rm -p -v hostname:/usgs/TechDemo 5000:5000  isis3
-要调试先启动docker docker start <container-name/ID>
+volume: docker run --rm -p 5000:5000 -v hostname:/usgs/TechDemo yuxuancs/orion-usgs:1.0
+要调试先启动docker: docker start <container-name/ID>
 然后运行 docker exec -it <container-name/ID> bash 反应改变后的结果
+
