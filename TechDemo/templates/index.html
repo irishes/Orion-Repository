@@ -1,100 +1,66 @@
 <DOCTYPE html>
 
-
-
     <head>
 
         <title>Metadata Output</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-
-            crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script type="text/javascript"
                 src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 
     </head>
 
-
-
     <body background="static/images/webAppBackground.jpg">
 
-        <div class="container">
 
-            <!-- style="background-color:transparent !important" -->
+        <div class="jumbotron jumbotron-fluid text-center">
 
-            <div class="jumbotron text-center">
+            <h1 class="display-4">Planetary Image Caption Writer - Orion</h1>
+            <p class="lead">You can upload .cub file and .tpl file in this page</p>
 
-                <h1 class="display-4">Planetary Image Caption Writer</h1>
+            <hr class="my-4">
+            <p>Powered by ISIS3</p>
 
-                <p class="lead">Powered by ISIS3</p>
-
-
-
-                <p>This website is only for the upload process
-
-                    that will be a key component in our overall Caption Writing Application</p>
-
-                <p class="lead">
-
-                    <a class="btn btn-primary btn-lg" href="https://www.cefns.nau.edu/capstone/projects/CS/2019/Orion-S19/"
-
-                        role="button">Go to Our Team website</a>
-
-                </p>
-
-            </div>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="https://www.cefns.nau.edu/capstone/projects/CS/2019/Orion-S19/"
+                    role="button">Learn More</a>
+            </p>
 
         </div>
 
-        <hr class="my-4">
+
+
+
 
         <div class="container">
             <div id="loading" style="display:none;">
-                        <img src="{{LOADINGGIF}}" /> Loading Cube File!
-        </div>
+                        <img src="{{LOADINGGIF}}" height="70" weight="70"/> Loading
+        	</div>
 
-                <form class="lg-form text-center" action="/upload" method="POST" enctype="multipart/form-data">
+            <form class="text-center" action="/upload" method="POST" enctype="multipart/form-data">
+                <div class="btn btn-primary btn-lg form-group">
+                    <label for="cubUpload">Choose an ISIS Cube File</label>
+                    <input name="uploadFile" id="cubUpload" type="file" class="form-control-file" />
+                </div>
 
+                <br>
 
+                <hr class="style5">
+                <div class="btn btn-primary btn-lg form-group">
+                    <label for="tplUpload">Choose a Template File</label>
+                    <input name="templateFile" id="tplUpload" type="file" class="form-control-file" />
+                </div>
 
-                        <div class="btn btn-primary btn-lg ">
+                <br>
 
-                            <span class="h4">Choose an ISIS Cube File</span>
+                <input type="submit" name="SubmitCube" value="Upload" class="btn btn btn-outline-dark btn-lg"
+                    onclick="$('#loading').show();" />
 
-                            <input name="uploadFile" type="file" class="h4"/>
-
-
-
-
-
-                    </div>
-
-                    <br>
-
-                    <hr class="style5">
-
-
-                            <div class="btn btn-primary btn-lg">
-
-                                <span class="h4">Choose a Template File</span>
-
-                                <input name="templateFile" type="file" class="h4"/>
-
-                            </div>
-
-                        <br>
-
-
-                        <hr class="style13">
-
-                        <input type="submit" name="SubmitCube" value="Upload"
-                               class="btn btn-secondary btn-lg" onclick="$('#loading').show();"/>
-
-                </form>
+            </form>
 
         </div>
 
     </body>
 
 </DOCTYPE>
-
