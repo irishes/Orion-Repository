@@ -1,0 +1,71 @@
+Object = barscale
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2013-03-07
+  ProgramPath       = /home/irishes/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-04-09T23:37:44
+  HostName          = Unknown
+  UserName          = irishes
+  Description       = "Creates a bar scale for an image"
+
+  Group = UserParameters
+    FROM       = 6352r.lev1c.crop.png
+    PIXRES     = CENTER
+    UNITS      = KILOMETER
+    LEFTLIMIT  = 0
+    RIGHTLIMIT = 1
+    RIGHTSEGS  = 1
+    BARHEIGHT  = 50
+    BACKGROUND = WHITE
+    TEXTHEIGHT = 50
+    TEXTLOC    = ABOVE
+    PADIMAGE   = FALSE
+    PLACEMENT  = LEFT
+  End_Group
+
+  Group = Error
+    Program = barscale
+    Class   = "USER ERROR"
+    Code    = 2
+    Message = "Parameter [TO] must be entered"
+    File    = IsisAml.cpp
+    Line    = 2867
+  End_Group
+End_Object
+
+
+Object = barscale
+  IsisVersion       = "3.6.1  | 12-19-2018"
+  ProgramVersion    = 2013-03-07
+  ProgramPath       = /home/irishes/miniconda3/envs/isis3/bin
+  ExecutionDateTime = 2019-04-09T23:37:58
+  HostName          = Unknown
+  UserName          = irishes
+  Description       = "Creates a bar scale for an image"
+
+  Group = UserParameters
+    FROM       = 6352r.lev1c.crop.png
+    TO         = yes
+    PIXRES     = CENTER
+    UNITS      = KILOMETER
+    LEFTLIMIT  = 0
+    RIGHTLIMIT = 1
+    RIGHTSEGS  = 1
+    BARHEIGHT  = 50
+    BACKGROUND = WHITE
+    TEXTHEIGHT = 50
+    TEXTLOC    = ABOVE
+    PADIMAGE   = FALSE
+    PLACEMENT  = LEFT
+  End_Group
+
+  Group = Error
+    Program = barscale
+    Class   = "I/O ERROR"
+    Code    = 4
+    Message = "Unable to open [6352r.lev1c.crop.png]"
+    File    = Cube.cpp
+    Line    = 2045
+  End_Group
+End_Object
+
+
