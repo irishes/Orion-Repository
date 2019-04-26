@@ -15,6 +15,7 @@ SAMPLE_LINES = 200
 users = 0
 
 
+
 # Flask App Environment
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 
@@ -137,7 +138,8 @@ def upload():
 def showImage():
     if request.method == 'POST':
         image = request.form.get('image_present')
-        return render_template("imageDisplay.html", IMG=image)
+        meta = request.form.get('image_string')
+        return render_template("imageDisplay.html", IMG=image, DICTSTRING=meta)
 
 
 @app.route('/getCSV', methods=['GET', 'POST'])

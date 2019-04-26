@@ -200,6 +200,23 @@ class DataObject(threading.Thread):
             print("IMAGE EXTRACTION FAILED: " + str(e))
         return
 
+    def barScale(self, cube):
+        """
+        Returns Scale Bar to front end
+        Parameters:
+        ----------
+            :param cube: str
+                the cube that will be passed to the function
+        
+        """
+
+        image = str(cube).split("cub")[0]
+        try:
+            os.system("barscale from=" + os.path.join(app.config['UPLOAD_FOLDER'], str(cube)) + " to=" + os.path.join(app.config['IMAGE_FOLDER'], image) + " padimage=True")
+        except Exception as e:
+            print("Something went wrong....")
+        return
+
     def trimData(self, file):
         """
         populates the divDict for the instance
@@ -328,6 +345,13 @@ class DataObject(threading.Thread):
         try:
             # campt os call to terminal and saves in return file
             DataObject.camptInterface(self, self.filename, command_return_file)
+        except Exception as e:
+            print(str(e))
+
+        try:
+            # barscale os call to terminal and saves in return file
+            DataObject.barScale(self, self.filename)
+            print("Got this far")
         except Exception as e:
             print(str(e))
         return command_return_file
