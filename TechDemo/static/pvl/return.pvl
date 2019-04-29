@@ -562,8 +562,8 @@ Object = IMAGE
 End_Object
 End
 Group = GroundPoint
-  Filename                   = /usgs/TechDemo/static/uploads/6352r.crop.lev2.-
-                               cub
+  Filename                   = /home/chaddious/PycharmProjects/Orion-Reposito-
+                               ry/TechDemo/static/uploads/6352r.crop.lev2.cub
   Sample                     = 273.0
   Line                       = 192.0
   PixelValue                 = 0.69013113

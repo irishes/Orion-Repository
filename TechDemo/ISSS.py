@@ -2,7 +2,6 @@
 
 from flask import Flask, render_template, request, url_for, Response, send_file
 from mdUtility import DataObject, cleanDirs
-import threading
 import os
 import ast
 from werkzeug.utils import secure_filename
@@ -30,7 +29,7 @@ app.config['TPL_FOLDER'] = TPL_FOLDER
 # index.html
 @app.route("/", methods=["GET"])
 def index():
-    status = cleanDirs(app.config['PVL_FOLDER'],'ers', 'return.pvl')
+    status = cleanDirs(app.config['PVL_FOLDER'], 'ers', 'return.pvl')
     print(status)
     # print(os.path.join(os.getcwd(),'print.prt'))
     loadingGif = url_for('static', filename='images/loading.gif')
@@ -47,38 +46,37 @@ def upload():
         # =============================================================================
         try:
             # grab the file post using request lib
-            cubeFile = request.files['uploadFile']
+            cubeFile = request.files['cubUpload']
+
+            # try to capture template and create instance using constructor
+            tplFile = request.files['tplUpload']
+            if tplFile.filename != '':
+                current_instance = DataObject(cubeFile.filename, tplFile.filename)
+            else:
+                # if this fails because of a null value it will use the default construction
+                current_instance = DataObject(cubeFile.filename)
+
+            print('this worked === ' + str(current_instance.filename) + str(current_instance.tplFile))
+            # captures the important tags from config
+            current_instance.divDict = DataObject.initDict(current_instance)
+            #print("div dict after init" + str(current_instance.divDict))
 
         except KeyError:
             # catches NULL error and makes user try again
             # TODO: better UI for when a user fails to complete this.
-            #  exp: a popup message
+            #  ex: a popup message
             print("Null File Error: please enter a .cub file ")
             return render_template("index.html")
-        try:
-            # try to capture template and create instance using constructor
-            tplFile = request.files['templateFile']
-            current_instance = DataObject(cubeFile.filename, tplFile.filename)
-            # captures the important tags from config
-            current_instance.divDict = DataObject.initDict(current_instance)
-            print("div dict after init" + str(current_instance.divDict))
 
-        except KeyError:
-            # if this fails because of a null value it will use the default construction
-            current_instance = DataObject(cubeFile.filename)
-            # captures the important tags from config
-            current_instance.divDict = DataObject.initDict(current_instance)
-            print("div dict after init" + str(current_instance.divDict))
+        if current_instance.tplFile.split('.')[-1] == 'tpl' and current_instance.tplFile != ''\
+                and current_instance.filename.split('.')[-1] == 'cub':
 
-
-
-        if (current_instance.tplFile.split('.')[-1] == 'tpl' and current_instance.tplFile != '') \
-                and (current_instance.filename.split('.')[-1] == 'cub' and current_instance.filename != ''):
             # save the file to the upload directory
             cubeFile.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(current_instance.filename)))
+
             if current_instance.tplFile != 'Default.tpl':
-                # save the file to the upload directory
                 tplFile.save(os.path.join(app.config['TPL_FOLDER'], secure_filename(current_instance.tplFile)))
+
 
             # this try except allows us to run a console command and catch and displays errors to prevent crashes
             try:
@@ -102,11 +100,12 @@ def upload():
 
                 # clean the raw dictionary which includes complex structures
                 current_instance.rawFileData = DataObject.cleanRawDict(current_instance, current_instance.rawFileData)
-                print('CLEANED DICTIONARY: ' + str(current_instance.rawFileData))
+                #print('CLEANED DICTIONARY: ' + str(current_instance.rawFileData))
 
                 # read in the desired template file
                 templateFile = open(os.path.join(app.config['TPL_FOLDER'], current_instance.tplFile), "r")
                 templateString = templateFile.read()
+
                 templateFile.close()
 
                 # save file location for web page use later
@@ -134,10 +133,13 @@ def upload():
 
                 dictstring = str(current_instance.divDict)
 
-                print("Dict string being passed is : "+dictstring)
+                #print("Dict string being passed is : "+ dictstring)
+
                 temparea = str(templateString)
                 img = current_instance.divDict['image']
                 csvDownload = current_instance.rawFileData
+                # TODO: fix parser error for dumb other format, error exampled here
+                print("csv string being passed is : " + str(csvDownload))
 
                 csvstring = ""
                 for tempKey, tempVal in current_instance.rawFileData.items():
@@ -147,7 +149,7 @@ def upload():
                 del current_instance
                 # pass all necessary data to the front end
                 return render_template("output.html", DICTSTRING=dictstring, TEMPAREA=temparea,
-                                       IMG=img, CSVSTRING=csvstring, CSVDOWNLOAD = csvDownload)
+                                       IMG=img, CSVSTRING=csvstring, CSVDOWNLOAD=csvDownload)
             # catch file not found error when looking for the returned data file
             except FileNotFoundError:
                 print("ISIS3 command failed to create a pvl")
@@ -168,7 +170,7 @@ def showImage():
         image = request.form.get('image_present')
         meta = request.form.get('image_string')
         # render that image from the server
-        return render_template("imageDisplay.html", IMG=image, DICTSTRING = meta)
+        return render_template("imageDisplay.html", IMG=image, DICTSTRING= meta)
 
 
 # download the raw data as a csv
