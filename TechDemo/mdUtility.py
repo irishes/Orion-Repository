@@ -2,7 +2,7 @@
 File: mdUtility.py
 Author: Chadd Frasier <cmf339@nau.edu>
 Created Date: 2/24/19
-Most Recent Update: 3/30/2019
+Most Recent Update: 4/29/2019
 Description:
         This file was writen for the purpose of extracting necessary metadata from isis3 headers and function returns.
     This file also houses the helper functions that the metadata needs in order to be prepared for use later. This file
@@ -110,7 +110,7 @@ class DataObject():
                 """
         self.filename = filename
         self.rawFileData = dict()
-        self.divDict = dict(image='')
+        self.divDict = dict()
         self.tplFile = tplFile
 
     def initDict(self, configFile='config1.cnf'):
@@ -197,7 +197,6 @@ class DataObject():
             os.system("isis2std from=" + os.path.join(app.config['UPLOAD_FOLDER'], str(cube)) + " to="
                       + os.path.join(app.config['IMAGE_FOLDER'], image) + " format= " + format)
 
-            self.divDict['image'] = image
         except Exception as e:
             print("IMAGE EXTRACTION FAILED: " + str(e))
         return
@@ -367,7 +366,7 @@ class DataObject():
                 # print('--empty line--')
                 continue
             # skip any comments
-            elif '/*' in line:
+            elif '/*' in line or line.strip()[0] == '#':
                 continue
             elif len(line) > 15 and '=' not in line and 'Object' not in line and 'Group' not in line \
                     and not isList and not isString:
@@ -456,7 +455,7 @@ class DataObject():
             # using same idea as a string but not formatted
             # Important: Needs to be cleaned later
             elif isList:
-                if ')' == line.strip()[-1]:
+                if ')' == line.strip()[-1] or line.strip()[-1] == '>':
                     stringValue = stringValue + line.strip()
                     isList = False
                     self.rawFileData[unqkey] = stringValue
@@ -470,6 +469,7 @@ class DataObject():
 # END OF CLASS
 
 # TODO: Finish this function
+# TODO: must be able to clean the broken images
 # will be called after the user hits restart or when some files are no longer needed
 # flush working directories of unnecessary files for performance reasons
 # function:
@@ -503,12 +503,8 @@ def cleanDirs(directory, code, file=''):
             return 0
         elif code == 'del' and file != '':
             # print(os.path.join(directory, file))
-            if file == os.getcwd():
-                os.system('rm ' + file)
-                return 0
-            else:
-                os.system('rm ' + os.path.join(directory, file))
-                return 0
+            os.system('rm ' + os.path.join(directory, file))
+            return 0
 
 # non class related function
 def combineKeys(genisis, objecttag, grouptag, nametag, listkey):
