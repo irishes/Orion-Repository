@@ -1,6 +1,3 @@
-This is an example template that demonstrates how to to use the tags for the caption writer:
+This is an example template that demonstrates the tag use format:
 
-If I want to include the TargetName from the ISIS header all
-I have to do is use the [[<tag>]] format as seen below this first caption box
-
-this [[TargetName]]
+This image of [[TargetName]] was taken by [[SpacecraftName]]
