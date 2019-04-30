@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 
 from flask import Flask, render_template, request, url_for, Response, send_file
+from mdUtility import DataObject, cleanDirs
 import os
 import ast
 from werkzeug.utils import secure_filename
-from mdUtility import DataObject, cleanDirs
 
 
+# Flask App Environment
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static/uploads')
 IMAGE_FOLDER = os.path.join(APP_ROOT, 'static/images')
@@ -27,13 +29,8 @@ app.config['TPL_FOLDER'] = TPL_FOLDER
 # index.html
 @app.route("/", methods=["GET"])
 def index():
-    cleanDirs(app.config['PVL_FOLDER'], 'ers', 'return.pvl')
-    # delete unneeded files
-    try:
-        cleanDirs(os.getcwd(), 'del', 'print.prt')
-    except Exception as e:
-        print('Error Deleteing Files' + str(e))
-
+    status = cleanDirs(app.config['PVL_FOLDER'], 'ers', 'return.pvl')
+    print(status)
     # print(os.path.join(os.getcwd(),'print.prt'))
     loadingGif = url_for('static', filename='images/loading.gif')
     return render_template('index.html', LOADINGGIF=loadingGif)
@@ -51,7 +48,6 @@ def upload():
             # grab the file post using request lib
             cubeFile = request.files['cubUpload']
 
-
             # try to capture template and create instance using constructor
             tplFile = request.files['tplUpload']
             if tplFile.filename != '':
@@ -60,10 +56,9 @@ def upload():
                 # if this fails because of a null value it will use the default construction
                 current_instance = DataObject(cubeFile.filename)
 
+            print('this worked === ' + str(current_instance.filename) + str(current_instance.tplFile))
             # captures the important tags from config
             current_instance.divDict = DataObject.initDict(current_instance)
-            # save the cube file
-            current_instance.divDict['cube'] = cubeFile.filename
             #print("div dict after init" + str(current_instance.divDict))
 
         except KeyError:
@@ -81,6 +76,7 @@ def upload():
 
             if current_instance.tplFile != 'Default.tpl':
                 tplFile.save(os.path.join(app.config['TPL_FOLDER'], secure_filename(current_instance.tplFile)))
+
 
             # this try except allows us to run a console command and catch and displays errors to prevent crashes
             try:
@@ -101,10 +97,10 @@ def upload():
                 current_instance.rawFileData = DataObject.extractRawData2(
                     current_instance, os.path.join(app.config['PVL_FOLDER'], str(command_file_output))
                 )
-                # print('DICTIONARY: ' + str(current_instance.rawFileData))
+
                 # clean the raw dictionary which includes complex structures
                 current_instance.rawFileData = DataObject.cleanRawDict(current_instance, current_instance.rawFileData)
-                # print('CLEANED DICTIONARY: ' + str(current_instance.rawFileData))
+                #print('CLEANED DICTIONARY: ' + str(current_instance.rawFileData))
 
                 # read in the desired template file
                 templateFile = open(os.path.join(app.config['TPL_FOLDER'], current_instance.tplFile), "r")
@@ -113,8 +109,7 @@ def upload():
                 templateFile.close()
 
                 # save file location for web page use later
-                full_filename = url_for('static', filename='images/' +
-                                                           current_instance.divDict['cube'].strip('.cub') + '.png')
+                full_filename = url_for('static', filename='images/' + current_instance.divDict['image'])
 
                 # parse file and fill important tag dict
                 current_instance.divDict = DataObject.trimData(
@@ -122,17 +117,29 @@ def upload():
                 )
                 # save the image location in the dict for access
                 # TODO: possible rethink on this idea of keeping the location
+                current_instance.divDict['image'] = full_filename
 
                 # clean the div dict of all unwanted symbols
                 # Function: cleanData
                 current_instance.divDict = DataObject.cleanData(current_instance, current_instance.divDict)
 
                 print('DivDict: ' + str(current_instance.divDict))
+
+                # delete unneeded files
+                try:
+                    cleanDirs(os.getcwd(), 'del', 'print.prt')
+                except Exception as e:
+                    print('Error Deleteing Files' + str(e))
+
                 dictstring = str(current_instance.divDict)
 
-                temparea = str(templateString)
+                #print("Dict string being passed is : "+ dictstring)
 
+                temparea = str(templateString)
+                img = current_instance.divDict['image']
                 csvDownload = current_instance.rawFileData
+                # TODO: fix parser error for dumb other format, error exampled here
+                print("csv string being passed is : " + str(csvDownload))
 
                 csvstring = ""
                 for tempKey, tempVal in current_instance.rawFileData.items():
@@ -142,14 +149,14 @@ def upload():
                 del current_instance
                 # pass all necessary data to the front end
                 return render_template("output.html", DICTSTRING=dictstring, TEMPAREA=temparea,
-                                       IMG=full_filename, CSVSTRING=csvstring, CSVDOWNLOAD=csvDownload)
+                                       IMG=img, CSVSTRING=csvstring, CSVDOWNLOAD=csvDownload)
             # catch file not found error when looking for the returned data file
             except FileNotFoundError:
                 print("ISIS3 command failed to create a pvl")
                 return render_template("error.html")
         else:
             # fatal error
-            print("**Fatal Error: This is Probably a Coding Problem!!")
+            print("Fatal Error: This is Probably a Coding Problem!!")
             return render_template("index.html")
 
 

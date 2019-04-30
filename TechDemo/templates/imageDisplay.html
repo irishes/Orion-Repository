@@ -20,18 +20,15 @@
         .image-editer{
             border: 1px solid #000000;
         }
-
         .image-controls{
             margin-left: 25%;        
         }
-
         .image-symbols{
             margin-left: 35%;
             background-color: #d9d9d9;
             border: 5px solid #000000;
             width: 400px;
         }
-
         .cropit-preview {
             background-color: #f8f8f8;
             background-size: cover;
@@ -50,15 +47,12 @@
         .image-size-label {
             margin-top: 10px;
         }
-
         .export {
             display: block;
         }
-
         .button {
             margin-top: 10px;
         }
-
         .canvas-legend {
             height: 50px;
         }
@@ -128,7 +122,7 @@
             </tr>
         </table>
     </div>
-    <div id="hide-legend" style="display:hidden;">
+    <div id="hide-legend" style="display:none;">
         <input type="checkbox" id="north-radio" name="leg" checked>North Arrow</input>
         <input type="checkbox" id="sun-radio" name="leg" checked>Sun Azimuthal Direction</input>
         <input type="checkbox" id="obs-radio" name="leg" checked>Observer Azimuthal Direction</input>
@@ -152,7 +146,6 @@
                     src: '{{IMG}}',
                 },
             });
-
             $('.export').click(function() {
                 var imageData = $('.image-editor').cropit('export');
                 window.open(imageData);
@@ -172,31 +165,24 @@
     var obsRadio = document.getElementById("obs-radio");
     var scalebarRadio = document.getElementById("scalebar-radio");
     var chkbxs = document.getElementsByName("leg");
-
     function hideNorth(){
         document.getElementById("north").display.style = 'none';
     }
-
     function showNorth(){
         document.getElementById("north").display.style = 'block';
     }
-
     function hideSun(){
         document.getElementById("sun-az").display.style = 'none';
     }
-
     function showSun(){
         document.getElementById("sun-az").display.style = 'block';
     }
-
     function hideObs(){
         document.getElementById("sun-az").display.style = 'none';
     }
-
     function hideSun(){
         document.getElementById("sun-az").display.style = 'none';
     }
-
     function showHide(){
         if(northRadio.checked){
             hideNorth();
@@ -204,23 +190,18 @@
             showNorth();
         }
     }
-
     setInterval(showHide, 1000);
 </script>
 <script>
     var keys = [];
     var vals = [];
-
     // Gets All Metadata from the "metadata-text" div, and formats into two arrays. Keys and Vals.
     function getMetadata() {
         var metaDataString = document.getElementById("metadata-text").value;
         var metaDataArea = document.getElementById("metadataTagArea");
-
         metaDataString = metaDataString.split("{")[1];
         metaDataString = metaDataString.split("}")[0];
-
         var dataPairString = metaDataString.split(",");
-
         for (var i = 0; i < dataPairString.length; i++) {
             var dataToText = dataPairString[i].toString();
             var key = dataToText.split(":")[0];
@@ -230,11 +211,9 @@
             keys.push(key);
             vals.push(val);
         }
-
         for(var j = 0; j < keys.length; j++) {
             keys[j] = keys[j].trim();
         }
-
         for (var k = 0; k < keys.length; k++) {
             var key = "[[" + keys[k] + "]]";
             var val = vals[k];
@@ -244,7 +223,6 @@
         console.log(keys);
         console.log(vals);
     }
-
     getMetadata();
 </script>
 <script>
@@ -254,7 +232,6 @@
         var sunDegree = 180;
         var observerDegree = 270;
         var scale = 10342;
-
         // Legend Icons
         var northImg = new Image();
         northImg.src = "/static/images/north.png";
@@ -280,28 +257,21 @@
         var scaleRange = document.getElementById("img-range");
         var range1 = document.getElementById("range-1");
         var range2 = document.getElementById("range-2");
-
         // Rotates North Arrow Image to inputted degree 
         function rotateNorth(degree){
             northCanvasCtx.clearRect(0, 0, northCanvas.width, northCanvas.height);
-
             // save the unrotated context of the canvas so we can restore it later
             // the alternative is to untranslate & unrotate after drawing
             northCanvasCtx.save();
-
             // move to the center of the canvas
             northCanvasCtx.translate(northCanvas.width/2, northCanvas.height/2);
-
             // rotate the canvas to the specified degrees
             northCanvasCtx.rotate(degree*Math.PI/180);
-
             // draw the image
             // since the context is rotated, the image will be rotated also
             northCanvasCtx.drawImage(northImg, (-northImg.width/2)+50, (-northImg.width/2)+50, 75, 75);
-
             // we’re done with the rotating so restore the unrotated context
         }
-
         // Draw Sun Arrow
         function sunArrow(degree){
             var x1 = (sunCanvas.width/2)+50;
@@ -314,7 +284,6 @@
             sunCanvasCtx.lineWidth = 5;
             sunCanvasCtx.stroke();
         }
-
         // Draw Observer Arrow
         function obsArrow(degree){
             var x1 = (obsCanvas.width/2)+50;
@@ -327,7 +296,6 @@
             obsCanvasCtx.lineWidth = 5;
             obsCanvasCtx.stroke();
         }
-
         // Draw Scalebar
         function scalebarDraw(scale, range){
             var wid = 600;
@@ -343,11 +311,9 @@
             scalebarCanvasCtx.lineWidth = 10;
             scalebarCanvasCtx.stroke();
         }
-
         for(var i=0; i<keys.length; i++){
             if(keys[i] === "NorthAzimuth"){
                 //northDegree = vals[i];
-
                 if(vals[i] !== "None"){
                     norDeg.innerHTML = northDegree + " degs";
                     northImg.onload = function(){
@@ -364,10 +330,8 @@
                     console.log("North Degree Not Found");
                 }
             }
-
             if(keys[i] === "SubSolarAzimuth"){
                 //sunDegree = vals[i];
-
                 if(vals[i] !== "None"){
                     sunDeg.innerHTML = sunDegree + " degs";
                     sunImg.onload = function(){
@@ -383,10 +347,8 @@
                     console.log("Sun Degree Not Found");
                 }
             }
-
             if(keys[i] === "SubSpacecraftGroundAzimuth"){
                 //observerDegree = vals[i];
-
                 if(vals[i] !== "None"){
                     obsDeg.innerHTML = observerDegree + " degs";
                     obsImg.onload = function(){
@@ -402,7 +364,6 @@
                     console.log("Observer Degree Not Found");
                 }
             }
-
             if(keys[i] === "SampleResolution"){
                 //scale = vals[i];
                 var factor = scaleRange.value;
