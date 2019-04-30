@@ -1,1 +1,1 @@
-This is a [[TargetName]], its name is [[SpacecraftName]].
+This is a test template file using [[TargetName]]
