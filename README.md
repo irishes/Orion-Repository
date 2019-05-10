@@ -85,33 +85,33 @@ Shutdown The Server with
 Alpha Caption Writer
 =====================================================
 ~~1. Receive and save a cube file (.cub) from the user as well as optionally taking in
-a template cube.
+a template cube.~~
 
 ~~2. Bring the user to a page with an editable template. Include a display of 
 all the needed metadata and the tags that will correspond to the data in the template
-file when it is converted.
+file when it is converted.~~
 
 ~~3. The user will have the option to export the metadata, template and caption in various forms 
-if they desire.
+if they desire.~~
 
 ~~4. When the template looks correct the user can move onto a page where they can view the caption
-and the image seperatly from the caption.
+and the image seperatly from the caption.~~
 
 
 Beta Caption Writer (S.T.C.)
 =====================================================
 ~~1. Receive and save a cube file (.cub) from the user as well as optionally taking in
-a template cube.
+a template cube.~~
 
 ~~2. Bring the user to a page with an editable template. Include a display of 
 all the needed metadata and the tags that will correspond to the data in the template
-file when it is converted.
+file when it is converted.~~
 
 ~~3. The user will have the option to export the metadata and caption in various forms 
-if they desire.
+if they desire.~~
 
 ~~4. When the template looks correct the user can move onto a page where they can view the caption
-and the image of the cube that they uploaded.
+and the image of the cube that they uploaded.~~
 
 ~~5. The user can use the check boxes on the image page~~ to add icons based on the metadata and can 
  adjust the location of the caption that appears over the figure.
