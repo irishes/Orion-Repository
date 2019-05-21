@@ -19,7 +19,7 @@ It is far too big to be useful for this application
  
 The default install location for both programs should be sufficient. 
 
-**Important: When the conda enviornament install asks you if you would like to add the conda 
+**Important: When the conda environment install asks you if you would like to add the conda 
 path to your .bashrc file, you must put yes to give the main command line access to your conda 
 commands. 
 If you fail to do so you will not be able to use the activate.sh script because `conda activate ENV_NAME` will not be found by the .bash and the server will not start**

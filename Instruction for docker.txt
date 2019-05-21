@@ -17,7 +17,7 @@ Then Extract the folder"Orion-docker(version_4_allOS)" and then open the termina
 		* Debugger is active!
 		* Debugger PIN: 532-287-771
 (3) Open browser enter "localhost:5000" you will be able to see the interface.
-(4)	If you want to stop, open a new container, run "docker container ls", then you can find "CONTAINER ID" in the result,
+(4)	If you want to stop, open a new terminal, run "docker container ls", then you can find "CONTAINER ID" in the result,
 	Finally, run "docker container kill (CONTAINER ID)" commands. The (CONTAINER ID) will be replaced by real id.
 (5) If you want to use it again, just run "docker-compose run --rm -p 5000:5000 isis3," the same commands in (2).
 	The thing must give attention is you must run this command in same folder that you extract the zip file
