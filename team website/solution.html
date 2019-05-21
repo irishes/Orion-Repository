@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>TEAM ORION</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default bg-primary">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Team Orion</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="introduction.html">Introduction</a></li>
+                    <li><a href="index.html#TEAM">Team Members</a></li>
+                    <li><a href="solution.html">Solution</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Documentation <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="documentation/Kestay-ImageWriter2.pdf">Project Description</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="documentation/RequirementsDoc.pdf">RequirementsDoc</a></li>
+                            <li><a href="documentation/SoftwareDesignDoc.pdf">Software Design Doc</a></li>
+                            <li><a href="documentation/TechnicalFeasibility.pdf">Technical Feasibility</a></li>
+
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://github.com/irishes/Orion-Repository">Tech Demo</a></li>
+                    <li><a href="documentation/Image_Caption_Writer.pdf">Schedule</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--/.container-fluid -->
+    </nav>
+
+    <div class="row">
+
+
+        <div class="container">
+            <div class="page-header text-center">
+                <h1>Solution Overview
+                    <small>&nbsp;&nbsp;WEB APP!</small>
+                </h1>
+            </div>
+            <hr>
+            <div class="well text-center">
+                    <img src="overview.png" class="img-rounded" alt="Procedure">
+                <p class="text-left" style="line-height:30px; font-size:20px"><em>Based</em> on the requirements
+                    for this project, we have decided to implement a web app for our
+                    solution. By using a web app, our product will be usable on almost any OS platform. Using a web app
+                    will also give us access to all of the powerful web libraries that exist; like Openlayers, Node JS
+                    and Web Frameworks like Flask. Using a web app for our solution, means we will need to include ISIS
+                    with our app installation. ISIS is currently only available on Unix systems (Linux, OSX, etc.). To
+                    avoid alienating Windows users, we decided to use Docker as our installation method. Docker is a
+                    virtual “container” that acts like a virtual machine. With Docker, we plan to install linux
+                    (Ubuntu), and ISIS as well as our web app. This allows us to effectively install and run ISIS on
+                    Non Windows systems. To host our web app, we need to host it on a local server. To accomplish this,
+                    we are going to use the Flask framework. Flask, offers a wide array of tutorials and seems to be
+                    more beginner friendly than some of its alternatives. It also has extensive documentation and all
+                    of our team members know python. Finally our web app has to have the following functionality:
+
+
+                    <ul class="text-left" style="line-height:30px; font-size:20px">
+                        <li>Upload .cub images</li>
+                        <li>Crop .cub images</li>
+                        <li>Extract metadata from .cub images</li>
+                        <li>Add graphics to image based on extracted Metadata</li>
+                        <li>Export metadata in CSV format and also in a specialized template used in publications</li>
+                    </ul>
+                </p>
+                <hr style="border-top: 1px dotted cornflowerblue;"">
+          <p class=" text-left" style="line-height:30px; font-size:20px"><em>To</em>
+                implement this functionality with our web app, we plan on using base Flask and python for setting up
+                the foundation of the web app. For implementing functionality of cropping and exporting of an image, we
+                plan on using the Openlayers library. This treats base images as a “map”. Map images can be easily
+                cropped and exported to a number of formats. Because Openlayers is used for maps, it can also take into
+                account more complex map phenomenon, like shortening a scale bar when close to a pole.
+                In summary, our solution will include the following:                
+            <ul class="text-left" style="line-height:30px; font-size:20px">
+                <li>A Docker container that includes:</li>
+                <ul style="line-height:30px; font-size:20px">
+                <li>Ubuntu installed</li>
+                <li>A Flask web server hosting our front facing web app</li>
+                <li>ISIS</li></ul>
+                <li>A front facing web app with all functionality outlined above</li>
+              </ul>
+            </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
