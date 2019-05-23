@@ -4,7 +4,7 @@
 - docker-compose
 
 * The install instructions for Docker CE/EE are at https://docs.docker.com/install/ *
-* The instructions for docker-compose are at https://docs.docker.com/compose/install/ *
+* The instructions for docker-compose are at https://docs.docker.com/compose/install/
 ============================================================================
 # Running:
 ============================================================================
@@ -34,3 +34,4 @@
 	Using the ImageID run `docker rmi <imageID>` after rmoving the image you will need to rebuild to product before you can use the 	Caption Writer. `docker-compose build`
 
 7. If you want to use it again, just run `docker-compose run --rm -p 5000:5000 isis3` the same command in 2.
+============================================================================
