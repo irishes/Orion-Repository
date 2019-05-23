@@ -8,7 +8,7 @@
 
 # Running:
 ----------
-### NOTE:### Linux: if you get an error connecting to the docker daemon use `sudo` at the start of the commands
+### NOTE: Linux: if you get an error connecting to the docker daemon use `sudo` at the start of the commands
 
 1. Navigate to the project folder, something like: `$HOME/Orion-Repository`
 
