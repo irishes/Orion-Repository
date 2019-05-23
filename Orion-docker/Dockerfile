@@ -15,11 +15,8 @@ ENV PATH=$PATH:$ISISROOT/bin
 
 # Create user and home
 RUN useradd --create-home --home-dir $HOME --shell /bin/bash usgs
-
-# Copy all files to usgs/
-COPY . $HOME/
+USER usgs
 WORKDIR $HOME
-
 
 # Sync ISIS with conda
 RUN conda config --add channels conda-forge && \
@@ -51,14 +48,4 @@ WORKDIR $HOME
 RUN pip install -r requirements.txt
 
 WORKDIR CaptionWriter
-CMD python ISSS.py
-
-
-
-
-
-
-
-
-
-
+CMD python3 ISSS.py

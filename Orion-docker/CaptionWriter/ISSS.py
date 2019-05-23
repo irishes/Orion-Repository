@@ -57,18 +57,20 @@ def upload():
         try:
             # try to capture template and create instance using constructor
             tplFile = request.files['templateFile']
-            current_instance = DataObject(cubeFile.filename, tplFile.filename)
-            # captures the important tags from config
-            current_instance.divDict = DataObject.initDict(current_instance)
-            print("div dict after init" + str(current_instance.divDict))
+            print('temp file is: ' + str(tplFile.filename))
+            if(tplFile.filename == ''):
+                # if this fails because of a null value it will use the default construction
+                current_instance = DataObject(cubeFile.filename)
+                # captures the important tags from config
+                current_instance.divDict = DataObject.initDict(current_instance)
+            else:
+                current_instance = DataObject(cubeFile.filename, tplFile.filename)
+                # captures the important tags from config
+                current_instance.divDict = DataObject.initDict(current_instance)
+            print("div dict after init: " + str(current_instance.divDict))
 
-        except KeyError:
-            # if this fails because of a null value it will use the default construction
-            current_instance = DataObject(cubeFile.filename)
-            # captures the important tags from config
-            current_instance.divDict = DataObject.initDict(current_instance)
-            print("div dict after init" + str(current_instance.divDict))
-
+        except Exception as e:
+            print("Error Obtaining Template" + str(e))
 
 
         if (current_instance.tplFile.split('.')[-1] == 'tpl' and current_instance.tplFile != '') \
@@ -87,6 +89,7 @@ def upload():
 
                 # run the data collection in parent
                 command_file_output = DataObject.run_isis(current_instance)
+                print("made it to image extract")
             except Exception as e:
                 print('Threading Section Critical Failure:' + str(e))
                 if current_instance:
