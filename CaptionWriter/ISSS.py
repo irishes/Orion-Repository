@@ -40,7 +40,7 @@ def index():
 # upload and save process
 @app.route("/upload", methods=['GET', 'POST'])
 def upload():
-
+    print(os.getcwd())
     # if request is post
     if request.method == 'POST':
         # Make File Post an Instance of a DataObject and extract all the tags from that data
@@ -76,10 +76,10 @@ def upload():
         if (current_instance.tplFile.split('.')[-1] == 'tpl' and current_instance.tplFile != '') \
                 and (current_instance.filename.split('.')[-1] == 'cub' and current_instance.filename != ''):
             # save the file to the upload directory
-            cubeFile.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename(current_instance.filename)))
+            cubeFile.save(os.path.join(app.config['UPLOAD_FOLDER'], current_instance.filename))
             if current_instance.tplFile != 'Default.tpl':
                 # save the file to the upload directory
-                tplFile.save(os.path.join(app.config['TPL_FOLDER'], secure_filename(current_instance.tplFile)))
+                tplFile.save(os.path.join(app.config['TPL_FOLDER'], current_instance.tplFile))
 
             # this try except allows us to run a console command and catch and displays errors to prevent crashes
             try:
