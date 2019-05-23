@@ -1,24 +1,39 @@
-Requirements: Your computer must install Docker CE/EE version
-The instructions are in https://docs.docker.com/install/
+# System Requirements: 
+----------------------
+- Docker CE/EE version
+- docker-compose
 
+## The instructions for Docker CE/EE are at https://docs.docker.com/install/
 
-Then Extract the folder"Orion-docker(version_4_allOS)" and then open the terminal inside.
+# Running
+---------
 
-(1) Run "docker-compose build" commands at first, it will take you 15 minutes.
-(2) Then run "docker-compose run --rm -p 5000:5000  isis3",
-	You will be able to see
-		* Serving Flask app "ISSS" (lazy loading)
-		* Environment: production
+(0) navigate to the project folder something like: `$HOME/Orion-Repository`
+
+(1) Run `docker-compose build` commands at first, it will take you 15 minutes.
+
+(2) Then run `docker-compose run --rm -p 5000:5000  isis3`
+	You will be able to see:
+	`* Serving Flask app "ISSS" (lazy loading)
+	 * Environment: production
 		WARNING: Do not use the development server in a production environment.
 		Use a production WSGI server instead.
-		* Debug mode: on
-		* Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
-		* Restarting with stat
-		* Debugger is active!
-		* Debugger PIN: 532-287-771
-(3) Open browser enter "localhost:5000" you will be able to see the interface.
-(4)	If you want to stop, open a new container, run "docker container ls", then you can find "CONTAINER ID" in the result,
-	Finally, run "docker container kill (CONTAINER ID)" commands. The (CONTAINER ID) will be replaced by real id.
-(5) If you want to use it again, just run "docker-compose run --rm -p 5000:5000 isis3," the same commands in (2).
-	The thing must give attention is you must run this command in same folder that you extract the zip file
+	 * Debug mode: on
+	 * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
+	 * Restarting with stat
+	 * Debugger is active!
+	 * Debugger PIN: 532-287-771` if the product is running.
+		
+(3) Open your browser and enter `0.0.0.0:5000` in the navigation bar.
+
+(4) If you want to stop, open a new container, run `docker ps -a`, to view all containers, then you can find "CONTAINER ID" in the result,
+	Finally, run `docker kill <CONTAINER ID>` to stop a running container. 
 	
+(5) If you want to remove the image build run `docker images` to view the images on your system. 
+	Using the ImageID run `docker rmi <imageID>` after rmoving the image you will need to rebuild to product before you can use the 	Caption Writer. `docker-compose build`
+
+(6) If you want to use it again, just run `docker-compose run --rm -p 5000:5000 isis3` the same command in (2).
+	
+	
+## NOTE: 
+Linux: if you get an error connecting to the docker daemon use `sudo` at the start of the commands
