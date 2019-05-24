@@ -6,10 +6,17 @@
 * The install instructions for Docker CE/EE are at https://docs.docker.com/install/ *
 * The instructions for docker-compose are at https://docs.docker.com/compose/install/
 ============================================================================
-# Running:
+## Install:
+===========================================================================
+
+
+
+
+
 ============================================================================
-### NOTE: 
-Linux Users: if you get an error connecting to the docker daemon use `sudo` at the start of the commands
+### Running:
+============================================================================
+#### NOTE:Linux Users: if you get an error connecting to the docker daemon use `sudo` at the start of the commands
 
 1. Navigate to the project folder, something like: `$HOME/Orion-Repository`
 
